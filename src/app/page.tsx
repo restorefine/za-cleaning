@@ -1,9 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import ServicesSection from "@/components/ServicesSection";
+import CoverageSection from "@/components/CoverageSection";
 import Hero from "@/components/Hero";
 import HeroRevex from "@/components/HeroRevex";
 import AboutSection from "@/components/AboutSection";
+import ChecklistProtocol from "@/components/ChecklistProtocol";
 import FAQSection from "@/components/FAQSection";
 import TeamSection from "@/components/TeamSection";
 import Testimonials from "@/components/Testimonials";
@@ -16,24 +18,44 @@ export default function Home() {
       <Hero />
 
       {/* ── Services ── pt-24/28 clears the floating hero feature cards */}
-      <div className="pt-24 sm:pt-28">
+      <div id="services" className="pt-24 sm:pt-28">
         <ServicesSection />
       </div>
 
+      {/* ── Coverage ── */}
+      <section id="coverage">
+        <CoverageSection />
+      </section>
+
       {/* ── About ── */}
-      <AboutSection />
+      <section id="about">
+        <AboutSection />
+      </section>
+
+      {/* ── Room-by-Room Protocol ── */}
+      <section id="protocol">
+        <ChecklistProtocol />
+      </section>
 
       {/* ── How It Works ── */}
-      <HowItWorks />
+      <section id="how-it-works">
+        <HowItWorks />
+      </section>
 
       {/* ── FAQ ── */}
-      <FAQSection />
+      <section id="faq">
+        <FAQSection />
+      </section>
 
       {/* ── Team ── */}
-      <TeamSection />
+      <section id="team">
+        <TeamSection />
+      </section>
 
       {/* ── Testimonials ── */}
-      <Testimonials />
+      <section id="testimonials">
+        <Testimonials />
+      </section>
 
       {/* ── CTA Banner ── */}
       {/* <section className="bg-primary py-16 text-center">

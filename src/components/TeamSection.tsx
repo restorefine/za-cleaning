@@ -2,39 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-
-const TEAM = [
-  {
-    name: "Alexandra Dario",
-    role: "Founder & CEO",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
-  },
-  {
-    name: "Emily Johnson",
-    role: "Office Manager",
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
-  },
-  {
-    name: "Tony Rahman",
-    role: "Team Supervisor",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
-  },
-  {
-    name: "Rivan Islam",
-    role: "Senior Specialist",
-    image: "https://randomuser.me/api/portraits/men/75.jpg",
-  },
-  {
-    name: "Sarah Mitchell",
-    role: "Cleaning Specialist",
-    image: "https://randomuser.me/api/portraits/women/26.jpg",
-  },
-  {
-    name: "James Robertson",
-    role: "Operations Lead",
-    image: "https://randomuser.me/api/portraits/men/55.jpg",
-  },
-];
+import { TEAM, TEAM_HEADER } from "@/app/data";
 
 const VISIBLE = 4;
 
@@ -66,44 +34,41 @@ export default function TeamSection() {
   const visible = TEAM.slice(start, start + VISIBLE);
 
   return (
-    <section className="bg-bg-soft py-20 overflow-hidden">
+    <section className="bg-white py-20 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-14">
           <div className="flex items-center gap-3 mb-4">
             <span className="flex-1 h-px w-10 bg-accent" />
-            <span className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Meet Our Team</span>
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-accent">{TEAM_HEADER.eyebrow}</span>
             <span className="flex-1 h-px w-10 bg-accent" />
           </div>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-primary leading-tight">
-            We Have an{" "}
-            <span className="text-accent">Expert</span>{" "}
-            Team
+            {TEAM_HEADER.headlinePart1}{" "}
+            <span className="text-accent">{TEAM_HEADER.headlineAccent}</span>{" "}
+            {TEAM_HEADER.headlinePart2}
           </h2>
         </div>
 
         {/* Cards + arrows */}
         <div className="relative flex items-center gap-4">
 
-          {/* Prev arrow */}
           <button
             onClick={prev}
             disabled={start === 0}
             aria-label="Previous"
-            className="shrink-0 w-10 h-10 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center text-slate-400 transition hover:border-primary hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed"
+            className="shrink-0 w-10 h-10 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center text-slate-400 transition hover:border-accent hover:text-accent disabled:opacity-30 disabled:cursor-not-allowed"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="w-4 h-4">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
 
-          {/* Card grid */}
           <div className="flex-1 grid grid-cols-2 lg:grid-cols-4 gap-5">
             {visible.map((member) => (
               <div key={member.name} className="group relative rounded-2xl overflow-hidden shadow-md cursor-pointer" style={{ aspectRatio: "3/4" }}>
 
-                {/* Photo */}
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -111,16 +76,13 @@ export default function TeamSection() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
-                {/* Dark gradient overlay at bottom */}
                 <div className="absolute inset-0 bg-linear-to-t from-primary-dark/90 via-primary/30 to-transparent" />
 
-                {/* Diagonal accent corner — bottom right */}
                 <div
                   className="absolute bottom-0 right-0 w-16 h-16 bg-accent/80 pointer-events-none"
                   style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }}
                 />
 
-                {/* Social icons — left side */}
                 <div className="absolute left-3 top-1/2 -translate-y-1/2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {[FacebookIcon, XIcon, InstagramIcon].map((Icon, i) => (
                     <button
@@ -133,11 +95,8 @@ export default function TeamSection() {
                   ))}
                 </div>
 
-                {/* Name + role at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 px-4 py-4 z-10">
-                  <p className="text-white font-extrabold text-sm uppercase tracking-wide leading-tight">
-                    {member.name}
-                  </p>
+                  <p className="text-white font-extrabold text-sm uppercase tracking-wide leading-tight">{member.name}</p>
                   <p className="text-white/60 text-xs mt-0.5">{member.role}</p>
                 </div>
 
@@ -145,12 +104,11 @@ export default function TeamSection() {
             ))}
           </div>
 
-          {/* Next arrow */}
           <button
             onClick={next}
             disabled={start === maxStart}
             aria-label="Next"
-            className="shrink-0 w-10 h-10 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center text-slate-400 transition hover:border-primary hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed"
+            className="shrink-0 w-10 h-10 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center text-slate-400 transition hover:border-accent hover:text-accent disabled:opacity-30 disabled:cursor-not-allowed"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="w-4 h-4">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

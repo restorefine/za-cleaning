@@ -1,12 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const WHY_POINTS = [
-  "100% Satisfaction & Deposit-Back Guarantee",
-  "Fully Insured, Vetted & Trained Professionals",
-  "Equipment & Supplies Always Included",
-  "Available 7 Days — Last-Minute Bookings Welcome",
-];
+import { ABOUT_CONTENT } from "@/app/data";
 
 export default function AboutSection() {
   return (
@@ -17,37 +11,20 @@ export default function AboutSection() {
           {/* ── LEFT: image collage ── */}
           <div className="relative flex gap-3 h-[480px]">
 
-            {/* Left tall image */}
             <div className="relative w-[48%] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/services/tenancy.png"
-                alt="End of tenancy cleaning"
-                fill
-                className="object-cover"
-              />
+              <Image src="/services/tenancy.png" alt="End of tenancy cleaning" fill className="object-cover" />
             </div>
 
-            {/* Right two stacked images */}
             <div className="flex flex-col gap-3 w-[48%]">
               <div className="relative flex-1 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/services/deep.png"
-                  alt="Deep cleaning"
-                  fill
-                  className="object-cover"
-                />
+                <Image src="/services/deep.png" alt="Deep cleaning" fill className="object-cover" />
               </div>
               <div className="relative flex-1 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/services/carpet.png"
-                  alt="Carpet cleaning"
-                  fill
-                  className="object-cover"
-                />
+                <Image src="/services/carpet.png" alt="Carpet cleaning" fill className="object-cover" />
               </div>
             </div>
 
-            {/* Floating badge in the overlap */}
+            {/* Floating badge */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-16 h-16 rounded-full bg-primary border-4 border-white shadow-2xl flex items-center justify-center">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-7 h-7 text-white">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
@@ -69,28 +46,26 @@ export default function AboutSection() {
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-0.75 rounded-full bg-accent" />
-              <span className="text-xs font-bold uppercase tracking-[0.16em] text-accent">About Cleaning</span>
+              <span className="text-xs font-bold uppercase tracking-[0.16em] text-accent">{ABOUT_CONTENT.eyebrow}</span>
             </div>
 
             {/* Headline */}
             <h2 className="text-4xl sm:text-5xl font-extrabold text-primary leading-tight tracking-tight mb-5">
-              Our Cleaning{" "}
-              <span className="text-accent">Agency</span>
+              {ABOUT_CONTENT.headlinePart1}{" "}
+              <span className="text-accent">{ABOUT_CONTENT.headlineAccent}</span>
               <br />
-              For Your City
+              {ABOUT_CONTENT.headlinePart2}
             </h2>
 
             {/* Description */}
             <p className="text-slate-500 text-base leading-relaxed mb-7 max-w-md">
-              ZA Cleaning Team has been serving Central Scotland for over a decade — delivering
-              professional, reliable cleaning you can count on. From end-of-tenancy to deep cleans,
-              we handle it all so you don&apos;t have to.
+              {ABOUT_CONTENT.description}
             </p>
 
             {/* Why Choose Us */}
-            <p className="font-bold text-primary text-base mb-4">Why Choose Us</p>
+            <p className="font-bold text-primary text-base mb-4">{ABOUT_CONTENT.whyTitle}</p>
             <ul className="flex flex-col gap-3 mb-8">
-              {WHY_POINTS.map((point) => (
+              {ABOUT_CONTENT.whyPoints.map((point) => (
                 <li key={point} className="flex items-start gap-3">
                   <span className="shrink-0 w-5 h-5 rounded-full bg-accent/10 border border-accent/25 flex items-center justify-center mt-0.5">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.8} className="w-3 h-3 text-accent">
@@ -104,7 +79,6 @@ export default function AboutSection() {
 
             {/* Helpline + CTA row */}
             <div className="flex flex-wrap items-center gap-6">
-              {/* Phone */}
               <div className="flex items-center gap-3">
                 <div className="w-11 h-11 rounded-full bg-primary/8 border border-primary/15 flex items-center justify-center shrink-0">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-5 h-5 text-primary">
@@ -112,17 +86,16 @@ export default function AboutSection() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-[0.68rem] text-slate-400 uppercase tracking-wide font-semibold">Call Helpline</p>
-                  <p className="text-base font-extrabold text-primary leading-tight">+44 (0) 141 000 0000</p>
+                  <p className="text-[0.68rem] text-slate-400 uppercase tracking-wide font-semibold">{ABOUT_CONTENT.phoneLabel}</p>
+                  <p className="text-base font-extrabold text-primary leading-tight">{ABOUT_CONTENT.phone}</p>
                 </div>
               </div>
 
-              {/* CTA */}
               <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-xl"
+                href={ABOUT_CONTENT.cta.href}
+                className="inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent/30 transition-all hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-xl"
               >
-                Book Service
+                {ABOUT_CONTENT.cta.label}
                 <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="w-3 h-3">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

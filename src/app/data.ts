@@ -10,8 +10,7 @@ export const HERO_CONTENT = {
   headlineLine1: "Professional",
   headlineAccent: "Cleaning",
   headlineLine3: "Solutions",
-  subtitle:
-    "Central Scotland's trusted specialists — End of Tenancy, Deep Cleans, After Builders & more. Always professional, always reliable.",
+  subtitle: "Central Scotland's trusted specialists — End of Tenancy, Deep Cleans, After Builders & more. Always professional, always reliable.",
   ctaPrimary: { label: "Get Pricing", href: "/contact" },
   ctaSecondary: { label: "View Checklist", href: "/checklist" },
 };
@@ -81,15 +80,9 @@ export const ABOUT_CONTENT = {
   headlinePart1: "Our Cleaning",
   headlineAccent: "Agency",
   headlinePart2: "For Your City",
-  description:
-    "ZA Cleaning Team has been serving Central Scotland for over a decade — delivering professional, reliable cleaning you can count on. From end-of-tenancy to deep cleans, we handle it all so you don't have to.",
+  description: "ZA Cleaning Team has been serving Central Scotland for over a decade — delivering professional, reliable cleaning you can count on. From end-of-tenancy to deep cleans, we handle it all so you don't have to.",
   whyTitle: "Why Choose Us",
-  whyPoints: [
-    "100% Satisfaction & Deposit-Back Guarantee",
-    "Fully Insured, Vetted & Trained Professionals",
-    "Equipment & Supplies Always Included",
-    "Available 7 Days — Last-Minute Bookings Welcome",
-  ],
+  whyPoints: ["100% Satisfaction & Deposit-Back Guarantee", "Fully Insured, Vetted & Trained Professionals", "Equipment & Supplies Always Included", "Available 7 Days — Last-Minute Bookings Welcome"],
   phoneLabel: "Call Helpline",
   phone: "+44 (0) 141 000 0000",
   cta: { label: "Book Service", href: "/contact" },
@@ -209,29 +202,25 @@ export const TESTIMONIALS: { name: string; role: string; initials: string; quote
     name: "Sarah Mitchell",
     role: "Tenant, Glasgow",
     initials: "SM",
-    quote:
-      "Absolutely outstanding service. They arrived on time, worked through every detail on the checklist, and left my flat in pristine condition. Got my full deposit back without any dispute — couldn't be happier.",
+    quote: "Absolutely outstanding service. They arrived on time, worked through every detail on the checklist, and left my flat in pristine condition. Got my full deposit back without any dispute — couldn't be happier.",
   },
   {
     name: "James Robertson",
     role: "Landlord, Edinburgh",
     initials: "JR",
-    quote:
-      "I use ZA Cleaning Team for all my rental properties between tenancies. Consistently excellent results, always professional and on time. My go-to cleaning company without question.",
+    quote: "I use ZA Cleaning Team for all my rental properties between tenancies. Consistently excellent results, always professional and on time. My go-to cleaning company without question.",
   },
   {
     name: "Priya Sharma",
     role: "Letting Agent, Stirling",
     initials: "PS",
-    quote:
-      "Our preferred cleaning partner for all managed properties. The after-builders clean they delivered was remarkable — the property looked completely brand new. Highly recommended.",
+    quote: "Our preferred cleaning partner for all managed properties. The after-builders clean they delivered was remarkable — the property looked completely brand new. Highly recommended.",
   },
   {
     name: "David Thomson",
     role: "Homeowner, Falkirk",
     initials: "DT",
-    quote:
-      "Booked a deep clean with only 48 hours notice and they delivered flawlessly. Professional, thorough, and incredibly efficient. Will absolutely be booking again.",
+    quote: "Booked a deep clean with only 48 hours notice and they delivered flawlessly. Professional, thorough, and incredibly efficient. Will absolutely be booking again.",
   },
 ];
 
@@ -247,38 +236,19 @@ export const PROTOCOL_HEADER = {
   eyebrow: "Our Process",
   headlinePart1: "The Room-by-Room",
   headlineAccent: "Protocol",
-  subtitle:
-    "Our exhaustive 80-point checklist ensures no corner is overlooked — every visit, every time.",
+  subtitle: "Our exhaustive 80-point checklist ensures no corner is overlooked — every visit, every time.",
 };
 
 export const PROTOCOL_SECTIONS: { id: string; title: string; items: string[] }[] = [
   {
     id: "kitchen",
     title: "The Kitchen",
-    items: [
-      "Oven interior and glass degreasing",
-      "Cabinet exterior and interior detailing",
-      "Countertop sanitization and polishing",
-      "Dishwasher and microwave deep clean",
-      "Degrease hob and extractor fan",
-      "Sink descaling and polish",
-      "Floor sweep and deep mop",
-      "Skirting board wiping",
-    ],
+    items: ["Oven interior and glass degreasing", "Cabinet exterior and interior detailing", "Countertop sanitization and polishing", "Dishwasher and microwave deep clean", "Degrease hob and extractor fan", "Sink descaling and polish", "Floor sweep and deep mop", "Skirting board wiping"],
   },
   {
     id: "bathrooms",
     title: "The Bathrooms",
-    items: [
-      "Limescale removal from all fixtures",
-      "Tile grout detailing and disinfection",
-      "Glass and mirror streak-free polish",
-      "Toilet base and surround sanitization",
-      "Shower head and hose descaling",
-      "Bath deep scrub and rinse",
-      "Extractor fan dust removal",
-      "Floor sanitization and mop",
-    ],
+    items: ["Limescale removal from all fixtures", "Tile grout detailing and disinfection", "Glass and mirror streak-free polish", "Toilet base and surround sanitization", "Shower head and hose descaling", "Bath deep scrub and rinse", "Extractor fan dust removal", "Floor sanitization and mop"],
   },
   {
     id: "living",
@@ -299,8 +269,7 @@ export const PROTOCOL_SECTIONS: { id: string; title: string; items: string[] }[]
 // ── Footer ────────────────────────────────────────────────────
 export const FOOTER_CONTENT = {
   brandName: "ZA Cleaning",
-  tagline:
-    "We work with a passion of taking challenges and delivering spotless results in the cleaning sector.",
+  tagline: "We work with a passion of taking challenges and delivering spotless results in the cleaning sector.",
   workingHours: "Mon – Sun: 08:30 AM – 08:00 PM",
   workingDays: "Seven Days a Week",
   phone: "0141 XXX XXXX",
@@ -318,7 +287,7 @@ export const FOOTER_SERVICES: { label: string; href: string }[] = [
   { label: "Carpet & Upholstery", href: "/contact" },
 ];
 
-export const FOOTER_QUICK_LINKS: { label: string; href: string; section?: string }[] = [
+export const FOOTER_QUICK_LINKS: { label: string; href?: string; section?: string }[] = [
   { label: "About Us", section: "about" },
   { label: "Coverage Areas", section: "coverage" },
   { label: "How It Works", section: "how-it-works" },

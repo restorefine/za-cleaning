@@ -3,12 +3,16 @@
 import { useState } from "react";
 import InquiryWizard, { InquiryAnswers } from "@/components/InquiryWizard";
 
-const INQUIRY_LABELS: Record<keyof InquiryAnswers, string> = {
-  kitchens: "Kitchens",
-  livingRooms: "Living Rooms",
-  bathrooms: "Bathrooms",
+const INQUIRY_LABELS: Partial<Record<keyof InquiryAnswers, string>> = {
+  serviceType: "Service",
   propertySize: "Property Size",
-  serviceType: "Service Required",
+  bathrooms: "Bathrooms",
+  addOns: "Add-ons",
+  appliances: "Appliances",
+  carpetItems: "Items",
+  area: "Area",
+  premisesType: "Premises",
+  preferredDate: "When",
 };
 
 export default function Contact() {
@@ -115,7 +119,9 @@ export default function Contact() {
                     </button>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {(Object.keys(INQUIRY_LABELS) as (keyof InquiryAnswers)[]).map((key) => (
+                    {(Object.keys(INQUIRY_LABELS) as (keyof InquiryAnswers)[])
+                      .filter((key) => inquiry[key])
+                      .map((key) => (
                       <span key={key} className="inline-flex items-center gap-1.5 rounded-full bg-white border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700">
                         <span className="text-slate-400">{INQUIRY_LABELS[key]}:</span>
                         <span className="font-semibold text-slate-900">{inquiry[key]}</span>

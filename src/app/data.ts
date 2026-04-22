@@ -7,19 +7,15 @@
 // ── Hero ──────────────────────────────────────────────────────
 export const HERO_CONTENT = {
   badge: "100% Satisfaction Guaranteed",
-  headlineLine1: "Professional",
+  headlineLine1: "ZA",
   headlineAccent: "Cleaning",
-  headlineLine3: "Solutions",
+  headlineLine3: "Service",
   subtitle: "Central Scotland's trusted specialists — End of Tenancy, Deep Cleans, After Builders & more. Always professional, always reliable.",
   ctaPrimary: { label: "Get Pricing", href: "/contact" },
   ctaSecondary: { label: "View Checklist", href: "/checklist" },
 };
 
 export const HERO_FEATURES: { title: string; desc: string }[] = [
-  {
-    title: "Window Cleaning",
-    desc: "Streak-free finish on all window types, inside & out, every time.",
-  },
   {
     title: "End of Tenancy",
     desc: "Full deep-clean that meets landlord & letting agent standards.",
@@ -31,6 +27,10 @@ export const HERO_FEATURES: { title: string; desc: string }[] = [
   {
     title: "Fully Insured",
     desc: "Deposit-back guarantee. Fully insured & certified on every job.",
+  },
+  {
+    title: "Same-Day Available",
+    desc: "Last-minute or urgent clean? We accept same-day bookings subject to availability.",
   },
 ];
 
@@ -99,7 +99,7 @@ export const FAQ_HEADER = {
 export const FAQS: { q: string; a: string }[] = [
   {
     q: "What is included in an End of Tenancy clean?",
-    a: "Our end of tenancy clean covers every room top to bottom — kitchen appliances, oven, fridge, bathrooms, limescale removal, skirting boards, inside cupboards, windows, carpets, and more. We follow a comprehensive checklist accepted by letting agents and landlords across Central Scotland.",
+    a: "Our end of tenancy clean covers every room top to bottom — kitchen appliances, oven, fridge, bathrooms, limescale removal, skirting boards, inside cupboards, carpets, and more. We follow a comprehensive checklist accepted by letting agents and landlords across Central Scotland.",
   },
   {
     q: "How long does a deep clean typically take?",
@@ -253,16 +253,7 @@ export const PROTOCOL_SECTIONS: { id: string; title: string; items: string[] }[]
   {
     id: "living",
     title: "The Living Spaces",
-    items: [
-      "Skirting board and door frame wiping",
-      "Interior window and track cleaning",
-      "HEPA-Filtration vacuuming of all surfaces",
-      "Upholstery grooming and light stain care",
-      "Hard floor sweeping and polishing",
-      "Dusting of all ornaments and ledges",
-      "Cobweb removal from ceilings",
-      "Light switches and socket wiping",
-    ],
+    items: ["Skirting board and door frame wiping", "HEPA-Filtration vacuuming of all surfaces", "Upholstery grooming and light stain care", "Hard floor sweeping and polishing", "Dusting of all ornaments and ledges", "Cobweb removal from ceilings", "Light switches and socket wiping"],
   },
 ];
 

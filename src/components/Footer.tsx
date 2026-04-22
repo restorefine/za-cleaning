@@ -25,8 +25,7 @@ export default function Footer() {
           {/* Column 1: Brand */}
           <div className="flex flex-col">
             <Link href="/" className="flex items-center gap-3 mb-5">
-              <img src="/logo.svg" alt="ZA Cleaning" className="h-10 w-10" />
-              <span className="font-extrabold text-slate-900 text-lg tracking-tight">{FOOTER_CONTENT.brandName}</span>
+              <img src="/logo.svg" alt="ZA Cleaning" className="h-40 w-40" />
             </Link>
             <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-xs">{FOOTER_CONTENT.tagline}</p>
             {/* Social */}
@@ -149,24 +148,27 @@ export default function Footer() {
       <div className="border-t border-slate-100">
         <div className="mx-auto max-w-7xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-3 text-xs text-slate-400">
-            <p>© {new Date().getFullYear()} {FOOTER_CONTENT.brandName}. All rights reserved.</p>
+            <p>
+              © {new Date().getFullYear()} {FOOTER_CONTENT.brandName}. All rights reserved.
+            </p>
             <span className="hidden sm:block text-slate-200">|</span>
             <p>
               Designed by{" "}
-              <a
-                href="https://www.restorefine.co.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-accent hover:underline underline-offset-2 transition-colors"
-              >
+              <a href="https://www.restorefine.co.uk" target="_blank" rel="noopener noreferrer" className="font-semibold text-accent hover:underline underline-offset-2 transition-colors">
                 Restorefine Studios
               </a>
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-slate-400">
-            <Link href="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-accent transition-colors">Terms of Service</Link>
-            <Link href="/accessibility" className="hover:text-accent transition-colors">Accessibility</Link>
+            <Link href="/privacy" className="hover:text-accent transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-accent transition-colors">
+              Terms of Service
+            </Link>
+            <Link href="/accessibility" className="hover:text-accent transition-colors">
+              Accessibility
+            </Link>
           </div>
         </div>
       </div>

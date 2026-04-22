@@ -5,12 +5,12 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 const SECTION_LINKS = [
-  { label: "Services",     id: "services" },
-  { label: "Coverage",     id: "coverage" },
-  { label: "About",        id: "about" },
+  { label: "Services", id: "services" },
+  { label: "Coverage", id: "coverage" },
+  { label: "About", id: "about" },
   { label: "How It Works", id: "how-it-works" },
-  { label: "FAQ",          id: "faq" },
-  { label: "Team",         id: "team" },
+  { label: "FAQ", id: "faq" },
+  { label: "Team", id: "team" },
   { label: "Testimonials", id: "testimonials" },
 ];
 
@@ -37,17 +37,14 @@ export default function Navbar() {
       <div className="mx-auto max-w-6xl px-6 h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <img src="/logo.svg" alt="ZA Cleaning" className="h-12 w-12" />
+          <img src="/logo.svg" alt="ZA Cleaning" className="h-20 w-20" />
         </Link>
 
         {/* Desktop links */}
         <ul className="hidden lg:flex gap-6">
           {SECTION_LINKS.map(({ label, id }) => (
             <li key={id}>
-              <button
-                onClick={() => scrollToSection(id)}
-                className="relative text-sm font-medium text-slate-700 transition-colors hover:text-accent after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all hover:after:w-full"
-              >
+              <button onClick={() => scrollToSection(id)} className="relative text-sm font-medium text-slate-700 transition-colors hover:text-accent after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all hover:after:w-full">
                 {label}
               </button>
             </li>
@@ -62,9 +59,7 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button className="lg:hidden text-slate-700" onClick={() => setOpen(!open)} aria-label="Toggle menu">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {open
-              ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
+            {open ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
           </svg>
         </button>
       </div>
@@ -73,11 +68,7 @@ export default function Navbar() {
       {open && (
         <div className="lg:hidden bg-white border-t border-slate-200 px-6 py-4 flex flex-col gap-4">
           {SECTION_LINKS.map(({ label, id }) => (
-            <button
-              key={id}
-              onClick={() => scrollToSection(id)}
-              className="text-left text-slate-700 font-medium hover:text-accent transition-colors"
-            >
+            <button key={id} onClick={() => scrollToSection(id)} className="text-left text-slate-700 font-medium hover:text-accent transition-colors">
               {label}
             </button>
           ))}

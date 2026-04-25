@@ -7,12 +7,14 @@
 // ── Hero ──────────────────────────────────────────────────────
 export const HERO_CONTENT = {
   badge: "100% Satisfaction Guaranteed",
+  location: "Glasgow • Edinburgh • Stirling • Falkirk",
   headlineLine1: "ZA",
   headlineAccent: "Cleaning",
   headlineLine3: "Service",
-  subtitle: "Central Scotland's trusted specialists — End of Tenancy, Deep Cleans, After Builders & more. Always professional, always reliable.",
-  ctaPrimary: { label: "Get Pricing", href: "/contact" },
-  ctaSecondary: { label: "View Checklist", href: "/checklist" },
+  subtitle: "Central Scotland's trusted cleaning specialists — End of Tenancy, Deep Cleans, After Builders & more. Fully insured, always professional.",
+  ctaPrimary: { label: "Get a Free Quote", href: "/contact" },
+  ctaPhone: { label: "07774 845901", href: "tel:07774845901" },
+  ctaWhatsapp: { label: "WhatsApp Us", href: "https://wa.me/447774845901" },
 };
 
 export const HERO_FEATURES: { title: string; desc: string }[] = [
@@ -41,36 +43,42 @@ export const SERVICES_HEADER = {
   cta: { label: "Get a Free Quote", href: "/contact" },
 };
 
-export const SERVICES: { title: string; desc: string; image: string }[] = [
+export const SERVICES: { title: string; desc: string; image: string; includes: string[] }[] = [
   {
     title: "Tenancy Cleaning",
     desc: "Certified deep cleaning for moving in or out—securing full deposits and meeting agent-approved standards.",
     image: "/services/tenancy.png",
+    includes: ["Full kitchen & oven clean", "Bathroom limescale removal", "Inside all cupboards", "Carpets & skirting boards"],
   },
   {
     title: "Deep & Spring Cleaning",
     desc: "A full, detailed property refresh to brighten your home, clear clutter, and remove built-up dust for neglected spaces.",
     image: "/services/deep.png",
+    includes: ["Top-to-bottom deep clean", "All surfaces & fixtures", "Windows & blinds", "Floors mopped & vacuumed"],
   },
   {
     title: "After Builders",
     desc: "Removes renovation dust, plaster, paint marks, and debris — leaving your home spotless.",
     image: "/services/builders.png",
+    includes: ["Dust & debris removal", "Paint & plaster marks", "All floors & surfaces", "Windows & frames"],
   },
   {
     title: "Oven & Appliances",
     desc: "Deep cleaning for ovens, extractors, fridges, freezers, dishwashers, and all kitchen appliances.",
     image: "/services/oven.png",
+    includes: ["Oven interior degreasing", "Extractor fan clean", "Fridge & freezer", "Dishwasher & microwave"],
   },
   {
     title: "Carpet & Rug Cleaning",
     desc: "Hot water extraction for carpets and rugs to revive fibres and remove stains & odours.",
     image: "/services/carpet.png",
+    includes: ["Hot water extraction", "Stain treatment", "Odour removal", "Quick dry results"],
   },
   {
     title: "Pressure Washing",
     desc: "Jet-wash cleaning for patios, driveways, walls, decking, and all exterior hard surfaces.",
     image: "/services/pressure.png",
+    includes: ["Patios & driveways", "Decking & pathways", "Walls & render", "All exterior surfaces"],
   },
 ];
 
@@ -84,7 +92,7 @@ export const ABOUT_CONTENT = {
   whyTitle: "Why Choose Us",
   whyPoints: ["100% Satisfaction & Deposit-Back Guarantee", "Fully Insured, Vetted & Trained Professionals", "Equipment & Supplies Always Included", "Available 7 Days — Last-Minute Bookings Welcome"],
   phoneLabel: "Call Helpline",
-  phone: "+44 (0) 141 000 0000",
+  phone: "+44 7774 845901",
   cta: { label: "Book Service", href: "/contact" },
 };
 
@@ -257,13 +265,60 @@ export const PROTOCOL_SECTIONS: { id: string; title: string; items: string[] }[]
   },
 ];
 
+// ── Gallery ───────────────────────────────────────────────────
+export const GALLERY_HEADER = {
+  eyebrow: "Our Work",
+  headlinePart1: "Before &",
+  headlineAccent: "After",
+  headlinePart2: "Gallery",
+  subtitle: "Real results from real jobs — drag the handle to reveal the transformation.",
+};
+
+export const GALLERY_ITEMS: { id: string; room: string; tag: string; before: string; after: string }[] = [
+  {
+    id: "kitchen",
+    room: "Kitchen Deep Clean",
+    tag: "Deep Clean",
+    before: "/before/Kitchen Deep Clean.png",
+    after: "/after/Kitchen Deep Clean.png",
+  },
+  {
+    id: "tenancy",
+    room: "End of Tenancy",
+    tag: "Tenancy Clean",
+    before: "/before/End of Tenancy.png",
+    after: "/after/End of Tenancy.png",
+  },
+  {
+    id: "oven",
+    room: "Oven Restoration",
+    tag: "Appliance Clean",
+    before: "/before/Oven Restoration.png",
+    after: "/after/Oven Restoration.png",
+  },
+  {
+    id: "carpet",
+    room: "Carpet Revival",
+    tag: "Carpet Clean",
+    before: "/before/Carpet Revival.png",
+    after: "/after/Carpet Revival.png",
+  },
+  {
+    id: "driveway",
+    room: "Driveway Wash",
+    tag: "Pressure Wash",
+    before: "/before/Driveway Wash.png",
+    after: "/after/Driveway Wash.png",
+  },
+];
+
 // ── Footer ────────────────────────────────────────────────────
 export const FOOTER_CONTENT = {
   brandName: "ZA Cleaning",
   tagline: "We work with a passion of taking challenges and delivering spotless results in the cleaning sector.",
   workingHours: "Mon – Sun: 08:30 AM – 08:00 PM",
   workingDays: "Seven Days a Week",
-  phone: "0141 XXX XXXX",
+  phone: "07774 845901",
   email: "info@zacleaningteam.com",
   addressLine1: "20-23 Woodside Pl,",
   addressLine2: "Glasgow G3 7QL, UK",

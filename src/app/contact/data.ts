@@ -30,9 +30,9 @@ export const CONTACT_INFO: {
 }[] = [
   {
     label: "Call Us",
-    value: "0141 XXX XXXX",
+    value: "07774 845901",
     sub: "Mon – Sun, 08:30 – 20:00",
-    href: "tel:01410000000",
+    href: "tel:07774845901",
   },
   {
     label: "Email Us",

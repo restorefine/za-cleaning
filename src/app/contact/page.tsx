@@ -188,7 +188,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Speak With Us</p>
-                <p className="text-slate-900 font-bold text-base">0141 XXX XXXX</p>
+                <p className="text-slate-900 font-bold text-base">07774 845901</p>
                 <p className="text-slate-500 text-sm mt-0.5">info@zacleaningteam.com</p>
               </div>
             </div>

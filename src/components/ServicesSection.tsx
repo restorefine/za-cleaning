@@ -100,15 +100,29 @@ export default function ServicesSection() {
           })}
         </div>
 
-        {/* ── Mobile: full-image cards grid ── */}
-        <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* ── Mobile: cards with image + what's included ── */}
+        <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-5">
           {SERVICES.map((s) => (
-            <div key={s.title} className="group relative h-56 rounded-2xl overflow-hidden cursor-pointer shadow-md">
-              <Image src={s.image} alt={s.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#041628]/88 via-[#041628]/25 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-bold text-white text-base leading-snug mb-1">{s.title}</h3>
-                <p className="text-white/65 text-xs leading-relaxed line-clamp-2">{s.desc}</p>
+            <div key={s.title} className="rounded-2xl overflow-hidden shadow-md border border-slate-100 bg-white">
+              <div className="relative h-44">
+                <Image src={s.image} alt={s.title} fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#041628]/80 via-[#041628]/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h3 className="font-bold text-white text-base leading-snug">{s.title}</h3>
+                </div>
+              </div>
+              <div className="p-4">
+                <p className="text-slate-500 text-xs leading-relaxed mb-3">{s.desc}</p>
+                <ul className="grid grid-cols-2 gap-1.5">
+                  {s.includes.map((item) => (
+                    <li key={item} className="flex items-start gap-1.5">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      <span className="text-slate-600 text-[0.7rem] leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

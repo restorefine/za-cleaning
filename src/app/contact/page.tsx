@@ -5,12 +5,23 @@ import InquiryWizard, { InquiryAnswers } from "@/components/InquiryWizard";
 
 const INQUIRY_LABELS: Partial<Record<keyof InquiryAnswers, string>> = {
   serviceType: "Service",
-  propertySize: "Property Size",
+  bedrooms: "Property Size",
   bathrooms: "Bathrooms",
-  addOns: "Add-ons",
-  appliances: "Appliances",
+  livingAreas: "Living Rooms",
+  kitchen: "Kitchens",
+  carpetCleaning: "Carpet Cleaning",
+  carpetAreas: "Carpet Areas",
+  windowCleaning: "Windows",
+  applianceCleaning: "Appliances",
+  appliances: "Appliance List",
+  additionalAreas: "Extra Areas",
+  furnished: "Furnished",
+  pressureWashingNeeded: "Pressure Washing",
+  pressureWashSurfaces: "Surfaces",
+  otherServices: "Other Services",
+  propertyCondition: "Condition",
   carpetItems: "Items",
-  area: "Area",
+  area: "Area Size",
   premisesType: "Premises",
   preferredDate: "When",
 };
@@ -37,7 +48,10 @@ export default function Contact() {
       name: fd.get("name"),
       phone: fd.get("phone"),
       email: fd.get("email"),
-      area: fd.get("area"),
+      address1: fd.get("address1"),
+      address2: fd.get("address2"),
+      city: fd.get("city"),
+      postcode: fd.get("postcode"),
       message: fd.get("message"),
     };
 
@@ -147,15 +161,33 @@ export default function Contact() {
                     </div>
                   </div>
 
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="email" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">Email</label>
+                    <input id="email" name="email" type="email" required placeholder="email@address.com"
+                      className="bg-[#F3F4F6] rounded-xl px-5 py-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none border border-transparent focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all" />
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="address1" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">Address Line 1</label>
+                    <input id="address1" name="address1" type="text" required placeholder="House number and street name"
+                      className="bg-[#F3F4F6] rounded-xl px-5 py-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none border border-transparent focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all" />
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="address2" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">Address Line 2 <span className="normal-case font-normal">(optional)</span></label>
+                    <input id="address2" name="address2" type="text" placeholder="Flat, apartment, building, etc."
+                      className="bg-[#F3F4F6] rounded-xl px-5 py-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none border border-transparent focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all" />
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
-                      <label htmlFor="email" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">Email</label>
-                      <input id="email" name="email" type="email" required placeholder="email@address.com"
+                      <label htmlFor="city" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">City / Town</label>
+                      <input id="city" name="city" type="text" required placeholder="e.g. Glasgow"
                         className="bg-[#F3F4F6] rounded-xl px-5 py-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none border border-transparent focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all" />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <label htmlFor="area" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">Your Area / Town</label>
-                      <input id="area" name="area" type="text" placeholder="e.g. West End, Glasgow"
+                      <label htmlFor="postcode" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">Postcode</label>
+                      <input id="postcode" name="postcode" type="text" required placeholder="e.g. G3 7QL"
                         className="bg-[#F3F4F6] rounded-xl px-5 py-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none border border-transparent focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all" />
                     </div>
                   </div>

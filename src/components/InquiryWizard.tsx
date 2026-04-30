@@ -5,13 +5,34 @@ import { useState } from "react";
 // ── Public types ──────────────────────────────────────────────
 export interface InquiryAnswers {
   serviceType: string;
-  propertySize?: string;
+  // Q2-Q5: property rooms
+  bedrooms?: string;
   bathrooms?: string;
-  addOns?: string;
+  livingAreas?: string;
+  kitchen?: string;
+  // Q6: carpet
+  carpetCleaning?: string;
+  carpetAreas?: string;
+  // Q7: windows
+  windowCleaning?: string;
+  // Q8: appliances
+  applianceCleaning?: string;
   appliances?: string;
+  // Q9: extra areas
+  additionalAreas?: string;
+  // Q10: furnished
+  furnished?: string;
+  // Q11: pressure washing
+  pressureWashingNeeded?: string;
+  pressureWashSurfaces?: string;
+  // Q12-Q13
+  otherServices?: string;
+  propertyCondition?: string;
+  // Standalone service fields
   carpetItems?: string;
   area?: string;
   premisesType?: string;
+  // Date
   preferredDate?: string;
 }
 
@@ -20,11 +41,12 @@ interface Props {
 }
 
 // ── Step shape ────────────────────────────────────────────────
-type StepKind = "single" | "multi";
+type StepKind = "single" | "multi" | "date";
 
 interface Step {
   id: keyof InquiryAnswers;
   question: string;
+  subtitle?: string;
   kind: StepKind;
   options: readonly string[];
   icon: React.ReactNode;
@@ -67,9 +89,24 @@ const Icon = {
       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
     </svg>
   ),
+  window: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h12A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6zM3.75 12h16.5M12 3.75v16.5" />
+    </svg>
+  ),
+  furnished: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+    </svg>
+  ),
   premises: (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+    </svg>
+  ),
+  condition: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
     </svg>
   ),
   date: (
@@ -79,40 +116,93 @@ const Icon = {
   ),
 };
 
-// ── Reusable step definitions ─────────────────────────────────
-const PROPERTY_STEP: Step = {
-  id: "propertySize",
+// ── Step definitions ──────────────────────────────────────────
+
+// Q2
+const BEDROOMS_STEP: Step = {
+  id: "bedrooms",
   question: "What size is the property?",
   kind: "single",
-  options: ["Studio", "1 Bedroom", "2 Bedrooms", "3 Bedrooms", "4 Bedrooms", "5+ Bedrooms"],
+  options: [
+    "Studio Flat",
+    "1 Bed Flat / House",
+    "2 Bed Flat / House",
+    "3 Bed Flat / House",
+    "4 Bed Flat / House",
+    "5 Bed House",
+    "6 Bed House",
+    "7 Bed House",
+    "8+ Bed House",
+  ],
   icon: Icon.property,
 };
 
+// Q3
 const BATHROOMS_STEP: Step = {
   id: "bathrooms",
   question: "How many bathrooms / toilets?",
+  subtitle: "If a bathroom and toilet are combined, count it as one.",
   kind: "single",
-  options: ["1", "2", "3", "4+"],
+  options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
   icon: Icon.bathroom,
 };
 
-const ADDONS_STEP: Step = {
-  id: "addOns",
-  question: "Would you like any add-ons?",
-  kind: "multi",
-  options: [
-    "Carpet Cleaning",
-    "Oven Cleaning",
-    "Fridge / Freezer",
-    "Washing Machine",
-    "Dishwasher",
-    "Upholstery / Sofa",
-    "Curtains & Blinds",
-    "Mattress Cleaning",
-  ],
-  icon: Icon.addons,
+// Q4
+const LIVING_AREAS_STEP: Step = {
+  id: "livingAreas",
+  question: "How many living rooms?",
+  kind: "single",
+  options: ["1", "2", "3", "4", "5"],
+  icon: Icon.property,
 };
 
+// Q5
+const KITCHEN_STEP: Step = {
+  id: "kitchen",
+  question: "How many kitchens?",
+  kind: "single",
+  options: ["1", "2", "3", "4", "5"],
+  icon: Icon.premises,
+};
+
+// Q6 — gate
+const CARPET_CLEANING_STEP: Step = {
+  id: "carpetCleaning",
+  question: "Professional carpet cleaning?",
+  kind: "single",
+  options: ["Yes please", "No, just hoovering"],
+  icon: Icon.carpet,
+};
+
+// Q6a — only shown if "Yes please"
+const CARPET_AREAS_STEP: Step = {
+  id: "carpetAreas",
+  question: "How many carpet areas need cleaning?",
+  kind: "single",
+  options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
+  icon: Icon.carpet,
+};
+
+// Q7
+const WINDOW_CLEANING_STEP: Step = {
+  id: "windowCleaning",
+  question: "How do you need windows cleaned?",
+  kind: "single",
+  options: ["Internally only", "Internally and externally"],
+  icon: Icon.window,
+};
+
+// Q8 — gate
+const APPLIANCE_CLEANING_STEP: Step = {
+  id: "applianceCleaning",
+  question: "Do you need appliances cleaned?",
+  subtitle: "Oven, washing machine, fridge, etc.",
+  kind: "single",
+  options: ["Yes", "No"],
+  icon: Icon.appliances,
+};
+
+// Q8a — only shown if "Yes"
 const APPLIANCES_STEP: Step = {
   id: "appliances",
   question: "Which appliances need cleaning?",
@@ -133,7 +223,82 @@ const APPLIANCES_STEP: Step = {
   icon: Icon.appliances,
 };
 
-const CARPET_STEP: Step = {
+// Q9
+const ADDITIONAL_AREAS_STEP: Step = {
+  id: "additionalAreas",
+  question: "Any additional areas to clean?",
+  subtitle: "Select all that apply or skip if none.",
+  kind: "multi",
+  options: ["Study", "Box Room", "Conservatory", "Utility Room", "Garage", "Loft / Storage Room"],
+  icon: Icon.area,
+};
+
+// Q10
+const FURNISHED_STEP: Step = {
+  id: "furnished",
+  question: "Is the property furnished?",
+  kind: "single",
+  options: ["Yes — Furnished", "No — Unfurnished"],
+  icon: Icon.furnished,
+};
+
+// Q11 — gate
+const PRESSURE_WASHING_NEEDED_STEP: Step = {
+  id: "pressureWashingNeeded",
+  question: "Pressure washing needed?",
+  subtitle: "High jet wash for outside areas.",
+  kind: "single",
+  options: ["Yes", "No"],
+  icon: Icon.area,
+};
+
+// Q11a — only shown if "Yes"
+const PRESSURE_WASH_SURFACES_STEP: Step = {
+  id: "pressureWashSurfaces",
+  question: "What do you need pressure washed?",
+  kind: "multi",
+  options: ["Patio", "Driveway", "Garden", "Balcony", "Fences", "Decks", "Pavement", "House Siding", "Walls", "Other"],
+  icon: Icon.area,
+};
+
+// Q12
+const OTHER_SERVICES_STEP: Step = {
+  id: "otherServices",
+  question: "Any other services needed?",
+  subtitle: "A separate quote will be sent for any selected.",
+  kind: "multi",
+  options: [
+    "Garden Maintenance",
+    "External Window Cleaning",
+    "Rubbish Removal",
+    "Fumigation",
+    "Decluttering",
+    "Handyman Services",
+  ],
+  icon: Icon.addons,
+};
+
+// Q13
+const PROPERTY_CONDITION_STEP: Step = {
+  id: "propertyCondition",
+  question: "What is the property condition?",
+  subtitle: "Helps us select the right team and plan the clean.",
+  kind: "single",
+  options: ["Good", "Average", "Poor"],
+  icon: Icon.condition,
+};
+
+// Date — always last
+const DATE_STEP: Step = {
+  id: "preferredDate",
+  question: "When would you like this done?",
+  kind: "date",
+  options: [],
+  icon: Icon.date,
+};
+
+// Standalone service steps
+const CARPET_ITEMS_STEP: Step = {
   id: "carpetItems",
   question: "What would you like cleaned?",
   kind: "multi",
@@ -154,7 +319,8 @@ const CARPET_STEP: Step = {
 
 const AREA_STEP: Step = {
   id: "area",
-  question: "How large is the area to be pressure washed?",
+  question: "Roughly, what is the area size to be pressure washed?",
+  subtitle: "Give an estimate — we'll measure on the day if booked.",
   kind: "single",
   options: ["Small (up to 20 m²)", "Medium (20–50 m²)", "Large (50–100 m²)", "Extra Large (100 m²+)"],
   icon: Icon.area,
@@ -168,48 +334,98 @@ const PREMISES_STEP: Step = {
   icon: Icon.premises,
 };
 
-const DATE_STEP: Step = {
-  id: "preferredDate",
-  question: "When would you like this done?",
-  kind: "single",
-  options: ["This week", "Next week", "Within 2 weeks", "Within a month", "Flexible / Not sure"],
-  icon: Icon.date,
-};
+// ── Dynamic step builder for all residential services ─────────
+const DOMESTIC_SERVICES = new Set([
+  "End of Tenancy",
+  "Deep Cleaning",
+  "After Builders",
+  "Carpet & Upholstery",
+  "Appliances Cleaning",
+  "Pressure Washing",
+  "Other",
+]);
 
-// ── Service → step mapping ─────────────────────────────────────
-const SERVICE_FLOW: Record<string, Step[]> = {
-  "End of Tenancy":      [PROPERTY_STEP, BATHROOMS_STEP, ADDONS_STEP, DATE_STEP],
-  "Deep Cleaning":       [PROPERTY_STEP, BATHROOMS_STEP, ADDONS_STEP, DATE_STEP],
-  "After Builders":      [PROPERTY_STEP, BATHROOMS_STEP, ADDONS_STEP, DATE_STEP],
-  "Carpet & Upholstery": [CARPET_STEP, DATE_STEP],
+function getDomesticSteps(answers: Partial<InquiryAnswers>): Step[] {
+  const steps: Step[] = [
+    BEDROOMS_STEP,           // Q2
+    BATHROOMS_STEP,          // Q3
+    LIVING_AREAS_STEP,       // Q4
+    KITCHEN_STEP,            // Q5
+    CARPET_CLEANING_STEP,    // Q6
+  ];
+
+  if (answers.carpetCleaning === "Yes please") {
+    steps.push(CARPET_AREAS_STEP); // Q6a
+  }
+
+  steps.push(WINDOW_CLEANING_STEP);      // Q7
+  steps.push(APPLIANCE_CLEANING_STEP);   // Q8
+
+  if (answers.applianceCleaning === "Yes") {
+    steps.push(APPLIANCES_STEP);   // Q8a
+  }
+
+  steps.push(ADDITIONAL_AREAS_STEP);     // Q9
+  steps.push(FURNISHED_STEP);            // Q10
+  steps.push(PRESSURE_WASHING_NEEDED_STEP); // Q11
+
+  if (answers.pressureWashingNeeded === "Yes") {
+    steps.push(PRESSURE_WASH_SURFACES_STEP); // Q11a
+  }
+
+  steps.push(OTHER_SERVICES_STEP);       // Q12
+  steps.push(PROPERTY_CONDITION_STEP);   // Q13
+  steps.push(DATE_STEP);
+
+  return steps;
+}
+
+// ── Static flows for non-domestic services ────────────────────
+const STATIC_SERVICE_FLOW: Record<string, Step[]> = {
+  "Carpet & Upholstery": [CARPET_ITEMS_STEP, DATE_STEP],
   "Appliances Cleaning": [APPLIANCES_STEP, DATE_STEP],
-  "Pressure Washing":    [AREA_STEP, DATE_STEP],
+  "Pressure Washing":    [PRESSURE_WASH_SURFACES_STEP, AREA_STEP, DATE_STEP],
   "Commercial Cleaning": [PREMISES_STEP, DATE_STEP],
   "Other":               [DATE_STEP],
 };
+
+const ALL_SERVICES = [
+  "End of Tenancy",
+  "Deep Cleaning",
+  "After Builders",
+  "Carpet & Upholstery",
+  "Appliances Cleaning",
+  "Pressure Washing",
+  "Commercial Cleaning",
+  "Other",
+];
+
+function getServiceSteps(answers: Partial<InquiryAnswers>): Step[] {
+  const service = answers.serviceType;
+  if (!service) return [];
+  if (DOMESTIC_SERVICES.has(service)) return getDomesticSteps(answers);
+  return STATIC_SERVICE_FLOW[service] ?? [DATE_STEP];
+}
 
 const SERVICE_STEP: Step = {
   id: "serviceType",
   question: "What service do you require?",
   kind: "single",
-  options: Object.keys(SERVICE_FLOW),
+  options: ALL_SERVICES,
   icon: Icon.service,
 };
 
 // ── Component ─────────────────────────────────────────────────
 export default function InquiryWizard({ onComplete }: Props) {
-  // stepIndex 0 = service selector; 1+ = service-specific steps
   const [stepIndex, setStepIndex] = useState(0);
   const [answers, setAnswers] = useState<Partial<InquiryAnswers>>({});
   const [multiSel, setMultiSel] = useState<string[]>([]);
   const [customInput, setCustomInput] = useState("");
+  const [dateVal, setDateVal] = useState("");
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<"forward" | "back">("forward");
 
-  const serviceSteps: Step[] = answers.serviceType
-    ? SERVICE_FLOW[answers.serviceType] ?? [DATE_STEP]
-    : [];
-
+  const serviceSteps = getServiceSteps(answers);
   const totalSteps = 1 + serviceSteps.length;
   const step: Step = stepIndex === 0 ? SERVICE_STEP : serviceSteps[stepIndex - 1];
   const progress = (stepIndex / totalSteps) * 100;
@@ -217,11 +433,13 @@ export default function InquiryWizard({ onComplete }: Props) {
   function slide(dir: "forward" | "back", cb: () => void) {
     setDirection(dir);
     setAnimating(true);
-    setTimeout(() => { cb(); setAnimating(false); setCustomInput(""); }, 260);
+    setTimeout(() => { cb(); setAnimating(false); setCustomInput(""); setDateVal(""); }, 260);
   }
 
   function advance(next: Partial<InquiryAnswers>) {
-    if (stepIndex < totalSteps - 1) {
+    const nextSteps = getServiceSteps(next);
+    const nextTotal = 1 + nextSteps.length;
+    if (stepIndex < nextTotal - 1) {
       slide("forward", () => {
         setStepIndex((i) => i + 1);
         setAnswers(next);
@@ -273,9 +491,7 @@ export default function InquiryWizard({ onComplete }: Props) {
     slide("back", () => {
       setStepIndex((i) => i - 1);
       setMultiSel([]);
-      if (stepIndex === 1) {
-        setAnswers({});
-      }
+      if (stepIndex === 1) setAnswers({});
     });
   }
 
@@ -313,9 +529,11 @@ export default function InquiryWizard({ onComplete }: Props) {
           <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
             {step.question}
           </h3>
-          {step.kind === "multi" && (
+          {step.subtitle ? (
+            <p className="text-sm text-slate-400 mt-1">{step.subtitle}</p>
+          ) : step.kind === "multi" ? (
             <p className="text-sm text-slate-400 mt-1">Select all that apply.</p>
-          )}
+          ) : null}
         </div>
 
         {/* Single-choice grid */}
@@ -328,10 +546,10 @@ export default function InquiryWizard({ onComplete }: Props) {
                   <button
                     key={opt}
                     onClick={() => choose(opt)}
-                    className={`relative rounded-2xl border-2 px-4 py-4 text-sm font-semibold text-left transition-all duration-200 hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 ${
+                    className={`relative rounded-2xl border-2 px-4 py-4 text-sm font-semibold text-left transition-all duration-200 ${
                       selected
                         ? "border-accent bg-accent text-white shadow-md shadow-accent/20"
-                        : "border-slate-200 bg-white text-slate-700"
+                        : "border-slate-200 bg-white text-slate-700 hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5"
                     }`}
                   >
                     {selected && <span className="absolute top-2.5 right-3 text-white/80 text-xs">✓</span>}
@@ -360,6 +578,39 @@ export default function InquiryWizard({ onComplete }: Props) {
           </>
         )}
 
+        {/* Date picker */}
+        {step.kind === "date" && (
+          <div className="flex flex-col gap-4">
+            <input
+              type="date"
+              value={dateVal}
+              min={new Date().toISOString().split("T")[0]}
+              onChange={(e) => setDateVal(e.target.value)}
+              className="w-full bg-[#F3F4F6] rounded-2xl px-5 py-4 text-base text-slate-800 outline-none border-2 border-transparent focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all cursor-pointer"
+            />
+            <button
+              onClick={() => {
+                if (!dateVal) return;
+                const [y, m, d] = dateVal.split("-");
+                const label = new Date(+y, +m - 1, +d).toLocaleDateString("en-GB", {
+                  day: "numeric", month: "long", year: "numeric",
+                });
+                advance({ ...answers, preferredDate: label });
+              }}
+              disabled={!dateVal}
+              className="w-full bg-accent text-white font-bold text-sm py-4 rounded-xl hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20 transition-all active:scale-[0.98] disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              {dateVal ? "Confirm Date →" : "Pick a date above"}
+            </button>
+            <button
+              onClick={() => advance({ ...answers, preferredDate: "Flexible / Not sure" })}
+              className="text-sm text-slate-400 hover:text-accent transition-colors text-center"
+            >
+              I'm flexible — no preference
+            </button>
+          </div>
+        )}
+
         {/* Multi-choice grid */}
         {step.kind === "multi" && (
           <>
@@ -370,10 +621,10 @@ export default function InquiryWizard({ onComplete }: Props) {
                   <button
                     key={opt}
                     onClick={() => toggleMulti(opt)}
-                    className={`relative rounded-2xl border-2 px-4 py-4 text-sm font-semibold text-left transition-all duration-200 hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 ${
+                    className={`relative rounded-2xl border-2 px-4 py-4 text-sm font-semibold text-left transition-all duration-200 ${
                       selected
                         ? "border-accent bg-accent text-white shadow-md shadow-accent/20"
-                        : "border-slate-200 bg-white text-slate-700"
+                        : "border-slate-200 bg-white text-slate-700 hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5"
                     }`}
                   >
                     {selected && <span className="absolute top-2.5 right-3 text-white/80 text-xs">✓</span>}

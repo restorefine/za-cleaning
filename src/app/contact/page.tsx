@@ -11,7 +11,7 @@ const INQUIRY_LABELS: Partial<Record<keyof InquiryAnswers, string>> = {
   kitchen: "Kitchens",
   carpetCleaning: "Carpet Cleaning",
   carpetAreas: "Carpet Areas",
-  windowCleaning: "Windows",
+  windowCleaning: "External Windows",
   applianceCleaning: "Appliances",
   appliances: "Appliance List",
   additionalAreas: "Extra Areas",

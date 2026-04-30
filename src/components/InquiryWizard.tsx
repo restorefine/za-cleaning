@@ -186,9 +186,9 @@ const CARPET_AREAS_STEP: Step = {
 // Q7
 const WINDOW_CLEANING_STEP: Step = {
   id: "windowCleaning",
-  question: "How do you need windows cleaned?",
+  question: "How many external windows need cleaning?",
   kind: "single",
-  options: ["Internally only", "Internally and externally"],
+  options: ["None", "1–5", "6–10", "11–15", "16–20", "20+"],
   icon: Icon.window,
 };
 

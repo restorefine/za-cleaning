@@ -4,32 +4,32 @@ import { useEffect, useRef } from "react";
 
 // ── Hub area coordinates ──────────────────────────────────────
 const GLASGOW_PINS: { name: string; lat: number; lng: number }[] = [
-  { name: "Paisley",       lat: 55.8456, lng: -4.4235 },
-  { name: "Clydebank",     lat: 55.9010, lng: -4.4024 },
-  { name: "East Kilbride", lat: 55.7640, lng: -4.1773 },
-  { name: "Motherwell",    lat: 55.7884, lng: -3.9892 },
   { name: "Airdrie",       lat: 55.8636, lng: -3.9796 },
-  { name: "Hamilton",      lat: 55.7775, lng: -4.0394 },
-  { name: "Kilmarnock",    lat: 55.6118, lng: -4.4956 },
-  { name: "Irvine",        lat: 55.6114, lng: -4.6699 },
   { name: "Ayr",           lat: 55.4628, lng: -4.6295 },
-  { name: "Stirling",      lat: 56.1165, lng: -3.9369 },
-  { name: "Falkirk",       lat: 56.0019, lng: -3.7839 },
-  { name: "Helensburgh",   lat: 56.0036, lng: -4.7280 },
-  { name: "Lanark",        lat: 55.6748, lng: -3.7768 },
+  { name: "Clydebank",     lat: 55.9010, lng: -4.4024 },
   { name: "Cumbernauld",   lat: 55.9445, lng: -3.9920 },
   { name: "Dunfermline",   lat: 56.0719, lng: -3.4593 },
+  { name: "East Kilbride", lat: 55.7640, lng: -4.1773 },
+  { name: "Falkirk",       lat: 56.0019, lng: -3.7839 },
+  { name: "Hamilton",      lat: 55.7775, lng: -4.0394 },
+  { name: "Helensburgh",   lat: 56.0036, lng: -4.7280 },
+  { name: "Irvine",        lat: 55.6114, lng: -4.6699 },
+  { name: "Kilmarnock",    lat: 55.6118, lng: -4.4956 },
+  { name: "Lanark",        lat: 55.6748, lng: -3.7768 },
+  { name: "Motherwell",    lat: 55.7884, lng: -3.9892 },
+  { name: "Paisley",       lat: 55.8456, lng: -4.4235 },
+  { name: "Stirling",      lat: 56.1165, lng: -3.9369 },
 ];
 
 const EDINBURGH_PINS: { name: string; lat: number; lng: number }[] = [
-  { name: "Livingston",    lat: 55.8831, lng: -3.5219 },
-  { name: "Kirkcaldy",     lat: 56.1123, lng: -3.1614 },
-  { name: "Musselburgh",   lat: 55.9428, lng: -3.0539 },
   { name: "Dalkeith",      lat: 55.8990, lng: -3.0598 },
-  { name: "Galashiels",    lat: 55.6186, lng: -2.8106 },
-  { name: "Linlithgow",    lat: 55.9778, lng: -3.5964 },
-  { name: "North Berwick", lat: 56.0572, lng: -2.7231 },
   { name: "Dunfermline",   lat: 56.0719, lng: -3.4593 },
+  { name: "Galashiels",    lat: 55.6186, lng: -2.8106 },
+  { name: "Kirkcaldy",     lat: 56.1123, lng: -3.1614 },
+  { name: "Linlithgow",    lat: 55.9778, lng: -3.5964 },
+  { name: "Livingston",    lat: 55.8831, lng: -3.5219 },
+  { name: "Musselburgh",   lat: 55.9428, lng: -3.0539 },
+  { name: "North Berwick", lat: 56.0572, lng: -2.7231 },
 ];
 
 // Glasgow hub HQ: city centre

@@ -6,9 +6,9 @@ import CoverageMap from "@/components/CoverageMap";
 export default function CoverageSection() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const glasgowAreas = ["Paisley", "Clydebank", "East Kilbride", "Motherwell", "Airdrie", "Hamilton", "Kilmarnock", "Irvine", "Ayr", "Stirling", "Falkirk", "Dunfermline", "Helensburgh", "Lanark", "Cumbernauld"];
+  const glasgowAreas = ["Airdrie", "Ayr", "Clydebank", "Cumbernauld", "Dunfermline", "East Kilbride", "Falkirk", "Hamilton", "Helensburgh", "Irvine", "Kilmarnock", "Lanark", "Motherwell", "Paisley", "Stirling"];
 
-  const edinburghAreas = ["Livingston", "Dunfermline", "Kirkcaldy", "Musselburgh", "Dalkeith", "Galashiels", "Linlithgow", "North Berwick"];
+  const edinburghAreas = ["Dalkeith", "Dunfermline", "Galashiels", "Kirkcaldy", "Linlithgow", "Livingston", "Musselburgh", "North Berwick"];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

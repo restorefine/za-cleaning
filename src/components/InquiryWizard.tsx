@@ -20,6 +20,8 @@ export interface InquiryAnswers {
   appliances?: string;
   // Q9: extra areas
   additionalAreas?: string;
+  // Q9a: soft furnishings
+  softFurnishings?: string;
   // Q10: furnished
   furnished?: string;
   // Q11: pressure washing
@@ -186,9 +188,10 @@ const CARPET_AREAS_STEP: Step = {
 // Q7
 const WINDOW_CLEANING_STEP: Step = {
   id: "windowCleaning",
-  question: "How many external windows need cleaning?",
+  question: "How do you need your windows cleaned?",
+  subtitle: "Internal windows is always included but please tell us if you need exterior windows too",
   kind: "single",
-  options: ["None", "1–5", "6–10", "11–15", "16–20", "20+"],
+  options: ["Internally only", "Internally and Externally"],
   icon: Icon.window,
 };
 
@@ -208,17 +211,17 @@ const APPLIANCES_STEP: Step = {
   question: "Which appliances need cleaning?",
   kind: "multi",
   options: [
-    "Single Oven",
-    "Double Oven",
     "AGA Oven",
-    "Range Cooker",
-    "Hob & Hood",
-    "Washing Machine",
     "Dishwasher",
-    "Tumble Dryer",
-    "Fridge",
-    "Freezer",
+    "Double Oven",
     "Extractor Fan",
+    "Freezer",
+    "Fridge",
+    "Hob & Hood",
+    "Range Cooker",
+    "Single Oven",
+    "Tumble Dryer",
+    "Washing Machine",
   ],
   icon: Icon.appliances,
 };
@@ -227,10 +230,41 @@ const APPLIANCES_STEP: Step = {
 const ADDITIONAL_AREAS_STEP: Step = {
   id: "additionalAreas",
   question: "Any additional areas to clean?",
+  subtitle: "Let us know if you have additional areas",
+  kind: "multi",
+  options: [
+    "Balcony",
+    "Box Room",
+    "Cloakroom",
+    "Conservatory",
+    "Dining Room",
+    "Garage",
+    "Study Room",
+    "Utility Room",
+    "No thank you",
+  ],
+  icon: Icon.area,
+};
+
+// Q9a
+const SOFT_FURNISHINGS_STEP: Step = {
+  id: "softFurnishings",
+  question: "Do you need any of the following cleaned?",
   subtitle: "Select all that apply or skip if none.",
   kind: "multi",
-  options: ["Study", "Box Room", "Conservatory", "Utility Room", "Garage", "Loft / Storage Room"],
-  icon: Icon.area,
+  options: [
+    "1 seater sofa",
+    "2 seater sofa",
+    "3 seater sofa",
+    "4 seater sofa",
+    "5 seater sofa",
+    "Blinds cleaning",
+    "Curtain cleaning",
+    "L-shape sofa",
+    "Mattress cleaning",
+    "No, thank you",
+  ],
+  icon: Icon.furnished,
 };
 
 // Q10
@@ -257,23 +291,21 @@ const PRESSURE_WASH_SURFACES_STEP: Step = {
   id: "pressureWashSurfaces",
   question: "What do you need pressure washed?",
   kind: "multi",
-  options: ["Patio", "Driveway", "Garden", "Balcony", "Fences", "Decks", "Pavement", "House Siding", "Walls", "Other"],
+  options: ["Balcony", "Decks", "Driveway", "Fences", "Garden", "House Siding", "Pavement", "Patio", "Walls", "Other"],
   icon: Icon.area,
 };
 
 // Q12
 const OTHER_SERVICES_STEP: Step = {
   id: "otherServices",
-  question: "Any other services needed?",
-  subtitle: "A separate quote will be sent for any selected.",
+  question: "Do you need help with any of the following?",
+  subtitle: "NOTE: You will be sent a separate quote for the service(s) you select here.",
   kind: "multi",
   options: [
-    "Garden Maintenance",
-    "External Window Cleaning",
-    "Rubbish Removal",
-    "Fumigation",
-    "Decluttering",
-    "Handyman Services",
+    "Need Handyman service",
+    "Need help with Clearance / Rubbish Disposal",
+    "Need Moving services",
+    "No, Thank you",
   ],
   icon: Icon.addons,
 };
@@ -284,7 +316,7 @@ const PROPERTY_CONDITION_STEP: Step = {
   question: "What is the property condition?",
   subtitle: "Helps us select the right team and plan the clean.",
   kind: "single",
-  options: ["Good", "Average", "Poor"],
+  options: ["Quite clean", "Average", "Quite dirty", "Filthy"],
   icon: Icon.condition,
 };
 
@@ -303,16 +335,16 @@ const CARPET_ITEMS_STEP: Step = {
   question: "What would you like cleaned?",
   kind: "multi",
   options: [
-    "Carpet (per room)",
-    "Rug",
-    "Mattress",
     "1-Seater Sofa",
     "2-Seater Sofa",
     "3-Seater Sofa",
     "4-Seater Sofa",
-    "L-Shape Sofa",
-    "Curtains (per pair)",
     "Blinds",
+    "Carpet (per room)",
+    "Curtains (per pair)",
+    "L-Shape Sofa",
+    "Mattress",
+    "Rug",
   ],
   icon: Icon.carpet,
 };
@@ -330,7 +362,7 @@ const PREMISES_STEP: Step = {
   id: "premisesType",
   question: "What type of commercial premises?",
   kind: "single",
-  options: ["Office", "Retail / Shop", "Restaurant or Café", "Warehouse", "Medical / Dental", "Other"],
+  options: ["Medical / Dental", "Office", "Restaurant or Café", "Retail / Shop", "Warehouse", "Other"],
   icon: Icon.premises,
 };
 
@@ -351,23 +383,24 @@ function getDomesticSteps(answers: Partial<InquiryAnswers>): Step[] {
     BATHROOMS_STEP,          // Q3
     LIVING_AREAS_STEP,       // Q4
     KITCHEN_STEP,            // Q5
-    CARPET_CLEANING_STEP,    // Q6
+    APPLIANCE_CLEANING_STEP, // Q6
   ];
 
-  if (answers.carpetCleaning === "Yes please") {
-    steps.push(CARPET_AREAS_STEP); // Q6a
-  }
-
-  steps.push(WINDOW_CLEANING_STEP);      // Q7
-  steps.push(APPLIANCE_CLEANING_STEP);   // Q8
-
   if (answers.applianceCleaning === "Yes") {
-    steps.push(APPLIANCES_STEP);   // Q8a
+    steps.push(APPLIANCES_STEP); // Q6a
   }
 
-  steps.push(ADDITIONAL_AREAS_STEP);     // Q9
-  steps.push(FURNISHED_STEP);            // Q10
-  steps.push(PRESSURE_WASHING_NEEDED_STEP); // Q11
+  steps.push(ADDITIONAL_AREAS_STEP);   // Q7
+  steps.push(SOFT_FURNISHINGS_STEP);  // Q7a
+  steps.push(CARPET_CLEANING_STEP);   // Q8
+
+  if (answers.carpetCleaning === "Yes please") {
+    steps.push(CARPET_AREAS_STEP); // Q8a
+  }
+
+  steps.push(WINDOW_CLEANING_STEP);          // Q9
+  steps.push(FURNISHED_STEP);                // Q10
+  steps.push(PRESSURE_WASHING_NEEDED_STEP);  // Q11
 
   if (answers.pressureWashingNeeded === "Yes") {
     steps.push(PRESSURE_WASH_SURFACES_STEP); // Q11a
@@ -390,13 +423,13 @@ const STATIC_SERVICE_FLOW: Record<string, Step[]> = {
 };
 
 const ALL_SERVICES = [
-  "End of Tenancy Cleaning",
-  "Deep Cleaning",
   "After Builders",
-  "Carpet & Upholstery",
   "Appliances Cleaning",
-  "Pressure Washing",
+  "Carpet & Upholstery",
   "Commercial Cleaning",
+  "Deep Cleaning",
+  "End of Tenancy Cleaning",
+  "Pressure Washing",
   "Other",
 ];
 
@@ -422,7 +455,6 @@ export default function InquiryWizard({ onComplete }: Props) {
   const [multiSel, setMultiSel] = useState<string[]>([]);
   const [customInput, setCustomInput] = useState("");
   const [dateVal, setDateVal] = useState("");
-  const [pendingSingle, setPendingSingle] = useState<string | null>(null);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<"forward" | "back">("forward");
 
@@ -434,7 +466,7 @@ export default function InquiryWizard({ onComplete }: Props) {
   function slide(dir: "forward" | "back", cb: () => void) {
     setDirection(dir);
     setAnimating(true);
-    setTimeout(() => { cb(); setAnimating(false); setCustomInput(""); setDateVal(""); setPendingSingle(null); }, 260);
+    setTimeout(() => { cb(); setAnimating(false); setCustomInput(""); setDateVal(""); }, 260);
   }
 
   function advance(next: Partial<InquiryAnswers>) {
@@ -539,7 +571,7 @@ export default function InquiryWizard({ onComplete }: Props) {
 
         {/* Single-choice grid */}
         {step.kind === "single" && (() => {
-          const effectiveSel = pendingSingle ?? (answers[step.id] as string | undefined) ?? null;
+          const effectiveSel = answers[step.id] as string | undefined ?? null;
           return (
             <>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -548,7 +580,7 @@ export default function InquiryWizard({ onComplete }: Props) {
                   return (
                     <button
                       key={opt}
-                      onClick={() => setPendingSingle(opt)}
+                      onClick={() => choose(opt)}
                       className={`relative rounded-2xl border-2 px-4 py-4 text-sm font-semibold text-left transition-all duration-200 ${
                         selected
                           ? "border-accent bg-accent text-white shadow-md shadow-accent/20"
@@ -578,14 +610,6 @@ export default function InquiryWizard({ onComplete }: Props) {
                   Go
                 </button>
               </div>
-              {effectiveSel && (
-                <button
-                  onClick={() => choose(effectiveSel)}
-                  className="mt-4 w-full bg-accent text-white font-bold text-sm py-4 rounded-xl hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20 transition-all active:scale-[0.98]"
-                >
-                  Next →
-                </button>
-              )}
             </>
           );
         })()}

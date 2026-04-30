@@ -19,20 +19,20 @@ export const HERO_CONTENT = {
 
 export const HERO_FEATURES: { title: string; desc: string }[] = [
   {
-    title: "Vetted Professionals",
-    desc: "DBS-checked, fully trained staff — trusted in homes across Central Scotland.",
+    title: "Fully Insured",
+    desc: "Deposit-back guarantee. Fully insured & certified on every job.",
   },
   {
     title: "Reliable Service",
     desc: "Punctual, professional teams you can count on, every visit.",
   },
   {
-    title: "Fully Insured",
-    desc: "Deposit-back guarantee. Fully insured & certified on every job.",
-  },
-  {
     title: "Same-Day Available",
     desc: "Last-minute or urgent clean? We accept same-day bookings subject to availability.",
+  },
+  {
+    title: "Vetted Professionals",
+    desc: "DBS-checked, fully trained staff — trusted in homes across Central Scotland.",
   },
 ];
 
@@ -45,28 +45,10 @@ export const SERVICES_HEADER = {
 
 export const SERVICES: { title: string; desc: string; image: string; includes: string[] }[] = [
   {
-    title: "Tenancy Cleaning",
-    desc: "Certified deep cleaning for moving in or out—securing full deposits and meeting agent-approved standards.",
-    image: "/services/tenancy.png",
-    includes: ["Full kitchen & oven clean", "Bathroom limescale removal", "Inside all cupboards", "Carpets & skirting boards"],
-  },
-  {
-    title: "Deep & Spring Cleaning",
-    desc: "A full, detailed property refresh to brighten your home, clear clutter, and remove built-up dust for neglected spaces.",
-    image: "/services/deep.png",
-    includes: ["Top-to-bottom deep clean", "All surfaces & fixtures", "Windows & blinds", "Floors mopped & vacuumed"],
-  },
-  {
     title: "After Builders",
     desc: "Removes renovation dust, plaster, paint marks, and debris — leaving your home spotless.",
     image: "/services/builders.png",
     includes: ["Dust & debris removal", "Paint & plaster marks", "All floors & surfaces", "Windows & frames"],
-  },
-  {
-    title: "Oven & Appliances",
-    desc: "Deep cleaning for ovens, extractors, fridges, freezers, dishwashers, and all kitchen appliances.",
-    image: "/services/oven.png",
-    includes: ["Oven interior degreasing", "Extractor fan clean", "Fridge & freezer", "Dishwasher & microwave"],
   },
   {
     title: "Carpet & Rug Cleaning",
@@ -75,10 +57,28 @@ export const SERVICES: { title: string; desc: string; image: string; includes: s
     includes: ["Hot water extraction", "Stain treatment", "Odour removal", "Quick dry results"],
   },
   {
+    title: "Deep & Spring Cleaning",
+    desc: "A full, detailed property refresh to brighten your home, clear clutter, and remove built-up dust for neglected spaces.",
+    image: "/services/deep.png",
+    includes: ["Top-to-bottom deep clean", "All surfaces & fixtures", "Windows & blinds", "Floors mopped & vacuumed"],
+  },
+  {
+    title: "Oven & Appliances",
+    desc: "Deep cleaning for ovens, extractors, fridges, freezers, dishwashers, and all kitchen appliances.",
+    image: "/services/oven.png",
+    includes: ["Oven interior degreasing", "Extractor fan clean", "Fridge & freezer", "Dishwasher & microwave"],
+  },
+  {
     title: "Pressure Washing",
     desc: "Jet-wash cleaning for patios, driveways, walls, decking, and all exterior hard surfaces.",
     image: "/services/pressure.png",
     includes: ["Patios & driveways", "Decking & pathways", "Walls & render", "All exterior surfaces"],
+  },
+  {
+    title: "Tenancy Cleaning",
+    desc: "Certified deep cleaning for moving in or out—securing full deposits and meeting agent-approved standards.",
+    image: "/services/tenancy.png",
+    includes: ["Full kitchen & oven clean", "Bathroom limescale removal", "Inside all cupboards", "Carpets & skirting boards"],
   },
 ];
 
@@ -251,17 +251,17 @@ export const PROTOCOL_SECTIONS: { id: string; title: string; items: string[] }[]
   {
     id: "kitchen",
     title: "The Kitchen",
-    items: ["Oven interior and glass degreasing", "Cabinet exterior and interior detailing", "Countertop sanitization and polishing", "Dishwasher and microwave deep clean", "Degrease hob and extractor fan", "Sink descaling and polish", "Floor sweep and deep mop", "Skirting board wiping"],
+    items: ["Cabinet exterior and interior detailing", "Countertop sanitization and polishing", "Degrease hob and extractor fan", "Dishwasher and microwave deep clean", "Floor sweep and deep mop", "Oven interior and glass degreasing", "Sink descaling and polish", "Skirting board wiping"],
   },
   {
     id: "bathrooms",
     title: "The Bathrooms",
-    items: ["Limescale removal from all fixtures", "Tile grout detailing and disinfection", "Glass and mirror streak-free polish", "Toilet base and surround sanitization", "Shower head and hose descaling", "Bath deep scrub and rinse", "Extractor fan dust removal", "Floor sanitization and mop"],
+    items: ["Bath deep scrub and rinse", "Extractor fan dust removal", "Floor sanitization and mop", "Glass and mirror streak-free polish", "Limescale removal from all fixtures", "Shower head and hose descaling", "Tile grout detailing and disinfection", "Toilet base and surround sanitization"],
   },
   {
     id: "living",
     title: "The Living Spaces",
-    items: ["Skirting board and door frame wiping", "HEPA-Filtration vacuuming of all surfaces", "Upholstery grooming and light stain care", "Hard floor sweeping and polishing", "Dusting of all ornaments and ledges", "Cobweb removal from ceilings", "Light switches and socket wiping"],
+    items: ["Cobweb removal from ceilings", "Dusting of all ornaments and ledges", "Hard floor sweeping and polishing", "HEPA-Filtration vacuuming of all surfaces", "Light switches and socket wiping", "Skirting board and door frame wiping", "Upholstery grooming and light stain care"],
   },
 ];
 
@@ -325,12 +325,12 @@ export const FOOTER_CONTENT = {
 };
 
 export const FOOTER_SERVICES: { label: string; href: string }[] = [
-  { label: "End of Tenancy Cleaning", href: "/contact" },
-  { label: "Deep Cleaning", href: "/contact" },
-  { label: "Regular Maintenance", href: "/contact" },
   { label: "After Builders Cleaning", href: "/contact" },
-  { label: "Office & Commercial", href: "/contact" },
   { label: "Carpet & Upholstery", href: "/contact" },
+  { label: "Deep Cleaning", href: "/contact" },
+  { label: "End of Tenancy Cleaning", href: "/contact" },
+  { label: "Office & Commercial", href: "/contact" },
+  { label: "Regular Maintenance", href: "/contact" },
 ];
 
 export const FOOTER_QUICK_LINKS: { label: string; href?: string; section?: string }[] = [

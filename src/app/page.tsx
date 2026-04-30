@@ -54,9 +54,9 @@ export default function Home() {
       </section>
 
       {/* ── Team ── */}
-      <section id="team">
+      {/* <section id="team">
         <TeamSection />
-      </section>
+      </section> */}
 
       {/* ── Testimonials ── */}
       <section id="testimonials">
@@ -67,12 +67,8 @@ export default function Home() {
       <section className="bg-primary py-16 text-center">
         <div className="mx-auto max-w-2xl px-6">
           <p className="text-accent-lighter text-xs font-bold uppercase tracking-widest mb-3">Ready to Book?</p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">
-            Get a Spotless Home — Guaranteed
-          </h2>
-          <p className="text-slate-300 text-base mb-8 max-w-lg mx-auto leading-relaxed">
-            Book in under 2 minutes. Satisfaction guaranteed or we come back free. Serving Glasgow, Edinburgh, Stirling & Falkirk.
-          </p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">Get a Spotless Home — Guaranteed</h2>
+          <p className="text-slate-300 text-base mb-8 max-w-lg mx-auto leading-relaxed">Book in under 2 minutes. Satisfaction guaranteed or we come back free. Serving Glasgow, Edinburgh, Stirling & Falkirk.</p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link href="/contact" className="inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-sm font-bold text-white shadow-lg shadow-accent/40 transition-all hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-xl">
               Get a Free Quote

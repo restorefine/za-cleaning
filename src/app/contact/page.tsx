@@ -255,7 +255,7 @@ export default function Contact() {
             <div className="bg-accent rounded-[1.5rem] p-8 mt-2 h-full">
               <p className="text-white font-bold text-base mb-4">Services We Offer</p>
               <ul className="text-white/90 text-sm space-y-3">
-                {["Professional Home Curation", "Executive Office Maintenance", "Specialized Deep Sanitation", "Boutique End of Tenancy"].map((s) => (
+                {["Professional Home Curation", "Executive Office Maintenance", "Specialized Deep Sanitation", "Boutique End of Tenancy Cleaning"].map((s) => (
                   <li key={s} className="flex items-center gap-2.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
                     {s}

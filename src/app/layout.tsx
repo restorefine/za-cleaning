@@ -17,11 +17,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ZA Cleaning Team | Professional Cleaning in Glasgow & Central Scotland",
-  description: "Professional End of Tenancy, Deep Cleaning, After Builders & Carpet Cleaning across Glasgow, Edinburgh, Stirling and Falkirk. Fully insured, 100% deposit-back guarantee. Get a free quote today.",
+  description: "Professional End of Tenancy Cleaning, Deep Cleaning, After Builders & Carpet Cleaning across Glasgow, Edinburgh, Stirling and Falkirk. Fully insured, 100% deposit-back guarantee. Get a free quote today.",
   keywords: "cleaning services Glasgow, end of tenancy cleaning Glasgow, deep cleaning Edinburgh, after builders clean Central Scotland, carpet cleaning Glasgow, professional cleaners Scotland",
   openGraph: {
     title: "ZA Cleaning Team | Professional Cleaning in Glasgow & Central Scotland",
-    description: "Fully insured cleaning specialists serving Glasgow, Edinburgh, Stirling & Falkirk. End of Tenancy, Deep Cleans, After Builders & more.",
+    description: "Fully insured cleaning specialists serving Glasgow, Edinburgh, Stirling & Falkirk. End of Tenancy Cleaning, Deep Cleans, After Builders & more.",
     type: "website",
     locale: "en_GB",
   },

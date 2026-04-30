@@ -336,7 +336,7 @@ const PREMISES_STEP: Step = {
 
 // ── Dynamic step builder for all residential services ─────────
 const DOMESTIC_SERVICES = new Set([
-  "End of Tenancy",
+  "End of Tenancy Cleaning",
   "Deep Cleaning",
   "After Builders",
   "Carpet & Upholstery",
@@ -390,7 +390,7 @@ const STATIC_SERVICE_FLOW: Record<string, Step[]> = {
 };
 
 const ALL_SERVICES = [
-  "End of Tenancy",
+  "End of Tenancy Cleaning",
   "Deep Cleaning",
   "After Builders",
   "Carpet & Upholstery",
@@ -422,6 +422,7 @@ export default function InquiryWizard({ onComplete }: Props) {
   const [multiSel, setMultiSel] = useState<string[]>([]);
   const [customInput, setCustomInput] = useState("");
   const [dateVal, setDateVal] = useState("");
+  const [pendingSingle, setPendingSingle] = useState<string | null>(null);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<"forward" | "back">("forward");
 
@@ -433,7 +434,7 @@ export default function InquiryWizard({ onComplete }: Props) {
   function slide(dir: "forward" | "back", cb: () => void) {
     setDirection(dir);
     setAnimating(true);
-    setTimeout(() => { cb(); setAnimating(false); setCustomInput(""); setDateVal(""); }, 260);
+    setTimeout(() => { cb(); setAnimating(false); setCustomInput(""); setDateVal(""); setPendingSingle(null); }, 260);
   }
 
   function advance(next: Partial<InquiryAnswers>) {
@@ -537,46 +538,57 @@ export default function InquiryWizard({ onComplete }: Props) {
         </div>
 
         {/* Single-choice grid */}
-        {step.kind === "single" && (
-          <>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {step.options.map((opt) => {
-                const selected = answers[step.id] === opt;
-                return (
-                  <button
-                    key={opt}
-                    onClick={() => choose(opt)}
-                    className={`relative rounded-2xl border-2 px-4 py-4 text-sm font-semibold text-left transition-all duration-200 ${
-                      selected
-                        ? "border-accent bg-accent text-white shadow-md shadow-accent/20"
-                        : "border-slate-200 bg-white text-slate-700 hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5"
-                    }`}
-                  >
-                    {selected && <span className="absolute top-2.5 right-3 text-white/80 text-xs">✓</span>}
-                    {opt}
-                  </button>
-                );
-              })}
-            </div>
-            <div className="mt-4 flex gap-2">
-              <input
-                type="text"
-                value={customInput}
-                onChange={(e) => setCustomInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && submitCustomSingle()}
-                placeholder="Or type your own answer…"
-                className="flex-1 bg-[#F3F4F6] rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none border border-transparent focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all"
-              />
-              <button
-                onClick={submitCustomSingle}
-                disabled={!customInput.trim()}
-                className="rounded-xl bg-accent px-4 py-3 text-sm font-bold text-white disabled:opacity-30 hover:bg-accent-light transition-colors"
-              >
-                Go
-              </button>
-            </div>
-          </>
-        )}
+        {step.kind === "single" && (() => {
+          const effectiveSel = pendingSingle ?? (answers[step.id] as string | undefined) ?? null;
+          return (
+            <>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {step.options.map((opt) => {
+                  const selected = effectiveSel === opt;
+                  return (
+                    <button
+                      key={opt}
+                      onClick={() => setPendingSingle(opt)}
+                      className={`relative rounded-2xl border-2 px-4 py-4 text-sm font-semibold text-left transition-all duration-200 ${
+                        selected
+                          ? "border-accent bg-accent text-white shadow-md shadow-accent/20"
+                          : "border-slate-200 bg-white text-slate-700 hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5"
+                      }`}
+                    >
+                      {selected && <span className="absolute top-2.5 right-3 text-white/80 text-xs">✓</span>}
+                      {opt}
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="mt-4 flex gap-2">
+                <input
+                  type="text"
+                  value={customInput}
+                  onChange={(e) => setCustomInput(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && submitCustomSingle()}
+                  placeholder="Or type your own answer…"
+                  className="flex-1 bg-[#F3F4F6] rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none border border-transparent focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all"
+                />
+                <button
+                  onClick={submitCustomSingle}
+                  disabled={!customInput.trim()}
+                  className="rounded-xl bg-accent px-4 py-3 text-sm font-bold text-white disabled:opacity-30 hover:bg-accent-light transition-colors"
+                >
+                  Go
+                </button>
+              </div>
+              {effectiveSel && (
+                <button
+                  onClick={() => choose(effectiveSel)}
+                  className="mt-4 w-full bg-accent text-white font-bold text-sm py-4 rounded-xl hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20 transition-all active:scale-[0.98]"
+                >
+                  Next →
+                </button>
+              )}
+            </>
+          );
+        })()}
 
         {/* Date picker */}
         {step.kind === "date" && (

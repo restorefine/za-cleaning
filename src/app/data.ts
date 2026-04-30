@@ -10,8 +10,8 @@ export const HERO_CONTENT = {
   location: "Glasgow • Edinburgh • Stirling • Falkirk",
   headlineLine1: "ZA",
   headlineAccent: "Cleaning",
-  headlineLine3: "Service",
-  subtitle: "Central Scotland's trusted cleaning specialists — End of Tenancy, Deep Cleans, After Builders & more. Fully insured, always professional.",
+  headlineLine3: "Team",
+  subtitle: "Central Scotland's trusted cleaning specialists — End of Tenancy Cleaning, Deep Cleans, After Builders & more. Fully insured, always professional.",
   ctaPrimary: { label: "Get a Free Quote", href: "/contact" },
   ctaPhone: { label: "07774 845901", href: "tel:07774845901" },
   ctaWhatsapp: { label: "WhatsApp Us", href: "https://wa.me/447774845901" },
@@ -19,8 +19,8 @@ export const HERO_CONTENT = {
 
 export const HERO_FEATURES: { title: string; desc: string }[] = [
   {
-    title: "End of Tenancy",
-    desc: "Full deep-clean that meets landlord & letting agent standards.",
+    title: "Vetted Professionals",
+    desc: "DBS-checked, fully trained staff — trusted in homes across Central Scotland.",
   },
   {
     title: "Reliable Service",
@@ -106,7 +106,7 @@ export const FAQ_HEADER = {
 
 export const FAQS: { q: string; a: string }[] = [
   {
-    q: "What is included in an End of Tenancy clean?",
+    q: "What is included in an End of Tenancy Cleaning?",
     a: "Our end of tenancy clean covers every room top to bottom — kitchen appliances, oven, fridge, bathrooms, limescale removal, skirting boards, inside cupboards, carpets, and more. We follow a comprehensive checklist accepted by letting agents and landlords across Central Scotland.",
   },
   {
@@ -284,7 +284,7 @@ export const GALLERY_ITEMS: { id: string; room: string; tag: string; before: str
   },
   {
     id: "tenancy",
-    room: "End of Tenancy",
+    room: "End of Tenancy Cleaning",
     tag: "Tenancy Clean",
     before: "/before/End of Tenancy.png",
     after: "/after/End of Tenancy.png",

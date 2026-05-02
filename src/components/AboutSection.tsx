@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ABOUT_CONTENT } from "@/app/data";
+import { Sparkles, Phone, ArrowRight, ShieldCheck, CheckCircle2, Clock, Users } from "lucide-react";
 
 export default function AboutSection() {
   return (
@@ -24,9 +25,7 @@ export default function AboutSection() {
 
             {/* Floating badge */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-16 h-16 rounded-full bg-primary border-4 border-white shadow-2xl flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-7 h-7 ml-2 text-white">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-              </svg>
+              <Sparkles className="w-7 h-7 text-white" />
             </div>
 
             {/* Decorative dot grid */}
@@ -58,31 +57,30 @@ export default function AboutSection() {
             <p className="text-slate-500 text-base leading-relaxed mb-7 max-w-md">{ABOUT_CONTENT.description}</p>
 
             {/* Why Choose Us */}
-            <p className="font-bold text-primary text-base mb-4">{ABOUT_CONTENT.whyTitle}</p>
-            <ul className="flex flex-col gap-3 mb-8">
-              {ABOUT_CONTENT.whyPoints.map((point) => (
-                <li key={point} className="flex items-start gap-3">
-                  <span className="shrink-0 w-5 h-5 rounded-full bg-accent/10 border border-accent/25 flex items-center justify-center mt-0.5">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.8} className="w-3 h-3 text-accent">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
-                  </span>
-                  <span className="text-slate-600 text-sm leading-relaxed">{point}</span>
-                </li>
+            <div className="grid grid-cols-2 gap-3 mb-8">
+              {[
+                { icon: ShieldCheck, title: "100% Satisfaction Guaranteed", desc: "Deposit-back guarantee on every job, no exceptions." },
+                { icon: CheckCircle2, title: "Fully Insured & Vetted", desc: "DBS-checked, trained professionals you can trust." },
+                { icon: Users, title: "Supplies Always Included", desc: "We bring all equipment and cleaning products." },
+                { icon: Clock, title: "Available 7 Days", desc: "Last-minute bookings welcome, subject to availability." },
+              ].map(({ icon: Icon, title, desc }) => (
+                <div key={title} className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/60 p-4 hover:border-accent/20 hover:bg-accent/[0.03] transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-accent/8 flex items-center justify-center text-accent shrink-0">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-slate-900 text-sm font-bold leading-tight mb-1">{title}</p>
+                    <p className="text-slate-500 text-xs leading-relaxed">{desc}</p>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
 
             {/* Helpline + CTA row */}
             <div className="flex flex-wrap items-center gap-6">
               <div className="flex items-center gap-3">
                 <div className="w-11 h-11 rounded-full bg-primary/8 border border-primary/15 flex items-center justify-center shrink-0">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-5 h-5 text-primary">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
-                    />
-                  </svg>
+                  <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <p className="text-[0.68rem] text-slate-400 uppercase tracking-wide font-semibold">{ABOUT_CONTENT.phoneLabel}</p>
@@ -93,9 +91,7 @@ export default function AboutSection() {
               <Link href={ABOUT_CONTENT.cta.href} className="inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent/30 transition-all hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-xl">
                 {ABOUT_CONTENT.cta.label}
                 <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="w-3 h-3">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
+                  <ArrowRight className="w-3 h-3" />
                 </span>
               </Link>
             </div>

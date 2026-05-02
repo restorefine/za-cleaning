@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { FOOTER_CONTENT, FOOTER_SERVICES, FOOTER_QUICK_LINKS } from "@/app/data";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export default function Footer() {
   const router = useRouter();
@@ -90,9 +91,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-4">
               <li className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-accent/8 flex items-center justify-center shrink-0 mt-0.5">
-                  <svg className="w-3.5 h-3.5 text-accent" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
-                  </svg>
+                  <Phone className="w-3.5 h-3.5 text-accent" />
                 </div>
                 <a href={`tel:${FOOTER_CONTENT.phone}`} className="text-sm text-slate-600 hover:text-accent transition-colors leading-snug font-medium">
                   {FOOTER_CONTENT.phone}
@@ -100,13 +99,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-accent/8 flex items-center justify-center shrink-0 mt-0.5">
-                  <svg className="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                    />
-                  </svg>
+                  <Mail className="w-3.5 h-3.5 text-accent" />
                 </div>
                 <a href={`mailto:${FOOTER_CONTENT.email}`} className="text-sm text-slate-600 hover:text-accent transition-colors leading-snug font-medium break-all">
                   {FOOTER_CONTENT.email}
@@ -114,10 +107,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-accent/8 flex items-center justify-center shrink-0 mt-0.5">
-                  <svg className="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                  </svg>
+                  <MapPin className="w-3.5 h-3.5 text-accent" />
                 </div>
                 <address className="text-sm text-slate-600 not-italic leading-snug">
                   {FOOTER_CONTENT.addressLine1}
@@ -127,9 +117,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-accent/8 flex items-center justify-center shrink-0 mt-0.5">
-                  <svg className="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                  <Clock className="w-3.5 h-3.5 text-accent" />
                 </div>
                 <span className="text-sm text-slate-600 leading-snug">
                   Mon – Fri: 08:00 – 20:00

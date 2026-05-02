@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CheckCircle2, Phone, MapPin, Clock } from "lucide-react";
 import InquiryWizard, { InquiryAnswers } from "@/components/InquiryWizard";
 
 const INQUIRY_LABELS: Partial<Record<keyof InquiryAnswers, string>> = {
@@ -55,11 +56,16 @@ export default function Contact() {
       message: fd.get("message"),
     };
 
-    await fetch("/api/contact", {
+    const res = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      console.error("[contact form] submit failed:", res.status, err);
+    }
 
     setLoading(false);
     setSubmitted(true);
@@ -92,9 +98,7 @@ export default function Contact() {
               /* ── Success state ── */
               <div className="flex flex-col items-center justify-center text-center py-16 h-full animate-fade-in">
                 <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
+                  <CheckCircle2 className="w-8 h-8 text-accent" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Request Received</h3>
                 <p className="text-slate-500 leading-relaxed max-w-sm">We'll be in touch shortly to align our services with your requirements.</p>
@@ -214,9 +218,7 @@ export default function Contact() {
           <div className="flex flex-col gap-4">
             <div className="bg-white rounded-[1.5rem] p-6 flex gap-4">
               <div className="w-10 h-10 bg-[#E6EFFF] rounded-full text-accent flex items-center justify-center shrink-0">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
-                </svg>
+                <Phone className="w-4 h-4" />
               </div>
               <div>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Speak With Us</p>
@@ -227,10 +229,7 @@ export default function Contact() {
 
             <div className="bg-white rounded-[1.5rem] p-6 flex gap-4">
               <div className="w-10 h-10 bg-[#E6EFFF] rounded-full text-accent flex items-center justify-center shrink-0">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
+                <MapPin className="w-4 h-4" />
               </div>
               <div>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Our Office</p>
@@ -240,9 +239,7 @@ export default function Contact() {
 
             <div className="bg-white rounded-[1.5rem] p-6 flex gap-4">
               <div className="w-10 h-10 bg-[#E6EFFF] rounded-full text-accent flex items-center justify-center shrink-0">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <Clock className="w-4 h-4" />
               </div>
               <div className="w-full">
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2.5">Working Hours</p>

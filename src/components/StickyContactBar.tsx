@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Phone, Send } from "lucide-react";
 
 export default function StickyContactBar() {
   return (
@@ -10,9 +11,7 @@ export default function StickyContactBar() {
           href="tel:07774845901"
           className="flex flex-col items-center justify-center gap-1 text-accent border-r border-slate-100 active:bg-slate-50 transition-colors"
         >
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
-          </svg>
+          <Phone className="w-5 h-5" aria-hidden="true" />
           <span className="text-[0.6rem] font-bold uppercase tracking-wide leading-none">Call Us</span>
         </a>
 
@@ -32,9 +31,7 @@ export default function StickyContactBar() {
           href="/contact"
           className="flex flex-col items-center justify-center gap-1 bg-accent text-white active:bg-accent-light transition-colors"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-          </svg>
+          <Send className="w-5 h-5" aria-hidden="true" />
           <span className="text-[0.6rem] font-bold uppercase tracking-wide leading-none">Get Quote</span>
         </Link>
       </div>

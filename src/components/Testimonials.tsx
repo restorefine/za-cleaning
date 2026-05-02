@@ -2,22 +2,14 @@
 
 import { useState } from "react";
 import { TESTIMONIALS, STATS } from "@/app/data";
+import { Users, Clock, CheckCircle2, MapPin, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ── Stat icons — indexed to match STATS in data.ts ── */
 const STAT_ICONS = [
-  <svg key="clients" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className="w-8 h-8">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-  </svg>,
-  <svg key="years" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className="w-8 h-8">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>,
-  <svg key="deposit" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className="w-8 h-8">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>,
-  <svg key="coverage" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className="w-8 h-8">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-  </svg>,
+  <Users key="clients" className="w-8 h-8" />,
+  <Clock key="years" className="w-8 h-8" />,
+  <CheckCircle2 key="deposit" className="w-8 h-8" />,
+  <MapPin key="coverage" className="w-8 h-8" />,
 ];
 
 export default function Testimonials() {
@@ -78,9 +70,7 @@ export default function Testimonials() {
             {/* ── RIGHT: Testimonial Text ── */}
             <div className="flex flex-col text-white">
               <div className="mb-8 opacity-40">
-                <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 32 32">
-                  <path d="M10 9c-3.3 0-6 2.7-6 6v10h10V15H8c0-1.1.9-2 2-2h2V9h-2zm14 0c-3.3 0-6 2.7-6 6v10h10V15h-6c0-1.1.9-2 2-2h2V9h-2z" />
-                </svg>
+                <Quote className="w-16 h-16" fill="currentColor" />
               </div>
 
               <h3 className="text-3xl sm:text-4xl lg:text-[2.5rem] leading-[1.3] font-bold text-white mb-10 tracking-tight">
@@ -99,14 +89,12 @@ export default function Testimonials() {
 
               {/* Slider Controls */}
               <div className="flex gap-4 mt-12 bg-white/10 w-max rounded-full p-1 border border-white/10 backdrop-blur-sm">
-                <button 
-                  onClick={prev} 
-                  aria-label="Previous testimonial" 
+                <button
+                  onClick={prev}
+                  aria-label="Previous testimonial"
                   className="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="w-4 h-4">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                  </svg>
+                  <ChevronLeft className="w-4 h-4" />
                 </button>
                 <div className="flex items-center gap-1.5 px-2">
                   {TESTIMONIALS.map((_, i) => (
@@ -118,14 +106,12 @@ export default function Testimonials() {
                     />
                   ))}
                 </div>
-                <button 
-                  onClick={next} 
-                  aria-label="Next testimonial" 
+                <button
+                  onClick={next}
+                  aria-label="Next testimonial"
                   className="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="w-4 h-4">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                  </svg>
+                  <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
 

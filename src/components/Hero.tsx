@@ -21,7 +21,7 @@ const BUBBLES = [
 
 export default function Hero() {
   return (
-    <section className="relative z-20 min-h-[78vh] flex flex-col">
+    <section className="relative z-20 min-h-[calc(100vh-5rem)] flex flex-col">
       {/* ── Bubble + hero animations ── */}
       <style>{`
         @keyframes bubbleRise {

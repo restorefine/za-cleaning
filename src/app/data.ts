@@ -304,12 +304,12 @@ export const FOOTER_CONTENT = {
 };
 
 export const FOOTER_SERVICES: { label: string; href: string; serviceIndex?: number }[] = [
-  { label: "After Builders Cleaning", href: "/contact", serviceIndex: 2 },
-  { label: "Carpet & Upholstery", href: "/contact", serviceIndex: 3 },
-  { label: "Deep Cleaning", href: "/contact", serviceIndex: 1 },
   { label: "End of Tenancy Cleaning", href: "/contact", serviceIndex: 0 },
-  { label: "Office & Commercial", href: "/contact" },
-  { label: "Regular Maintenance", href: "/contact" },
+  { label: "Deep & Spring Cleaning", href: "/contact", serviceIndex: 1 },
+  { label: "After Builders", href: "/contact", serviceIndex: 2 },
+  { label: "Carpet & Rug Cleaning", href: "/contact", serviceIndex: 3 },
+  { label: "Oven & Appliances", href: "/contact", serviceIndex: 4 },
+  { label: "Pressure Washing", href: "/contact", serviceIndex: 5 },
 ];
 
 export const FOOTER_QUICK_LINKS: { label: string; href?: string; section?: string }[] = [

@@ -33,7 +33,7 @@ export const SERVICES_HEADER = {
 
 export const SERVICES: { title: string; desc: string; image: string; includes: string[]; checklist: { category: string; items: string[] }[] }[] = [
   {
-    title: "Tenancy Cleaning",
+    title: "End of Tenancy Cleaning",
     desc: "Certified deep cleaning for moving in or out, securing full deposits and meeting agent-approved standards.",
     image: "/services/tenancy.png",
     includes: ["Full kitchen & oven clean", "Bathroom limescale removal", "Inside all cupboards", "Carpets & skirting boards"],
@@ -244,31 +244,6 @@ export const STATS: { value: string; label: string }[] = [
 ];
 
 // ── Room-by-Room Protocol (Homepage) ─────────────────────────
-export const PROTOCOL_HEADER = {
-  eyebrow: "Our Process",
-  headlinePart1: "The Room-by-Room",
-  headlineAccent: "Protocol",
-  subtitle: "Our exhaustive 80-point checklist ensures no corner is overlooked — every visit, every time.",
-};
-
-export const PROTOCOL_SECTIONS: { id: string; title: string; items: string[] }[] = [
-  {
-    id: "kitchen",
-    title: "The Kitchen",
-    items: ["Cabinet exterior and interior detailing", "Countertop sanitization and polishing", "Degrease hob and extractor fan", "Dishwasher and microwave deep clean", "Floor sweep and deep mop", "Oven interior and glass degreasing", "Sink descaling and polish", "Skirting board wiping"],
-  },
-  {
-    id: "bathrooms",
-    title: "The Bathrooms",
-    items: ["Bath deep scrub and rinse", "Extractor fan dust removal", "Floor sanitization and mop", "Glass and mirror streak-free polish", "Limescale removal from all fixtures", "Shower head and hose descaling", "Tile grout detailing and disinfection", "Toilet base and surround sanitization"],
-  },
-  {
-    id: "living",
-    title: "The Living Spaces",
-    items: ["Cobweb removal from ceilings", "Dusting of all ornaments and ledges", "Hard floor sweeping and polishing", "HEPA-Filtration vacuuming of all surfaces", "Light switches and socket wiping", "Skirting board and door frame wiping", "Upholstery grooming and light stain care"],
-  },
-];
-
 // ── Gallery ───────────────────────────────────────────────────
 export const GALLERY_HEADER = {
   eyebrow: "Our Work",
@@ -328,11 +303,11 @@ export const FOOTER_CONTENT = {
   addressLine2: "Glasgow G3 7QL, UK",
 };
 
-export const FOOTER_SERVICES: { label: string; href: string }[] = [
-  { label: "After Builders Cleaning", href: "/contact" },
-  { label: "Carpet & Upholstery", href: "/contact" },
-  { label: "Deep Cleaning", href: "/contact" },
-  { label: "End of Tenancy Cleaning", href: "/contact" },
+export const FOOTER_SERVICES: { label: string; href: string; serviceIndex?: number }[] = [
+  { label: "After Builders Cleaning", href: "/contact", serviceIndex: 2 },
+  { label: "Carpet & Upholstery", href: "/contact", serviceIndex: 3 },
+  { label: "Deep Cleaning", href: "/contact", serviceIndex: 1 },
+  { label: "End of Tenancy Cleaning", href: "/contact", serviceIndex: 0 },
   { label: "Office & Commercial", href: "/contact" },
   { label: "Regular Maintenance", href: "/contact" },
 ];

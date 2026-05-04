@@ -55,7 +55,7 @@ export default function HowItWorks() {
   }, [onScroll]);
 
   return (
-    <section ref={sectionRef} className="relative bg-white overflow-hidden py-20">
+    <section ref={sectionRef} className="relative bg-bg-soft overflow-hidden py-20">
       <div className="mx-auto max-w-5xl px-6">
 
         {/* Header */}

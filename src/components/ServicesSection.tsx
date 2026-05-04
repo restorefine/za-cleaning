@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { SERVICES, SERVICES_HEADER } from "@/app/data";
@@ -16,7 +17,19 @@ const SERVICE_ICONS = [
 ];
 
 export default function ServicesSection() {
+  const searchParams = useSearchParams();
   const [hovered, setHovered] = useState(0);
+
+  useEffect(() => {
+    const raw = searchParams.get("service");
+    if (raw === null) return;
+    const idx = parseInt(raw, 10);
+    if (isNaN(idx) || idx < 0 || idx >= SERVICES.length) return;
+    setHovered(idx);
+    requestAnimationFrame(() => {
+      document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [searchParams]);
 
   const service = SERVICES[hovered];
   const totalItems = service.checklist.reduce((s, c) => s + c.items.length, 0);

@@ -4,7 +4,7 @@ import { Wrench, Plus } from "lucide-react";
 
 export default function FAQSection() {
   return (
-    <section className="bg-bg-soft py-20 overflow-hidden">
+    <section className="bg-white py-20 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 

@@ -55,9 +55,9 @@ export default function Footer() {
           <div className="flex flex-col">
             <h3 className="text-xs font-bold tracking-widest uppercase text-slate-900 mb-6">Our Services</h3>
             <ul className="flex flex-col gap-3">
-              {FOOTER_SERVICES.map(({ label, href }) => (
+              {FOOTER_SERVICES.map(({ label, href, serviceIndex }) => (
                 <li key={label}>
-                  <Link href={href} className="text-sm text-slate-500 hover:text-accent transition-colors">
+                  <Link href={serviceIndex !== undefined ? `/?service=${serviceIndex}` : href} className="text-sm text-slate-500 hover:text-accent transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -142,7 +142,7 @@ export default function Footer() {
             <span className="hidden sm:block text-slate-200">|</span>
             <p>
               Designed by{" "}
-              <a href="https://www.restorefine.co.uk" target="_blank" rel="noopener noreferrer" className="font-semibold text-accent hover:underline underline-offset-2 transition-colors">
+              <a href="https://restorefine.co.uk" target="_blank" rel="noopener noreferrer" className="font-semibold text-accent hover:underline underline-offset-2 transition-colors">
                 Restorefine Studios
               </a>
             </p>

@@ -1,11 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import ServicesSection from "@/components/ServicesSection";
 import CoverageSection from "@/components/CoverageSection";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
-import ChecklistProtocol from "@/components/ChecklistProtocol";
 import FAQSection from "@/components/FAQSection";
 import Testimonials from "@/components/Testimonials";
 import HowItWorks from "@/components/HowItWorks";
@@ -19,7 +18,9 @@ export default function Home() {
 
       {/* ── Services ── */}
       <div id="services">
-        <ServicesSection />
+        <Suspense>
+          <ServicesSection />
+        </Suspense>
       </div>
 
       {/* ── Coverage ── */}
@@ -30,11 +31,6 @@ export default function Home() {
       {/* ── About ── */}
       <section id="about">
         <AboutSection />
-      </section>
-
-      {/* ── Room-by-Room Protocol ── */}
-      <section id="protocol">
-        <ChecklistProtocol />
       </section>
 
       {/* ── How It Works ── */}
@@ -66,7 +62,7 @@ export default function Home() {
       <section className="bg-primary py-16 text-center">
         <div className="mx-auto max-w-2xl px-6">
           <p className="text-accent-lighter text-xs font-bold uppercase tracking-widest mb-3">Ready to Book?</p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">Get a Spotless Home — Guaranteed</h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">Your Home, Spotless. We Guarantee It.</h2>
           <p className="text-slate-300 text-base mb-8 max-w-lg mx-auto leading-relaxed">Book in under 2 minutes. Satisfaction guaranteed or we come back free. Serving Glasgow, Edinburgh, Stirling & Falkirk.</p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link href="/contact" className="inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-sm font-bold text-white shadow-lg shadow-accent/40 transition-all hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-xl">

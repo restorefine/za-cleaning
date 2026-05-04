@@ -2,19 +2,65 @@
 
 import { useState } from "react";
 import CoverageMap from "@/components/CoverageMap";
+import { CheckCircle, XCircle, MapPin } from "lucide-react";
+
+// UK postcode district → covered flag + human name
+const COVERAGE: Record<string, { name: string; maxDistrict: number | number[][] }> = {
+  G:  { name: "Glasgow & West Scotland", maxDistrict: 84 },
+  EH: { name: "Edinburgh & Lothians",    maxDistrict: 55 },
+  FK: { name: "Falkirk & Stirling",      maxDistrict: 21 },
+  ML: { name: "Lanarkshire",             maxDistrict: 12 },
+  PA: { name: "Paisley & Renfrewshire",  maxDistrict: 19 },
+  KA: { name: "Ayrshire",               maxDistrict: 12 },
+  KY: { name: "Fife",                   maxDistrict: [[1, 2], [11, 12]] },
+  TD: { name: "Scottish Borders",        maxDistrict: [[1, 1]] },
+};
+
+function checkPostcode(raw: string): { status: "covered" | "not-covered" | "invalid"; areaName?: string; district?: string } {
+  const cleaned = raw.trim().toUpperCase().replace(/\s+/g, "");
+  // Accept full postcode (G1 1AA) or outward-only (G1, G12)
+  const outwardMatch = cleaned.match(/^([A-Z]{1,2})(\d{1,2}[A-Z]?)(?:\d[A-Z]{2})?$/);
+  if (!outwardMatch) return { status: "invalid" };
+
+  const areaCode = outwardMatch[1];           // "G", "EH", "FK" …
+  const districtRaw = outwardMatch[2];        // "1", "12", "1A" …
+  const districtNum = parseInt(districtRaw, 10);
+  const district = areaCode + districtRaw;
+
+  const entry = COVERAGE[areaCode];
+  if (!entry) return { status: "not-covered", district };
+
+  const max = entry.maxDistrict;
+  let inRange = false;
+  if (typeof max === "number") {
+    inRange = districtNum >= 1 && districtNum <= max;
+  } else {
+    inRange = (max as number[][]).some(([lo, hi]) => districtNum >= lo && districtNum <= hi);
+  }
+
+  return inRange
+    ? { status: "covered", areaName: entry.name, district }
+    : { status: "not-covered", district };
+}
+
+type Result = ReturnType<typeof checkPostcode> | null;
 
 export default function CoverageSection() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [result, setResult] = useState<Result>(null);
 
   const glasgowAreas = ["Airdrie", "Ayr", "Clydebank", "Cumbernauld", "Dunfermline", "East Kilbride", "Falkirk", "Hamilton", "Helensburgh", "Irvine", "Kilmarnock", "Lanark", "Motherwell", "Paisley", "Stirling"];
-
   const edinburghAreas = ["Dalkeith", "Dunfermline", "Galashiels", "Kirkcaldy", "Linlithgow", "Livingston", "Musselburgh", "North Berwick"];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      alert(`Checking availability for: ${searchQuery}`);
-    }
+    if (!searchQuery.trim()) return;
+    setResult(checkPostcode(searchQuery));
+  };
+
+  const handleChange = (v: string) => {
+    setSearchQuery(v);
+    if (result) setResult(null);
   };
 
   return (
@@ -25,15 +71,67 @@ export default function CoverageSection() {
       <div className="mx-auto max-w-6xl px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">Do We Cover Your Area?</h2>
-          <p className="text-slate-600 text-lg sm:text-xl">Enter your town or city below to instantly check if we operate in your area.</p>
+          <p className="text-slate-600 text-lg sm:text-xl">Enter your UK postcode below to instantly check if we operate in your area.</p>
 
           {/* Search Bar */}
           <form onSubmit={handleSearch} className="mt-10 mx-auto max-w-2xl flex items-center bg-slate-100 rounded-full p-2 shadow-sm border border-slate-200 focus-within:border-accent-light focus-within:ring-4 focus-within:ring-accent-light/20 transition-all">
-            <input type="text" placeholder="e.g. Bearsden, Stockbridge..." className="flex-1 bg-transparent border-none outline-none px-6 py-3 text-slate-700 placeholder-slate-400 font-medium w-full" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+            <input
+              type="text"
+              placeholder="Enter your postcode, e.g. G12 8QQ, EH3 5AB…"
+              className="flex-1 bg-transparent border-none outline-none px-6 py-3 text-slate-700 placeholder-slate-400 font-medium w-full"
+              value={searchQuery}
+              onChange={(e) => handleChange(e.target.value)}
+              maxLength={8}
+            />
             <button type="submit" className="bg-accent text-white px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-accent-light transition-colors shadow-md hover:shadow-lg shrink-0">
               Check Availability
             </button>
           </form>
+
+          {/* Result Banner */}
+          {result && (
+            <div className={`mt-5 mx-auto max-w-2xl rounded-2xl px-6 py-4 flex items-start gap-4 text-left border transition-all ${
+              result.status === "covered"
+                ? "bg-green-50 border-green-200"
+                : result.status === "not-covered"
+                ? "bg-red-50 border-red-200"
+                : "bg-amber-50 border-amber-200"
+            }`}>
+              {result.status === "covered" && (
+                <>
+                  <CheckCircle className="w-6 h-6 text-green-600 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-green-800 text-sm">Great news — we cover your area!</p>
+                    <p className="text-green-700 text-sm mt-0.5">
+                      Postcode <span className="font-semibold">{result.district}</span> falls within our{" "}
+                      <span className="font-semibold">{result.areaName}</span> service zone.
+                    </p>
+                  </div>
+                </>
+              )}
+              {result.status === "not-covered" && (
+                <>
+                  <XCircle className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-red-700 text-sm">We don't currently serve this postcode.</p>
+                    <p className="text-red-600 text-sm mt-0.5">
+                      <span className="font-semibold">{result.district}</span> is outside our current coverage area.{" "}
+                      <a href="/contact" className="underline underline-offset-2 hover:text-red-800 transition-colors">Contact us</a> — we may still be able to help.
+                    </p>
+                  </div>
+                </>
+              )}
+              {result.status === "invalid" && (
+                <>
+                  <MapPin className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-amber-800 text-sm">Please enter a valid UK postcode.</p>
+                    <p className="text-amber-700 text-sm mt-0.5">Try a format like <span className="font-semibold">G12 8QQ</span>, <span className="font-semibold">EH3 5AB</span>, or just the outward code like <span className="font-semibold">FK7</span>.</p>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Info Cards and Map */}

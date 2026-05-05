@@ -376,13 +376,13 @@ const STATIC_SERVICE_FLOW: Record<string, Step[]> = {
 };
 
 const ALL_SERVICES = [
+  "End of Tenancy Cleaning",
+  "Deep Cleaning",
   "After Builders",
   "Appliances Cleaning",
+  "Pressure Washing",
   "Carpet & Upholstery",
   "Commercial Cleaning",
-  "Deep Cleaning",
-  "End of Tenancy Cleaning",
-  "Pressure Washing",
   "Other",
 ];
 

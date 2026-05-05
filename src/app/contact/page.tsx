@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { CheckCircle2, Phone, MapPin, Clock } from "lucide-react";
 import InquiryWizard, { InquiryAnswers } from "@/components/InquiryWizard";
 
@@ -252,10 +253,19 @@ export default function Contact() {
             <div className="bg-accent rounded-[1.5rem] p-8 mt-2 h-full">
               <p className="text-white font-bold text-base mb-4">Services We Offer</p>
               <ul className="text-white/90 text-sm space-y-3">
-                {["Professional Home Curation", "Executive Office Maintenance", "Specialized Deep Sanitation", "Boutique End of Tenancy Cleaning"].map((s) => (
-                  <li key={s} className="flex items-center gap-2.5">
+                {[
+                  { label: "End of Tenancy Cleaning", href: "/?service=0" },
+                  { label: "Deep & Spring Cleaning",  href: "/?service=1" },
+                  { label: "After Builders Cleaning", href: "/?service=2" },
+                  { label: "Carpet & Rug Cleaning",   href: "/?service=3" },
+                  { label: "Oven & Appliances",       href: "/?service=4" },
+                  { label: "Pressure Washing",        href: "/?service=5" },
+                ].map(({ label, href }) => (
+                  <li key={label} className="flex items-center gap-2.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
-                    {s}
+                    <Link href={href} className="hover:text-white transition-colors underline-offset-2 hover:underline">
+                      {label}
+                    </Link>
                   </li>
                 ))}
               </ul>

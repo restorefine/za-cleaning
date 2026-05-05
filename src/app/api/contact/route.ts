@@ -3,8 +3,8 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM = "ZA Cleaning <enquiries@zacleaningteam.co.uk>";
-const ADMIN_TO = "rohit@restorefine.com";
+const FROM = process.env.EMAIL_FROM!;
+const ADMIN_TO = process.env.EMAIL_ADMIN_TO!;
 
 const INQUIRY_LABELS: Record<string, string> = {
   serviceType:           "Service",

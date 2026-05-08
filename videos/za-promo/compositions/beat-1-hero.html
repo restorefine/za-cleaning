@@ -1,0 +1,381 @@
+<template id="beat-1-hero-template">
+  <div data-composition-id="beat-1-hero" data-width="1920" data-height="1080" data-start="0" style="position:relative;width:1920px;height:1080px;overflow:hidden;font-family:'Geist',sans-serif;">
+    <style>
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Composition frame -------------------------------------------------- */
+    .composition-frame {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Geist', sans-serif;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 1 — BG wrapper (entrance tween target)                          */
+    /* -------------------------------------------------------------------- */
+    .bg-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      will-change: transform, opacity;
+    }
+
+    /* Layer 1 child — Ken Burns target                                      */
+    .bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 2 — Dark navy overlay                                           */
+    /* -------------------------------------------------------------------- */
+    .dark-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 59, 102, 0.60);
+      will-change: opacity;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 3 — Logo                                                        */
+    /* -------------------------------------------------------------------- */
+    .logo-wrap {
+      position: absolute;
+      top: 56px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      will-change: transform, opacity;
+    }
+
+    .logo-wrap img {
+      height: 80px;
+      width: auto;
+      display: block;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 4 + 5 + 6 — Headline block                                     */
+    /* -------------------------------------------------------------------- */
+    .headline-block {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+    }
+
+    .headline-line-1 {
+      font-size: 96px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.05;
+      text-align: center;
+      will-change: transform, opacity;
+    }
+
+    .headline-line-2 {
+      font-size: 96px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.05;
+      text-align: center;
+      will-change: transform, opacity;
+    }
+
+    .headline-guaranteed {
+      font-size: 88px;
+      font-weight: 800;
+      color: #93C5FD;
+      line-height: 1.1;
+      text-align: center;
+      margin-top: 8px;
+      will-change: transform, opacity;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 8 — SVG accent line                                             */
+    /* -------------------------------------------------------------------- */
+    .accent-line-wrap {
+      position: absolute;
+      /* Positioned via JS relative to headline-block baseline */
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      pointer-events: none;
+    }
+
+    .accent-svg {
+      display: block;
+      overflow: visible;
+    }
+
+    .accent-line-path {
+      stroke: #93C5FD;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 7 — Location badge                                              */
+    /* -------------------------------------------------------------------- */
+    .location-badge {
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      will-change: transform, opacity;
+    }
+
+    .location-badge-inner {
+      display: inline-flex;
+      align-items: center;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      border-radius: 9999px;
+      padding: 14px 36px;
+      font-size: 24px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      backdrop-filter: blur(4px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 9 — Bottom-left micro-label                                     */
+    /* -------------------------------------------------------------------- */
+    .micro-label {
+      position: absolute;
+      bottom: 52px;
+      left: 72px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #93C5FD;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      will-change: opacity;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 10 — Bottom-right deposit badge                                 */
+    /* -------------------------------------------------------------------- */
+    .deposit-badge {
+      position: absolute;
+      bottom: 44px;
+      right: 72px;
+      display: inline-flex;
+      align-items: center;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      border-radius: 9999px;
+      padding: 12px 28px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      backdrop-filter: blur(4px);
+      background: rgba(255, 255, 255, 0.08);
+      will-change: opacity;
+    }
+  
+    </style>
+
+
+    <!-- Layer 1: BG wrapper — entrance tween target -->
+    <div class="bg-wrap" id="bg-wrap">
+      <!-- Layer 1 child: Ken Burns tween target -->
+      <img
+        class="bg-image"
+        id="bg-image"
+        src="../capture/assets/hero.png"
+        alt=""
+        draggable="false"
+      />
+    </div>
+
+    <!-- Layer 2: Dark navy overlay -->
+    <div class="dark-overlay" id="dark-overlay"></div>
+
+    <!-- Layer 3: Logo -->
+    <div class="logo-wrap" id="logo-wrap">
+      <img src="../capture/assets/logo.svg" alt="ZA Cleaning Team" />
+    </div>
+
+    <!-- Layers 4, 5, 6: Headline block -->
+    <div class="headline-block" id="headline-block">
+      <div class="headline-line-1" id="headline-line-1">Your home,</div>
+      <div class="headline-line-2" id="headline-line-2">spotless.</div>
+      <div class="headline-guaranteed" id="headline-guaranteed">Guaranteed.</div>
+    </div>
+
+    <!-- Layer 8: SVG accent line — sits just below "Guaranteed." -->
+    <!--
+      Positioned absolutely: center horizontally, below headline-block.
+      Headline block center is y=540 (1080/2). Approximate bottom of
+      "Guaranteed." = 540 + (96+96+88)/2 * 1.05 ≈ 540 + 148 = ~688px.
+      Add a small gap of 14px → top: 702px.
+    -->
+    <div class="accent-line-wrap" id="accent-line-wrap" style="top: 702px;">
+      <svg class="accent-svg" width="120" height="4" viewBox="0 0 120 4">
+        <line
+          class="accent-line-path"
+          id="accent-line"
+          x1="0" y1="2"
+          x2="120" y2="2"
+          stroke-dasharray="120"
+          stroke-dashoffset="120"
+        />
+      </svg>
+    </div>
+
+    <!-- Layer 7: Location badge — sits below accent line -->
+    <div
+      class="location-badge"
+      id="location-badge"
+      style="top: 728px;"
+    >
+      <span class="location-badge-inner">
+        Glasgow &nbsp;·&nbsp; Edinburgh &nbsp;·&nbsp; Stirling &nbsp;·&nbsp; Falkirk
+      </span>
+    </div>
+
+    <!-- Layer 9: Bottom-left micro-label -->
+    <div class="micro-label" id="micro-label">
+      Central Scotland's Trusted Cleaners
+    </div>
+
+    <!-- Layer 10: Bottom-right deposit badge -->
+    <div class="deposit-badge" id="deposit-badge">
+      100% Deposit-Back ✓
+    </div>
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+window.__timelines = window.__timelines || {};
+
+  const tl = gsap.timeline({ paused: true });
+
+  // ── Layer 1: BG entrance (wrapper) + Ken Burns (child) ────────────────────
+  // Wrapper: no entrance fade needed (scene starts here), ensure visible from 0
+  tl.fromTo(
+    "#bg-wrap",
+    { opacity: 1, y: 0 },
+    { opacity: 1, y: 0, duration: 2, ease: "none" },
+    0
+  );
+  // Child: Ken Burns zoom 1.0 → 1.04 over full 2s
+  tl.fromTo(
+    "#bg-image",
+    { scale: 1 },
+    { scale: 1.04, ease: "none", duration: 2 },
+    0
+  );
+
+  // ── Layer 2: Dark overlay — fades in 0→1 over 0.6s ────────────────────────
+  tl.fromTo(
+    "#dark-overlay",
+    { opacity: 0 },
+    { opacity: 1, duration: 0.6, ease: "power2.out" },
+    0
+  );
+
+  // ── Layer 3: Logo — slides in from top at t=0.2s ───────────────────────────
+  tl.fromTo(
+    "#logo-wrap",
+    { opacity: 0, y: -50 },
+    { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+    0.2
+  );
+
+  // ── Layer 4: Headline line 1 — fades up from y:30 at t=0.3s ───────────────
+  tl.fromTo(
+    "#headline-line-1",
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+    0.3
+  );
+
+  // ── Layer 5: Headline line 2 — fades up from y:30 at t=0.5s ───────────────
+  tl.fromTo(
+    "#headline-line-2",
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+    0.5
+  );
+
+  // ── Layer 6: "Guaranteed." — scale 0.85→1.0 with elastic at t=0.7s ─────────
+  tl.fromTo(
+    "#headline-guaranteed",
+    { opacity: 0, scale: 0.85 },
+    { opacity: 1, scale: 1.0, duration: 0.7, ease: "elastic.out(1, 0.4)" },
+    0.7
+  );
+
+  // ── Layer 8: SVG accent line — stroke-dashoffset draw left-to-right at t=0.9s
+  tl.fromTo(
+    "#accent-line",
+    { strokeDashoffset: 120 },
+    { strokeDashoffset: 0, duration: 0.45, ease: "power2.inOut" },
+    0.9
+  );
+
+  // ── Layer 7: Location badge — scale 0.8→1.0 at t=1.0s ────────────────────
+  tl.fromTo(
+    "#location-badge",
+    { opacity: 0, scale: 0.8 },
+    { opacity: 1, scale: 1.0, duration: 0.45, ease: "back.out(1.5)" },
+    1.0
+  );
+
+  // ── Layer 9: Micro-label — fades in at t=1.4s ─────────────────────────────
+  tl.fromTo(
+    "#micro-label",
+    { opacity: 0 },
+    { opacity: 1, duration: 0.4, ease: "power2.out" },
+    1.4
+  );
+
+  // ── Layer 10: Deposit badge — fades in at t=1.5s ──────────────────────────
+  tl.fromTo(
+    "#deposit-badge",
+    { opacity: 0 },
+    { opacity: 1, duration: 0.4, ease: "power2.out" },
+    1.5
+  );
+
+  window.__timelines["beat-1-hero"] = tl;
+    </script>
+  </div>
+</template>

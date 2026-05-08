@@ -1,0 +1,380 @@
+[
+  {
+    "url": "https://zacleaningteam.com/logo.svg",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "link[rel=\"preload\"]"
+    ],
+    "notes": "ZA Cleaning",
+    "description": "ZA Cleaning",
+    "aboveFold": true,
+    "nearestHeading": "Our Services",
+    "sectionClasses": "w-full bg-white border-t border-slate-100 font-sans"
+  },
+  {
+    "url": "https://zacleaningteam.com/images/hero.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "link[rel=\"preload\"]"
+    ],
+    "notes": "Pristine interior showcasing curated living",
+    "nearestHeading": "ZA CleaningTeam",
+    "sectionClasses": "relative z-20 min-h-[calc(100vh-5rem)] flex flex-col",
+    "aboveFold": true,
+    "description": "Pristine interior showcasing curated living"
+  },
+  {
+    "url": "https://zacleaningteam.com/_next/image?url=%2Fservices%2Ftenancy.png&w=3840&q=75",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "img[srcset]"
+    ],
+    "notes": "End of Tenancy Cleaning",
+    "description": "End of Tenancy Cleaning",
+    "nearestHeading": "Our Core Services",
+    "sectionClasses": "relative z-10 -mt-10 pt-32 pb-20",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/_next/image?url=%2Fservices%2Fdeep.png&w=3840&q=75",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "img[srcset]"
+    ],
+    "notes": "Deep & Spring Cleaning",
+    "description": "Deep & Spring Cleaning",
+    "nearestHeading": "Our Core Services",
+    "sectionClasses": "relative z-10 -mt-10 pt-32 pb-20",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/_next/image?url=%2Fservices%2Fbuilders.png&w=3840&q=75",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "img[srcset]"
+    ],
+    "notes": "After Builders",
+    "description": "After Builders",
+    "nearestHeading": "Our Core Services",
+    "sectionClasses": "relative z-10 -mt-10 pt-32 pb-20",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/_next/image?url=%2Fservices%2Fcarpet.png&w=3840&q=75",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "img[srcset]"
+    ],
+    "notes": "Carpet & Rug Cleaning",
+    "description": "Carpet & Rug Cleaning",
+    "nearestHeading": "Our Core Services",
+    "sectionClasses": "relative z-10 -mt-10 pt-32 pb-20",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/_next/image?url=%2Fservices%2Foven.png&w=3840&q=75",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "img[srcset]"
+    ],
+    "notes": "Oven & Appliances",
+    "description": "Oven & Appliances",
+    "nearestHeading": "Our Core Services",
+    "sectionClasses": "relative z-10 -mt-10 pt-32 pb-20",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/_next/image?url=%2Fservices%2Fpressure.png&w=3840&q=75",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "img[srcset]"
+    ],
+    "notes": "Pressure Washing",
+    "description": "Pressure Washing",
+    "nearestHeading": "Our Core Services",
+    "sectionClasses": "relative z-10 -mt-10 pt-32 pb-20",
+    "aboveFold": true
+  },
+  {
+    "url": "https://a.tile.openstreetmap.org/8/125/79.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]"
+    ],
+    "notes": null,
+    "nearestHeading": "Do We Cover Your Area?",
+    "sectionClasses": "relative py-24 bg-bg-soft overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://c.tile.openstreetmap.org/8/125/78.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]"
+    ],
+    "notes": null,
+    "nearestHeading": "Do We Cover Your Area?",
+    "sectionClasses": "relative py-24 bg-bg-soft overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://c.tile.openstreetmap.org/8/124/79.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]"
+    ],
+    "notes": null,
+    "nearestHeading": "Do We Cover Your Area?",
+    "sectionClasses": "relative py-24 bg-bg-soft overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://b.tile.openstreetmap.org/8/126/79.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]"
+    ],
+    "notes": null,
+    "nearestHeading": "Do We Cover Your Area?",
+    "sectionClasses": "relative py-24 bg-bg-soft overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://b.tile.openstreetmap.org/8/125/80.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]"
+    ],
+    "notes": null,
+    "nearestHeading": "Do We Cover Your Area?",
+    "sectionClasses": "relative py-24 bg-bg-soft overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://b.tile.openstreetmap.org/8/124/78.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]"
+    ],
+    "notes": null,
+    "nearestHeading": "Do We Cover Your Area?",
+    "sectionClasses": "relative py-24 bg-bg-soft overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://a.tile.openstreetmap.org/8/126/78.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]"
+    ],
+    "notes": null,
+    "nearestHeading": "Do We Cover Your Area?",
+    "sectionClasses": "relative py-24 bg-bg-soft overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://a.tile.openstreetmap.org/8/124/80.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]"
+    ],
+    "notes": null,
+    "nearestHeading": "Do We Cover Your Area?",
+    "sectionClasses": "relative py-24 bg-bg-soft overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://c.tile.openstreetmap.org/8/126/80.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]"
+    ],
+    "notes": null,
+    "nearestHeading": "Do We Cover Your Area?",
+    "sectionClasses": "relative py-24 bg-bg-soft overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/before/Kitchen%20Deep%20Clean.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "link[rel=\"preload\"]"
+    ],
+    "notes": "Kitchen Deep Clean — before",
+    "description": "Kitchen Deep Clean — before",
+    "nearestHeading": "Before & After Gallery",
+    "sectionClasses": "bg-bg-soft py-20 lg:py-28 overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/after/Kitchen%20Deep%20Clean.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "link[rel=\"preload\"]"
+    ],
+    "notes": "Kitchen Deep Clean — after",
+    "description": "Kitchen Deep Clean — after",
+    "nearestHeading": "Before & After Gallery",
+    "sectionClasses": "bg-bg-soft py-20 lg:py-28 overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/after/End%20of%20Tenancy.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "link[rel=\"preload\"]"
+    ],
+    "notes": "End of Tenancy Cleaning",
+    "description": "End of Tenancy Cleaning",
+    "nearestHeading": "Before & After Gallery",
+    "sectionClasses": "bg-bg-soft py-20 lg:py-28 overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/after/Oven%20Restoration.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "link[rel=\"preload\"]"
+    ],
+    "notes": "Oven Restoration",
+    "description": "Oven Restoration",
+    "nearestHeading": "Before & After Gallery",
+    "sectionClasses": "bg-bg-soft py-20 lg:py-28 overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/after/Carpet%20Revival.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "link[rel=\"preload\"]"
+    ],
+    "notes": "Carpet Revival",
+    "description": "Carpet Revival",
+    "nearestHeading": "Before & After Gallery",
+    "sectionClasses": "bg-bg-soft py-20 lg:py-28 overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/after/Driveway%20Wash.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]",
+      "link[rel=\"preload\"]"
+    ],
+    "notes": "Driveway Wash",
+    "description": "Driveway Wash",
+    "nearestHeading": "Before & After Gallery",
+    "sectionClasses": "bg-bg-soft py-20 lg:py-28 overflow-hidden",
+    "aboveFold": true
+  },
+  {
+    "url": "https://zacleaningteam.com/_next/static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2",
+    "type": "Font",
+    "contexts": [
+      "link[rel=\"preload\"]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://zacleaningteam.com/_next/static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
+    "type": "Font",
+    "contexts": [
+      "link[rel=\"preload\"]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://zacleaningteam.com/_next/static/chunks/0zaia6i55l01..js",
+    "type": "Other",
+    "contexts": [
+      "link[rel=\"preload\"]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://www.googletagmanager.com/gtag/js?id=G-L6N8HQ3Q9C",
+    "type": "Other",
+    "contexts": [
+      "link[rel=\"preload\"]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://zacleaningteam.com/icon.svg?icon.13gt~d~euj4e8.svg",
+    "type": "Icon",
+    "contexts": [
+      "link[rel=\"icon\"]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://www.zacleaningteam.com/images/hero.png",
+    "type": "Image",
+    "contexts": [
+      "meta[og:image]",
+      "meta[twitter:image]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://zacleaningteam.com/media/8a480f0b521d4e75-s.06d3mdzz5bre_.woff2",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://zacleaningteam.com/media/7178b3e590c64307-s.11.cyxs5p-0z~.woff2",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://zacleaningteam.com/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://zacleaningteam.com/media/4fa387ec64143e14-s.0q3udbd2bu5yp.woff2",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://zacleaningteam.com/media/bbc41e54d2fcbd21-s.0gw~uztddq1df.woff2",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://zacleaningteam.com/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  }
+]

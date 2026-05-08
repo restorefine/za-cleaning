@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZA Cleaning Team — Promo Video</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #000; overflow: hidden; }
+
+    /* Root composition fills viewport */
+    #za-promo-root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #0D3B66;
+    }
+
+    /* All beat clips sit absolutely within the root */
+    .beat-clip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+
+    /* Cross-fade overlay — dips to semi-dark between beats */
+    #transition-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 1920px; height: 1080px;
+      background: #000;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Root Composition ──────────────────────────────────────── -->
+<div
+  id="za-promo-root"
+  data-composition-id="za-promo-root"
+  data-width="1920"
+  data-height="1080"
+  data-start="0"
+  data-duration="24.3"
+>
+
+  <!-- ── Narration VO ────────────────────────────────────────── -->
+  <audio
+    id="el-narration"
+    src="narration.wav"
+    data-start="0"
+    data-duration="24.3"
+    data-track-index="0"
+    data-volume="1"
+  ></audio>
+
+  <!-- ── Beat 1: Hero Reveal ─────────────────────────────────── -->
+  <div
+    id="el-beat-1"
+    class="beat-clip"
+    data-composition-id="beat-1-hero"
+    data-composition-src="compositions/beat-1-hero.html"
+    data-start="0"
+    data-duration="2.0"
+    data-track-index="1"
+    data-width="1920"
+    data-height="1080"
+  ></div>
+
+  <!-- ── Beat 2: Brand & Services ───────────────────────────── -->
+  <div
+    id="el-beat-2"
+    class="beat-clip"
+    data-composition-id="beat-2-services"
+    data-composition-src="compositions/beat-2-services.html"
+    data-start="2.0"
+    data-duration="5.3"
+    data-track-index="1"
+    data-width="1920"
+    data-height="1080"
+  ></div>
+
+  <!-- ── Beat 3: Quote Hook ─────────────────────────────────── -->
+  <div
+    id="el-beat-3"
+    class="beat-clip"
+    data-composition-id="beat-3-quote-hook"
+    data-composition-src="compositions/beat-3-quote-hook.html"
+    data-start="7.3"
+    data-duration="1.7"
+    data-track-index="1"
+    data-width="1920"
+    data-height="1080"
+  ></div>
+
+  <!-- ── Beat 4: Wizard Walkthrough ────────────────────────── -->
+  <div
+    id="el-beat-4"
+    class="beat-clip"
+    data-composition-id="beat-4-wizard"
+    data-composition-src="compositions/beat-4-wizard.html"
+    data-start="9.0"
+    data-duration="2.8"
+    data-track-index="1"
+    data-width="1920"
+    data-height="1080"
+  ></div>
+
+  <!-- ── Beat 5: Process & Guarantee ───────────────────────── -->
+  <div
+    id="el-beat-5"
+    class="beat-clip"
+    data-composition-id="beat-5-process"
+    data-composition-src="compositions/beat-5-process.html"
+    data-start="11.8"
+    data-duration="6.1"
+    data-track-index="1"
+    data-width="1920"
+    data-height="1080"
+  ></div>
+
+  <!-- ── Beat 6: Social Proof Stats ────────────────────────── -->
+  <div
+    id="el-beat-6"
+    class="beat-clip"
+    data-composition-id="beat-6-stats"
+    data-composition-src="compositions/beat-6-stats.html"
+    data-start="17.9"
+    data-duration="2.8"
+    data-track-index="1"
+    data-width="1920"
+    data-height="1080"
+  ></div>
+
+  <!-- ── Beat 7: CTA Close ──────────────────────────────────── -->
+  <div
+    id="el-beat-7"
+    class="beat-clip"
+    data-composition-id="beat-7-cta"
+    data-composition-src="compositions/beat-7-cta.html"
+    data-start="20.7"
+    data-duration="3.6"
+    data-track-index="1"
+    data-width="1920"
+    data-height="1080"
+  ></div>
+
+  <!-- ── Transition overlay (crossfade dips) ───────────────── -->
+  <div id="transition-overlay"></div>
+
+</div>
+
+<!-- ── Root Timeline: explicit clip visibility + crossfade dips ── -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+  window.__timelines = window.__timelines || {};
+
+  var tl = gsap.timeline({ paused: true });
+  var ov = document.getElementById("transition-overlay");
+
+  // ── Step 1: Initially hide all beats except beat-1 ──────────────
+  tl.set(['#el-beat-2','#el-beat-3','#el-beat-4','#el-beat-5','#el-beat-6','#el-beat-7'],
+    { opacity: 0 }, 0);
+
+  // ── Step 2: Beat boundaries — instant switch (no overlap bleed) ─
+  // Beat 1 → Beat 2 at 2.0s
+  tl.set('#el-beat-1', { opacity: 0 }, 2.0);
+  tl.set('#el-beat-2', { opacity: 1 }, 2.0);
+
+  // Beat 2 → Beat 3 at 7.3s
+  tl.set('#el-beat-2', { opacity: 0 }, 7.3);
+  tl.set('#el-beat-3', { opacity: 1 }, 7.3);
+
+  // Beat 3 → Beat 4 at 9.0s
+  tl.set('#el-beat-3', { opacity: 0 }, 9.0);
+  tl.set('#el-beat-4', { opacity: 1 }, 9.0);
+
+  // Beat 4 → Beat 5 at 11.8s
+  tl.set('#el-beat-4', { opacity: 0 }, 11.8);
+  tl.set('#el-beat-5', { opacity: 1 }, 11.8);
+
+  // Beat 5 → Beat 6 at 17.9s
+  tl.set('#el-beat-5', { opacity: 0 }, 17.9);
+  tl.set('#el-beat-6', { opacity: 1 }, 17.9);
+
+  // Beat 6 → Beat 7 at 20.7s
+  tl.set('#el-beat-6', { opacity: 0 }, 20.7);
+  tl.set('#el-beat-7', { opacity: 1 }, 20.7);
+
+  // ── Step 3: Crossfade dip overlay between beats ──────────────────
+  var dips = [2.0, 7.3, 9.0, 11.8, 17.9, 20.7];
+  dips.forEach(function(t) {
+    tl.fromTo(ov, { opacity: 0 }, { opacity: 0.55, duration: 0.18, ease: "power2.in" }, t - 0.18);
+    tl.fromTo(ov, { opacity: 0.55 }, { opacity: 0, duration: 0.18, ease: "power2.out" }, t);
+  });
+
+  window.__timelines["za-promo-root"] = tl;
+</script>
+
+</body>
+</html>

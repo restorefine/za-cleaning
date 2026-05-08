@@ -1,0 +1,430 @@
+<template id="beat-2-services-template">
+  <div data-composition-id="beat-2-services" data-width="1920" data-height="1080" data-start="0" style="position:relative;width:1920px;height:1080px;overflow:hidden;font-family:'Geist',sans-serif;">
+    <style>
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #F8FAFC;
+      font-family: 'Geist', sans-serif;
+    }
+
+    /* ── Root frame ───────────────────────────────────────────── */
+    .frame {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      background: #F8FAFC;
+      overflow: hidden;
+    }
+
+    /* ── Ghost text anchor ────────────────────────────────────── */
+    .ghost-text-wrap {
+      position: absolute;
+      bottom: -30px;
+      right: -40px;
+      pointer-events: none;
+      user-select: none;
+    }
+    .ghost-text {
+      font-size: 280px;
+      font-weight: 800;
+      color: #E2E8F0;
+      opacity: 0.12;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    /* ── Decorative ghost circle ──────────────────────────────── */
+    .ghost-circle-wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .ghost-circle {
+      display: block;
+    }
+
+    /* ── Left accent rule ─────────────────────────────────────── */
+    .accent-rule {
+      position: absolute;
+      left: 200px;
+      top: 225px;
+      width: 2px;
+      height: 90px;
+      background: #2563EB;
+      transform-origin: top center;
+      /* scaleY starts at 0, drawn down */
+    }
+
+    /* ── Heading block ────────────────────────────────────────── */
+    .heading-block {
+      position: absolute;
+      top: 190px;
+      left: 224px;
+    }
+    .eyebrow {
+      font-size: 22px;
+      font-weight: 600;
+      color: #2563EB;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .section-heading {
+      font-size: 80px;
+      font-weight: 800;
+      color: #0D3B66;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Cards container ──────────────────────────────────────── */
+    .cards-container {
+      position: absolute;
+      top: 400px;
+      left: 120px;
+      right: 120px;
+      display: flex;
+      gap: 28px;
+      perspective: 900px;
+    }
+
+    /* ── Individual card ──────────────────────────────────────── */
+    .card-outer {
+      flex: 1;
+      height: 300px;
+      /* x transform lives here — no other transforms */
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      /* rotateY transform lives here */
+    }
+    .card-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 59, 102, 0.65);
+      border-radius: 16px;
+    }
+    .card-label {
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      right: 28px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    /* ── Trust badges row ─────────────────────────────────────── */
+    .badges-row {
+      position: absolute;
+      bottom: 80px;
+      left: 120px;
+      right: 120px;
+      display: flex;
+      gap: 20px;
+    }
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: #FFFFFF;
+      border: 2px solid #2563EB;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2563EB;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .badge-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+  
+    </style>
+<div data-composition-id="beat-2-services" data-width="1920" data-height="1080" data-start="0">
+<div class="frame" id="beat-2-services-frame">
+
+  <!-- Layer 1: Background is the frame bg colour (#F8FAFC) — no extra element needed -->
+
+  <!-- Layer 10: Ghost circle (behind cards) -->
+  <div class="ghost-circle-wrap" id="ghost-circle-wrap">
+    <svg class="ghost-circle" id="ghost-circle" width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="200" r="196" stroke="#93C5FD" stroke-width="3" stroke-opacity="0.10"/>
+    </svg>
+  </div>
+
+  <!-- Layer 1: Ghost text -->
+  <div class="ghost-text-wrap" id="ghost-text-wrap">
+    <span class="ghost-text" id="ghost-text">SERVICES</span>
+  </div>
+
+  <!-- Layer 2: Left accent rule -->
+  <div class="accent-rule" id="accent-rule"></div>
+
+  <!-- Heading block: layers 3 & 4 -->
+  <div class="heading-block">
+    <p class="eyebrow" id="eyebrow">WHAT WE OFFER</p>
+    <h2 class="section-heading" id="section-heading">Our Core Services</h2>
+  </div>
+
+  <!-- Layer 5–8: Service cards -->
+  <div class="cards-container">
+
+    <!-- Card 1: Deep Cleaning -->
+    <div class="card-outer" id="card-1-outer">
+      <div class="card-inner" id="card-1-inner">
+        <img class="card-img" src="../capture/assets/kitchen-20deep-20clean.png" alt="Deep Cleaning" />
+        <div class="card-overlay"></div>
+        <p class="card-label">Deep Cleaning</p>
+      </div>
+    </div>
+
+    <!-- Card 2: Oven & Appliances -->
+    <div class="card-outer" id="card-2-outer">
+      <div class="card-inner" id="card-2-inner">
+        <img class="card-img" src="../capture/assets/oven-20restoration.png" alt="Oven & Appliances" />
+        <div class="card-overlay"></div>
+        <p class="card-label">Oven &amp; Appliances</p>
+      </div>
+    </div>
+
+    <!-- Card 3: Carpet & Rugs -->
+    <div class="card-outer" id="card-3-outer">
+      <div class="card-inner" id="card-3-inner">
+        <img class="card-img" src="../capture/assets/carpet-20revival.png" alt="Carpet & Rugs" />
+        <div class="card-overlay"></div>
+        <p class="card-label">Carpet &amp; Rugs</p>
+      </div>
+    </div>
+
+    <!-- Card 4: End of Tenancy -->
+    <div class="card-outer" id="card-4-outer">
+      <div class="card-inner" id="card-4-inner">
+        <img class="card-img" src="../capture/assets/end-20of-20tenancy.png" alt="End of Tenancy" />
+        <div class="card-overlay"></div>
+        <p class="card-label">End of Tenancy</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Layer 9: Trust badges -->
+  <div class="badges-row">
+
+    <div class="badge" id="badge-1">
+      <!-- shield-check icon -->
+      <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
+      Fully Insured
+    </div>
+
+    <div class="badge" id="badge-2">
+      <!-- calendar icon -->
+      <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      7-Day Service
+    </div>
+
+    <div class="badge" id="badge-3">
+      <!-- id-card / user-check icon -->
+      <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+        <polyline points="16 11 17.5 12.5 21 9"/>
+      </svg>
+      DBS Checked
+    </div>
+
+    <div class="badge" id="badge-4">
+      <!-- star/guarantee icon -->
+      <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+      Deposit Guarantee
+    </div>
+
+  </div>
+
+</div><!-- /.frame -->
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+window.__timelines = window.__timelines || {};
+
+  /* ── Ensure elements are loaded before building the timeline ── */
+  (function () {
+    const tl = gsap.timeline({ paused: true });
+
+    /* ─── INITIAL STATES (set before any tween fires) ─────────── */
+    gsap.set("#accent-rule",    { scaleY: 0, transformOrigin: "top center" });
+    gsap.set("#eyebrow",        { autoAlpha: 0, x: -30 });
+    gsap.set("#section-heading",{ autoAlpha: 0, y: 30 });
+    gsap.set(["#card-1-outer","#card-2-outer","#card-3-outer","#card-4-outer"], { x: 400 });
+    gsap.set(["#card-1-inner","#card-2-inner","#card-3-inner","#card-4-inner"], { rotationY: -8, autoAlpha: 0 });
+    gsap.set(["#badge-1","#badge-2","#badge-3","#badge-4"], { autoAlpha: 0, x: -40 });
+
+    /* ─── LAYER 1: Ghost text ambient drift ────────────────────── */
+    /* Drift right +20px over the full 5.3s beat */
+    tl.fromTo(
+      "#ghost-text-wrap",
+      { x: 0 },
+      { x: 20, duration: 5.3, ease: "none" },
+      0
+    );
+
+    /* ─── LAYER 10: Ghost circle slow scale ────────────────────── */
+    tl.fromTo(
+      "#ghost-circle-wrap",
+      { scale: 1.0 },
+      { scale: 1.03, duration: 5.3, ease: "none" },
+      0
+    );
+
+    /* ─── LAYER 2: Accent rule draws downward ──────────────────── */
+    tl.fromTo(
+      "#accent-rule",
+      { scaleY: 0 },
+      { scaleY: 1, duration: 0.4, ease: "power2.out" },
+      0
+    );
+
+    /* ─── LAYER 3: Eyebrow slides in from left ─────────────────── */
+    tl.fromTo(
+      "#eyebrow",
+      { autoAlpha: 0, x: -30 },
+      { autoAlpha: 1, x: 0, duration: 0.55, ease: "power3.out" },
+      0.1
+    );
+
+    /* ─── LAYER 4: Section heading fades up ────────────────────── */
+    tl.fromTo(
+      "#section-heading",
+      { autoAlpha: 0, y: 30 },
+      { autoAlpha: 1, y: 0, duration: 0.65, ease: "power3.out" },
+      0.3
+    );
+
+    /* ─── LAYERS 5–8: Service cards fly in from right ──────────── */
+    /* Card 1 — t=0.5s */
+    tl.fromTo(
+      "#card-1-outer",
+      { x: 400 },
+      { x: 0, duration: 0.7, ease: "power3.out" },
+      0.5
+    );
+    tl.fromTo(
+      "#card-1-inner",
+      { rotationY: -8, autoAlpha: 0 },
+      { rotationY: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" },
+      0.5
+    );
+
+    /* Card 2 — t=0.62s */
+    tl.fromTo(
+      "#card-2-outer",
+      { x: 400 },
+      { x: 0, duration: 0.7, ease: "power3.out" },
+      0.62
+    );
+    tl.fromTo(
+      "#card-2-inner",
+      { rotationY: -8, autoAlpha: 0 },
+      { rotationY: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" },
+      0.62
+    );
+
+    /* Card 3 — t=0.74s */
+    tl.fromTo(
+      "#card-3-outer",
+      { x: 400 },
+      { x: 0, duration: 0.7, ease: "power3.out" },
+      0.74
+    );
+    tl.fromTo(
+      "#card-3-inner",
+      { rotationY: -8, autoAlpha: 0 },
+      { rotationY: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" },
+      0.74
+    );
+
+    /* Card 4 — t=0.86s */
+    tl.fromTo(
+      "#card-4-outer",
+      { x: 400 },
+      { x: 0, duration: 0.7, ease: "power3.out" },
+      0.86
+    );
+    tl.fromTo(
+      "#card-4-inner",
+      { rotationY: -8, autoAlpha: 0 },
+      { rotationY: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" },
+      0.86
+    );
+
+    /* ─── LAYER 9: Trust badges staggered slide in from left ───── */
+    tl.fromTo(
+      "#badge-1",
+      { autoAlpha: 0, x: -40 },
+      { autoAlpha: 1, x: 0, duration: 0.5, ease: "power2.out" },
+      1.8
+    );
+    tl.fromTo(
+      "#badge-2",
+      { autoAlpha: 0, x: -40 },
+      { autoAlpha: 1, x: 0, duration: 0.5, ease: "power2.out" },
+      1.9
+    );
+    tl.fromTo(
+      "#badge-3",
+      { autoAlpha: 0, x: -40 },
+      { autoAlpha: 1, x: 0, duration: 0.5, ease: "power2.out" },
+      2.0
+    );
+    tl.fromTo(
+      "#badge-4",
+      { autoAlpha: 0, x: -40 },
+      { autoAlpha: 1, x: 0, duration: 0.5, ease: "power2.out" },
+      2.1
+    );
+
+    /* ─── Register with HyperFrames ────────────────────────────── */
+    window.__timelines["beat-2-services"] = tl;
+  })();
+    </script>
+  </div>
+</template>

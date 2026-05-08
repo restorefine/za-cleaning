@@ -1,0 +1,449 @@
+<template id="beat-3-quote-hook-template">
+  <div data-composition-id="beat-3-quote-hook" data-width="1920" data-height="1080" data-start="0" style="position:relative;width:1920px;height:1080px;overflow:hidden;font-family:'Geist',sans-serif;">
+    <style>
+
+      [data-composition-id="beat-3-quote-hook"] {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #FFFFFF;
+        font-family: 'Geist', 'Inter', sans-serif;
+      }
+
+      /* ── Layer 1: radial glow bg ── */
+      [data-composition-id="beat-3-quote-hook"] .bg-glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 70% 60% at 50% 50%, #EFF6FF 0%, #FFFFFF 100%);
+        z-index: 0;
+      }
+
+      /* ── Layer 2: ghost decorative "2" ── */
+      [data-composition-id="beat-3-quote-hook"] .ghost-two {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* centering handled via GSAP xPercent/yPercent to avoid CSS transform conflict */
+        font-size: 500px;
+        font-weight: 800;
+        color: #EFF6FF;
+        line-height: 1;
+        user-select: none;
+        pointer-events: none;
+        z-index: 1;
+        will-change: opacity, transform;
+      }
+
+      /* ── Decorative sparkles ── */
+      [data-composition-id="beat-3-quote-hook"] .sparkle {
+        position: absolute;
+        font-size: 40px;
+        color: #2563EB;
+        opacity: 0.15;
+        user-select: none;
+        pointer-events: none;
+        z-index: 2;
+        will-change: opacity;
+      }
+      [data-composition-id="beat-3-quote-hook"] .sparkle-a {
+        top: 180px;
+        left: 280px;
+      }
+      [data-composition-id="beat-3-quote-hook"] .sparkle-b {
+        top: 260px;
+        right: 320px;
+      }
+      [data-composition-id="beat-3-quote-hook"] .sparkle-c {
+        bottom: 280px;
+        left: 480px;
+      }
+
+      /* ── Step label — top right ── */
+      [data-composition-id="beat-3-quote-hook"] .step-label {
+        position: absolute;
+        top: 64px;
+        right: 80px;
+        font-family: 'Geist Mono', 'JetBrains Mono', 'Fira Code', monospace;
+        font-size: 22px;
+        color: #94A3B8;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        z-index: 5;
+        will-change: opacity;
+      }
+
+      /* ── Main content stack ── */
+      [data-composition-id="beat-3-quote-hook"] .content-stack {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        z-index: 3;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .line-1 {
+        font-size: 64px;
+        font-weight: 700;
+        color: #0D3B66;
+        line-height: 1.1;
+        text-align: center;
+        white-space: nowrap;
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .line-2 {
+        font-size: 52px;
+        font-weight: 400;
+        color: #64748B;
+        line-height: 1.2;
+        text-align: center;
+        white-space: nowrap;
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .line-3 {
+        font-size: 120px;
+        font-weight: 800;
+        color: #2563EB;
+        line-height: 1.0;
+        text-align: center;
+        white-space: nowrap;
+        will-change: opacity, transform;
+        letter-spacing: -0.02em;
+      }
+
+      /* ── Progress bar — pinned at y=680 (absolute) ── */
+      [data-composition-id="beat-3-quote-hook"] .progress-wrap {
+        position: absolute;
+        top: 680px;
+        left: 0;
+        width: 1920px;
+        height: 8px;
+        z-index: 4;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .progress-track {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 8px;
+        background: #E2E8F0;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .progress-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 8px;
+        background: #2563EB;
+        will-change: width;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .progress-dot {
+        position: absolute;
+        top: -4px;   /* (16-8)/2 = 4 to center vertically on bar */
+        left: -8px;  /* half of 16px to center on leading edge */
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #2563EB;
+        will-change: transform;
+      }
+    
+    </style>
+
+
+    <style>
+      [data-composition-id="beat-3-quote-hook"] {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #FFFFFF;
+        font-family: 'Geist', 'Inter', sans-serif;
+      }
+
+      /* ── Layer 1: radial glow bg ── */
+      [data-composition-id="beat-3-quote-hook"] .bg-glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 70% 60% at 50% 50%, #EFF6FF 0%, #FFFFFF 100%);
+        z-index: 0;
+      }
+
+      /* ── Layer 2: ghost decorative "2" ── */
+      [data-composition-id="beat-3-quote-hook"] .ghost-two {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* centering handled via GSAP xPercent/yPercent to avoid CSS transform conflict */
+        font-size: 500px;
+        font-weight: 800;
+        color: #EFF6FF;
+        line-height: 1;
+        user-select: none;
+        pointer-events: none;
+        z-index: 1;
+        will-change: opacity, transform;
+      }
+
+      /* ── Decorative sparkles ── */
+      [data-composition-id="beat-3-quote-hook"] .sparkle {
+        position: absolute;
+        font-size: 40px;
+        color: #2563EB;
+        opacity: 0.15;
+        user-select: none;
+        pointer-events: none;
+        z-index: 2;
+        will-change: opacity;
+      }
+      [data-composition-id="beat-3-quote-hook"] .sparkle-a {
+        top: 180px;
+        left: 280px;
+      }
+      [data-composition-id="beat-3-quote-hook"] .sparkle-b {
+        top: 260px;
+        right: 320px;
+      }
+      [data-composition-id="beat-3-quote-hook"] .sparkle-c {
+        bottom: 280px;
+        left: 480px;
+      }
+
+      /* ── Step label — top right ── */
+      [data-composition-id="beat-3-quote-hook"] .step-label {
+        position: absolute;
+        top: 64px;
+        right: 80px;
+        font-family: 'Geist Mono', 'JetBrains Mono', 'Fira Code', monospace;
+        font-size: 22px;
+        color: #94A3B8;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        z-index: 5;
+        will-change: opacity;
+      }
+
+      /* ── Main content stack ── */
+      [data-composition-id="beat-3-quote-hook"] .content-stack {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        z-index: 3;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .line-1 {
+        font-size: 64px;
+        font-weight: 700;
+        color: #0D3B66;
+        line-height: 1.1;
+        text-align: center;
+        white-space: nowrap;
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .line-2 {
+        font-size: 52px;
+        font-weight: 400;
+        color: #64748B;
+        line-height: 1.2;
+        text-align: center;
+        white-space: nowrap;
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .line-3 {
+        font-size: 120px;
+        font-weight: 800;
+        color: #2563EB;
+        line-height: 1.0;
+        text-align: center;
+        white-space: nowrap;
+        will-change: opacity, transform;
+        letter-spacing: -0.02em;
+      }
+
+      /* ── Progress bar — pinned at y=680 (absolute) ── */
+      [data-composition-id="beat-3-quote-hook"] .progress-wrap {
+        position: absolute;
+        top: 680px;
+        left: 0;
+        width: 1920px;
+        height: 8px;
+        z-index: 4;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .progress-track {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 8px;
+        background: #E2E8F0;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .progress-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 8px;
+        background: #2563EB;
+        will-change: width;
+      }
+
+      [data-composition-id="beat-3-quote-hook"] .progress-dot {
+        position: absolute;
+        top: -4px;   /* (16-8)/2 = 4 to center vertically on bar */
+        left: -8px;  /* half of 16px to center on leading edge */
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #2563EB;
+        will-change: transform;
+      }
+    </style>
+
+    <!-- Layer 0: radial glow -->
+    <div class="bg-glow"></div>
+
+    <!-- Layer 1: ghost decorative "2" -->
+    <div class="ghost-two" data-layout-ignore>2</div>
+
+    <!-- Layer 2: decorative sparkles -->
+    <div class="sparkle sparkle-a" data-layout-ignore>✦</div>
+    <div class="sparkle sparkle-b" data-layout-ignore>✦</div>
+    <div class="sparkle sparkle-c" data-layout-ignore>✦</div>
+
+    <!-- Layer 3: step label top-right -->
+    <div class="step-label">Step 1 of 14 · End of Tenancy</div>
+
+    <!-- Layer 4: main content stack -->
+    <div class="content-stack">
+      <div class="line-1">Getting a quote</div>
+      <div class="line-2">takes less than</div>
+      <div class="line-3">2 MINUTES</div>
+    </div>
+
+    <!-- Layer 5: progress bar -->
+    <div class="progress-wrap">
+      <div class="progress-track"></div>
+      <div class="progress-fill"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+
+        const root    = document.querySelector('[data-composition-id="beat-3-quote-hook"]');
+        const ghost   = root.querySelector('.ghost-two');
+        const line1   = root.querySelector('.line-1');
+        const line2   = root.querySelector('.line-2');
+        const line3   = root.querySelector('.line-3');
+        const fill    = root.querySelector('.progress-fill');
+        const dot     = root.querySelector('.progress-dot');
+        const stepLbl = root.querySelector('.step-label');
+        const spkA    = root.querySelector('.sparkle-a');
+        const spkB    = root.querySelector('.sparkle-b');
+        const spkC    = root.querySelector('.sparkle-c');
+
+        const tl = gsap.timeline({ paused: true });
+
+        // ── 1. Ghost "2" fades in — opacity 0 → 0.9, t=0 ──
+        // xPercent/yPercent used for centering so GSAP owns the full transform matrix
+        tl.fromTo(ghost,
+          { opacity: 0, xPercent: -50, yPercent: -50 },
+          { opacity: 0.9, xPercent: -50, yPercent: -50, duration: 0.55, ease: 'power1.out' },
+          0
+        );
+
+        // ── 2. Line 1: "Getting a quote" — fades up, t=0.1s ──
+        tl.fromTo(line1,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.45, ease: 'expo.out' },
+          0.1
+        );
+
+        // ── 3. Line 2: "takes less than" — fades up, t=0.25s ──
+        tl.fromTo(line2,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' },
+          0.25
+        );
+
+        // ── 4. "2 MINUTES" — elastic scale in, t=0.45s ──
+        tl.fromTo(line3,
+          { opacity: 0, scale: 0.8 },
+          { opacity: 1, scale: 1.0, duration: 0.65, ease: 'elastic.out(1, 0.6)' },
+          0.45
+        );
+
+        // ── 5. Progress bar fill: width 0 → 100% over 1.2s, t=0.3s ──
+        tl.fromTo(fill,
+          { width: '0px' },
+          { width: '1920px', duration: 1.2, ease: 'power1.out' },
+          0.3
+        );
+
+        // ── 6. Riding dot: x 0 → 1880 over 1.2s, t=0.3s ──
+        tl.fromTo(dot,
+          { x: 0 },
+          { x: 1880, duration: 1.2, ease: 'power1.out' },
+          0.3
+        );
+
+        // ── 7. Step label fades in, t=0.5s ──
+        tl.fromTo(stepLbl,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.35, ease: 'power2.out' },
+          0.5
+        );
+
+        // ── 8. Sparkles fade in staggered ──
+        tl.fromTo(spkA,
+          { opacity: 0 },
+          { opacity: 0.15, duration: 0.3, ease: 'power1.out' },
+          0.2
+        );
+        tl.fromTo(spkB,
+          { opacity: 0 },
+          { opacity: 0.15, duration: 0.3, ease: 'sine.out' },
+          0.35
+        );
+        tl.fromTo(spkC,
+          { opacity: 0 },
+          { opacity: 0.15, duration: 0.25, ease: 'power2.out' },
+          0.55
+        );
+
+        window.__timelines['beat-3-quote-hook'] = tl;
+      })();
+    </script>
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+
+    </script>
+  </div>
+</template>

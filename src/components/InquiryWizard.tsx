@@ -31,7 +31,12 @@ export interface InquiryAnswers {
   // Q12-Q13
   otherServices?: string;
   propertyCondition?: string;
-  // Standalone service fields
+  // Standalone carpet & upholstery service fields
+  carpetedAreas?: string;
+  rugCount?: string;
+  upholsteryItems?: string;
+  stairsHallways?: string;
+  // Other standalone service fields
   carpetItems?: string;
   area?: string;
   premisesType?: string;
@@ -225,7 +230,7 @@ const FURNISHED_STEP: Step = {
   id: "furnished",
   question: "Is the property furnished?",
   kind: "single",
-  options: ["Yes — Furnished", "No — Unfurnished"],
+  options: ["Yes", "No"],
   icon: Icon.furnished,
 };
 
@@ -282,7 +287,51 @@ const DATE_STEP: Step = {
   icon: Icon.date,
 };
 
-// Standalone service steps
+// Standalone carpet & upholstery service steps
+const CARPETED_AREAS_STEP: Step = {
+  id: "carpetedAreas",
+  question: "How many carpeted areas need cleaning?",
+  subtitle: "Each room or open area counts as one.",
+  kind: "single",
+  options: ["None", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10+"],
+  icon: Icon.carpet,
+};
+
+const RUG_COUNT_STEP: Step = {
+  id: "rugCount",
+  question: "Any rugs to clean?",
+  kind: "single",
+  options: ["None", "1", "2", "3", "4", "5+"],
+  icon: Icon.carpet,
+};
+
+const UPHOLSTERY_ITEMS_STEP: Step = {
+  id: "upholsteryItems",
+  question: "Any upholstery or sofas to clean?",
+  subtitle: "Select all that apply.",
+  kind: "multi",
+  options: [
+    "1 Seater Sofa",
+    "2 Seater Sofa",
+    "3 Seater Sofa",
+    "4 Seater Sofa",
+    "L-Shape Sofa",
+    "Armchair",
+    "Mattress",
+    "No, thank you",
+  ],
+  icon: Icon.furnished,
+};
+
+const STAIRS_HALLWAYS_STEP: Step = {
+  id: "stairsHallways",
+  question: "Any stairs or hallways to clean?",
+  kind: "multi",
+  options: ["Stairs", "Hallway", "Landing", "No, thank you"],
+  icon: Icon.carpet,
+};
+
+// Legacy standalone step (kept for other potential uses)
 const CARPET_ITEMS_STEP: Step = {
   id: "carpetItems",
   question: "What would you like cleaned?",
@@ -324,7 +373,6 @@ const DOMESTIC_SERVICES = new Set([
   "End of Tenancy Cleaning",
   "Deep Cleaning",
   "After Builders",
-  "Carpet & Upholstery",
   "Appliances Cleaning",
   "Pressure Washing",
   "Other",
@@ -368,7 +416,7 @@ function getDomesticSteps(answers: Partial<InquiryAnswers>): Step[] {
 
 // ── Static flows for non-domestic services ────────────────────
 const STATIC_SERVICE_FLOW: Record<string, Step[]> = {
-  "Carpet & Upholstery": [CARPET_ITEMS_STEP, DATE_STEP],
+  "Carpet & Upholstery": [CARPETED_AREAS_STEP, RUG_COUNT_STEP, UPHOLSTERY_ITEMS_STEP, STAIRS_HALLWAYS_STEP, DATE_STEP],
   "Appliances Cleaning": [APPLIANCES_STEP, DATE_STEP],
   "Pressure Washing":    [PRESSURE_WASH_SURFACES_STEP, AREA_STEP, DATE_STEP],
   "Commercial Cleaning": [PREMISES_STEP, DATE_STEP],

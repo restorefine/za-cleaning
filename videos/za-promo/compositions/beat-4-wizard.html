@@ -1,0 +1,638 @@
+<template id="beat-4-wizard-template">
+  <div data-composition-id="beat-4-wizard" data-width="1920" data-height="1080" data-start="0" style="position:relative;width:1920px;height:1080px;overflow:hidden;font-family:'Geist',sans-serif;">
+    <style>
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .composition-frame {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #F8FAFC;
+      font-family: 'Geist', 'Inter', sans-serif;
+    }
+
+    /* ── LEFT PANEL ──────────────────────────────────────────────────── */
+    .left-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 672px; /* 35% of 1920 */
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    /* Vertical brand text */
+    .vertical-text {
+      position: absolute;
+      top: 50%;
+      left: 80px;
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: center center;
+      font-size: 28px;
+      font-weight: 800;
+      color: #2563EB;
+      opacity: 0.15;
+      letter-spacing: 0.18em;
+      white-space: nowrap;
+      will-change: opacity;
+    }
+
+    /* Sparkle icon */
+    .sparkle {
+      position: absolute;
+      top: 200px;
+      left: 200px;
+      font-size: 60px;
+      color: #2563EB;
+      opacity: 0.2;
+      line-height: 1;
+      will-change: transform, opacity;
+    }
+
+    /* Step indicator circles */
+    .step-indicators {
+      position: absolute;
+      top: 50%;
+      left: 340px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .step-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      will-change: background-color;
+    }
+
+    /* Decorative background shapes for left panel */
+    .deco-circle-1 {
+      position: absolute;
+      bottom: 120px;
+      left: 60px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 2px solid #2563EB;
+      opacity: 0.08;
+    }
+
+    .deco-circle-2 {
+      position: absolute;
+      top: 80px;
+      right: 60px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #2563EB;
+      opacity: 0.06;
+    }
+
+    /* ── RIGHT PANEL — WIZARD CARD ───────────────────────────────────── */
+    .wizard-card {
+      position: absolute;
+      top: 90px;
+      left: 740px; /* 38.5% of 1920, giving breathing room */
+      width: 1060px;
+      height: 900px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(13, 59, 102, 0.12);
+      padding: 60px;
+      overflow: hidden;
+    }
+
+    /* Progress bar track */
+    .progress-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: #E2E8F0;
+      border-radius: 20px 20px 0 0;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: #2563EB;
+      will-change: width;
+    }
+
+    /* ── STEP CONTENT CONTAINERS ─────────────────────────────────────── */
+    .step-content {
+      position: absolute;
+      top: 68px;   /* below progress bar + padding */
+      left: 60px;
+      right: 60px;
+      bottom: 60px;
+    }
+
+    /* Step label */
+    .step-label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 20px;
+      font-weight: 400;
+      color: #94A3B8;
+      will-change: opacity, transform;
+    }
+
+    /* Question heading */
+    .step-question {
+      position: absolute;
+      top: 44px;
+      left: 0;
+      right: 0;
+      font-size: 38px;
+      font-weight: 700;
+      color: #0D3B66;
+      line-height: 1.2;
+      will-change: opacity, transform;
+    }
+
+    /* Option buttons grid */
+    .options-grid {
+      position: absolute;
+      top: 160px;
+      left: 0;
+      right: 0;
+      display: grid;
+      gap: 18px;
+      will-change: opacity;
+    }
+
+    .options-grid--3col {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .options-grid--4col {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .option-btn {
+      border-radius: 12px;
+      border: 2px solid #E2E8F0;
+      background: #ffffff;
+      padding: 28px 20px;
+      font-size: 20px;
+      font-weight: 500;
+      color: #0D3B66;
+      text-align: center;
+      cursor: pointer;
+      will-change: opacity, transform, border-color, background-color, color;
+    }
+
+    /* highlighted state applied via GSAP */
+    .option-btn--selected {
+      border-color: #2563EB;
+      background: #2563EB;
+      color: #ffffff;
+    }
+
+    /* ── STEP 3 — DATE INPUT ─────────────────────────────────────────── */
+    .date-input-wrap {
+      position: absolute;
+      top: 160px;
+      left: 0;
+      right: 0;
+      will-change: opacity;
+    }
+
+    .date-input-mock {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border: 2px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 28px 32px;
+      font-size: 28px;
+      font-weight: 500;
+      color: #0D3B66;
+      background: #F8FAFC;
+      will-change: opacity;
+    }
+
+    .date-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+
+    .date-text {
+      flex: 1;
+    }
+
+    .date-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 32px;
+      background: #0D3B66;
+      vertical-align: middle;
+      margin-left: 2px;
+      will-change: opacity;
+    }
+
+    .confirm-btn {
+      position: absolute;
+      top: 320px;
+      left: 0;
+      right: 0;
+      background: #2563EB;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      height: 72px;
+      font-size: 24px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      letter-spacing: 0.02em;
+      will-change: transform, opacity;
+    }
+  
+    </style>
+
+
+    <!-- ══ LEFT PANEL ═══════════════════════════════════════════════════════ -->
+    <div class="left-panel" id="left-panel">
+
+      <!-- Decorative shapes (static) -->
+      <div class="deco-circle-1"></div>
+      <div class="deco-circle-2"></div>
+
+      <!-- 1. Vertical brand text -->
+      <div class="vertical-text" id="vertical-text">BOOK YOUR SERVICE</div>
+
+      <!-- 2. Sparkle icon -->
+      <div class="sparkle" id="sparkle">✦</div>
+
+      <!-- 3. Step indicator circles -->
+      <div class="step-indicators">
+        <div class="step-circle" id="step-circle-1">1</div>
+        <div class="step-circle" id="step-circle-2">2</div>
+        <div class="step-circle" id="step-circle-3">3</div>
+      </div>
+
+    </div>
+
+    <!-- ══ WIZARD CARD ═══════════════════════════════════════════════════════ -->
+    <div class="wizard-card" id="wizard-card">
+
+      <!-- Progress bar -->
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+
+      <!-- ── STEP 1 CONTENT ── -->
+      <div class="step-content" id="step1-content">
+
+        <!-- 4. Step label -->
+        <div class="step-label" id="s1-label">Step 1 of 14</div>
+
+        <!-- 5. Question -->
+        <div class="step-question" id="s1-question">What service do you require?</div>
+
+        <!-- 6. Option buttons -->
+        <div class="options-grid options-grid--3col" id="s1-options">
+          <div class="option-btn" id="s1-opt-1">End of Tenancy<br>Cleaning</div>
+          <div class="option-btn" id="s1-opt-2">Deep Cleaning</div>
+          <div class="option-btn" id="s1-opt-3">After Builders</div>
+        </div>
+
+      </div>
+
+      <!-- ── STEP 2 CONTENT ── -->
+      <div class="step-content" id="step2-content" style="opacity:0;visibility:hidden;">
+
+        <!-- 10. Step label -->
+        <div class="step-label" id="s2-label">Step 2 of 14</div>
+
+        <!-- 11. Question -->
+        <div class="step-question" id="s2-question">What size is the property?</div>
+
+        <!-- 12. Option buttons -->
+        <div class="options-grid options-grid--4col" id="s2-options">
+          <div class="option-btn" id="s2-opt-1">Studio</div>
+          <div class="option-btn" id="s2-opt-2">1 Bed</div>
+          <div class="option-btn" id="s2-opt-3" style="grid-column:span 2;">2 Bed Flat / House</div>
+        </div>
+
+      </div>
+
+      <!-- ── STEP 3 CONTENT ── -->
+      <div class="step-content" id="step3-content" style="opacity:0;visibility:hidden;">
+
+        <!-- 16. Step label -->
+        <div class="step-label" id="s3-label">Step 14 of 14</div>
+
+        <!-- 17. Question -->
+        <div class="step-question" id="s3-question">When would you like this done?</div>
+
+        <!-- 18. Date input mockup -->
+        <div class="date-input-wrap" id="s3-date-wrap">
+          <div class="date-input-mock">
+            <span class="date-icon">📅</span>
+            <span class="date-text" id="s3-date-text"></span>
+            <span class="date-cursor" id="s3-cursor"></span>
+          </div>
+        </div>
+
+        <!-- 19. Confirm button -->
+        <div class="confirm-btn" id="s3-confirm-btn" style="opacity:0;">
+          Confirm Date &nbsp;→
+        </div>
+
+      </div>
+
+    </div>
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+window.__timelines = window.__timelines || {};
+
+  const tl = gsap.timeline({ paused: true });
+
+  // ── INITIAL SETUP: set step-circle colors at t=0 ─────────────────────────
+  // Step-circle 1 starts blue immediately, 2 & 3 start muted
+  tl.fromTo("#step-circle-1",
+    { backgroundColor: "#E2E8F0" },
+    { backgroundColor: "#2563EB", color: "#ffffff", duration: 0.2 },
+    0
+  );
+  tl.fromTo("#step-circle-2",
+    { backgroundColor: "#E2E8F0" },
+    { backgroundColor: "#E2E8F0", color: "#94A3B8", duration: 0.01 },
+    0
+  );
+  tl.fromTo("#step-circle-3",
+    { backgroundColor: "#E2E8F0" },
+    { backgroundColor: "#E2E8F0", color: "#94A3B8", duration: 0.01 },
+    0
+  );
+
+  // ── LEFT PANEL ENTRANCE ──────────────────────────────────────────────────
+  // Vertical text fades in
+  tl.fromTo("#vertical-text",
+    { opacity: 0 },
+    { opacity: 0.15, duration: 0.4, ease: "power2.out" },
+    0
+  );
+
+  // Sparkle drifts with y animation (finite: 2 cycles, yoyo)
+  tl.fromTo("#sparkle",
+    { opacity: 0, y: 0 },
+    { opacity: 0.2, y: -18, duration: 1.4, ease: "sine.inOut",
+      yoyo: true, repeat: 1 },
+    0
+  );
+
+  // ── WIZARD CARD ENTRANCE ─────────────────────────────────────────────────
+  tl.fromTo("#wizard-card",
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+    0
+  );
+
+  // ════════════════════════════════════════════════════════════════════════
+  // STEP 1  (t = 0 → 0.9s)
+  // ════════════════════════════════════════════════════════════════════════
+
+  // 4. Step label fades in
+  tl.fromTo("#s1-label",
+    { opacity: 0 },
+    { opacity: 1, duration: 0.25, ease: "power2.out" },
+    0.1
+  );
+
+  // 5. Question fades up
+  tl.fromTo("#s1-question",
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" },
+    0.1
+  );
+
+  // 6. Option buttons appear staggered
+  tl.fromTo("#s1-opt-1",
+    { opacity: 0, y: 16 },
+    { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" },
+    0.3
+  );
+  tl.fromTo("#s1-opt-2",
+    { opacity: 0, y: 16 },
+    { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" },
+    0.38
+  );
+  tl.fromTo("#s1-opt-3",
+    { opacity: 0, y: 16 },
+    { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" },
+    0.46
+  );
+
+  // 7. "End of Tenancy Cleaning" highlights at t=0.7s
+  tl.fromTo("#s1-opt-1",
+    { borderColor: "#E2E8F0", backgroundColor: "#ffffff", color: "#0D3B66", scale: 1 },
+    { borderColor: "#2563EB", backgroundColor: "#2563EB", color: "#ffffff", scale: 1.02,
+      duration: 0.2, ease: "power2.out" },
+    0.7
+  );
+
+  // 8. Progress bar: 0 → 8%
+  tl.fromTo("#progress-fill",
+    { width: "0%" },
+    { width: "8%", duration: 0.6, ease: "power2.inOut" },
+    0.1
+  );
+
+  // ════════════════════════════════════════════════════════════════════════
+  // STEP 1 → STEP 2 TRANSITION  (t = 0.9s)
+  // ════════════════════════════════════════════════════════════════════════
+
+  // 9. Fade out step-1 content
+  tl.fromTo("#step1-content",
+    { opacity: 1 },
+    { opacity: 0, duration: 0.15, ease: "none" },
+    0.9
+  );
+  tl.set("#step1-content", { visibility: "hidden" }, 1.05);
+
+  // Reveal step-2 container
+  tl.set("#step2-content", { visibility: "visible" }, 1.05);
+  tl.fromTo("#step2-content",
+    { opacity: 0 },
+    { opacity: 1, duration: 0.15, ease: "none" },
+    1.05
+  );
+
+  // Step indicator circle 2 lights up blue
+  tl.fromTo("#step-circle-2",
+    { backgroundColor: "#E2E8F0" },
+    { backgroundColor: "#2563EB", color: "#ffffff", duration: 0.2 },
+    0.9
+  );
+
+  // ════════════════════════════════════════════════════════════════════════
+  // STEP 2  (t = 1.0 → 1.9s)
+  // ════════════════════════════════════════════════════════════════════════
+
+  // 10–11. Label and question fade in
+  tl.fromTo("#s2-label",
+    { opacity: 0 },
+    { opacity: 1, duration: 0.25, ease: "power2.out" },
+    1.0
+  );
+  tl.fromTo("#s2-question",
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" },
+    1.0
+  );
+
+  // 12. Options stagger in
+  tl.fromTo("#s2-opt-1",
+    { opacity: 0, y: 16 },
+    { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" },
+    1.1
+  );
+  tl.fromTo("#s2-opt-2",
+    { opacity: 0, y: 16 },
+    { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" },
+    1.18
+  );
+  tl.fromTo("#s2-opt-3",
+    { opacity: 0, y: 16 },
+    { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" },
+    1.26
+  );
+
+  // 13. "2 Bed Flat / House" highlights at t=1.6s
+  tl.fromTo("#s2-opt-3",
+    { borderColor: "#E2E8F0", backgroundColor: "#ffffff", color: "#0D3B66", scale: 1 },
+    { borderColor: "#2563EB", backgroundColor: "#2563EB", color: "#ffffff", scale: 1.02,
+      duration: 0.2, ease: "power2.out" },
+    1.6
+  );
+
+  // 14. Progress bar: 8% → 15%
+  tl.fromTo("#progress-fill",
+    { width: "8%" },
+    { width: "15%", duration: 0.5, ease: "power2.inOut" },
+    1.1
+  );
+
+  // ════════════════════════════════════════════════════════════════════════
+  // STEP 2 → STEP 3 TRANSITION  (t = 1.9s)
+  // ════════════════════════════════════════════════════════════════════════
+
+  // 15. Fade out step-2 content
+  tl.fromTo("#step2-content",
+    { opacity: 1 },
+    { opacity: 0, duration: 0.15, ease: "none" },
+    1.9
+  );
+  tl.set("#step2-content", { visibility: "hidden" }, 2.05);
+
+  // Reveal step-3 container
+  tl.set("#step3-content", { visibility: "visible" }, 2.05);
+  tl.fromTo("#step3-content",
+    { opacity: 0 },
+    { opacity: 1, duration: 0.15, ease: "none" },
+    2.05
+  );
+
+  // Step indicator circle 3 lights up blue
+  tl.fromTo("#step-circle-3",
+    { backgroundColor: "#E2E8F0" },
+    { backgroundColor: "#2563EB", color: "#ffffff", duration: 0.2 },
+    1.9
+  );
+
+  // ════════════════════════════════════════════════════════════════════════
+  // STEP 3  (t = 2.0 → 2.8s)
+  // ════════════════════════════════════════════════════════════════════════
+
+  // 16–17. Label and question fade in
+  tl.fromTo("#s3-label",
+    { opacity: 0 },
+    { opacity: 1, duration: 0.25, ease: "power2.out" },
+    2.0
+  );
+  tl.fromTo("#s3-question",
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" },
+    2.0
+  );
+
+  // 18. Date input appears at t=2.1s
+  tl.fromTo("#s3-date-wrap",
+    { opacity: 0, y: 16 },
+    { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" },
+    2.1
+  );
+
+  // Date text — type in "15 July 2026" using a sequence of sets
+  // Each character appears at a fixed offset; deterministic, no Math.random
+  const dateStr = "15 July 2026";
+  const charDelay = 0.045; // seconds between chars
+  const typeStart = 2.18;
+
+  for (let i = 0; i < dateStr.length; i++) {
+    tl.set("#s3-date-text", { textContent: dateStr.slice(0, i + 1) }, typeStart + i * charDelay);
+  }
+
+  // Cursor blink (3 blinks, finite): alternates opacity
+  tl.fromTo("#s3-cursor",
+    { opacity: 1 },
+    { opacity: 0, duration: 0.15, ease: "none", yoyo: true, repeat: 5 },
+    2.15
+  );
+
+  // 19. Confirm button fades in
+  tl.fromTo("#s3-confirm-btn",
+    { opacity: 0, y: 12 },
+    { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" },
+    2.42
+  );
+
+  // Confirm button scale pulse at t=2.5s
+  tl.fromTo("#s3-confirm-btn",
+    { scale: 1 },
+    { scale: 1.03, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1 },
+    2.5
+  );
+
+  // 20. Progress bar: 15% → 100%
+  tl.fromTo("#progress-fill",
+    { width: "15%" },
+    { width: "100%", duration: 0.75, ease: "power2.inOut" },
+    2.0
+  );
+
+  // ── Register timeline ─────────────────────────────────────────────────────
+  window.__timelines["beat-4-wizard"] = tl;
+    </script>
+  </div>
+</template>

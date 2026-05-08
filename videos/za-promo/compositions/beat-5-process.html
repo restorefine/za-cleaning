@@ -1,0 +1,836 @@
+<template id="beat-5-process-template">
+  <div data-composition-id="beat-5-process" data-width="1920" data-height="1080" data-start="0" style="position:relative;width:1920px;height:1080px;overflow:hidden;font-family:'Geist',sans-serif;">
+    <style>
+
+      [data-composition-id="beat-5-process"] {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        background: #ffffff;
+        overflow: hidden;
+        font-family: "Geist", "Geist Sans", system-ui, sans-serif;
+      }
+
+      /* ─── Ghost image layer (parent = opacity, child = drift) ─── */
+      .ghost-wrap {
+        position: absolute;
+        top: 40px;
+        right: 80px;
+        width: 400px;
+        border-radius: 16px;
+        overflow: hidden;
+        opacity: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .ghost-img {
+        width: 400px;
+        height: auto;
+        display: block;
+        border-radius: 16px;
+      }
+
+      /* ─── Subtle background texture: light-blue tinted grain panel ─── */
+      .bg-panel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 1080px;
+        background: radial-gradient(
+          ellipse 1400px 700px at 50% 50%,
+          #eff6ff 0%,
+          #ffffff 72%
+        );
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      /* ─── Top-left corner accent mark ─── */
+      .corner-mark {
+        position: absolute;
+        top: 60px;
+        left: 100px;
+        width: 48px;
+        height: 48px;
+        border-top: 3px solid #2563eb;
+        border-left: 3px solid #2563eb;
+        border-radius: 4px 0 0 0;
+        z-index: 3;
+        opacity: 0;
+      }
+      /* Bottom-right mirror */
+      .corner-mark-br {
+        position: absolute;
+        bottom: 60px;
+        right: 100px;
+        width: 48px;
+        height: 48px;
+        border-bottom: 3px solid #2563eb;
+        border-right: 3px solid #2563eb;
+        border-radius: 0 0 4px 0;
+        z-index: 3;
+        opacity: 0;
+      }
+
+      /* ─── Content area ─── */
+      .content-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 1080px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 80px;
+        box-sizing: border-box;
+        z-index: 4;
+      }
+
+      /* Eyebrow */
+      .eyebrow {
+        font-size: 22px;
+        font-weight: 600;
+        color: #2563eb;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        opacity: 0;
+      }
+
+      /* Main heading */
+      .heading {
+        font-size: 80px;
+        font-weight: 800;
+        color: #0d3b66;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+        margin: 0 0 20px;
+        opacity: 0;
+      }
+
+      /* Subtitle */
+      .subtitle {
+        font-size: 34px;
+        font-weight: 400;
+        color: #64748b;
+        letter-spacing: -0.01em;
+        margin: 0 0 0;
+        opacity: 0;
+      }
+
+      /* ─── SVG connector layer ─── */
+      .connector-svg-wrap {
+        position: absolute;
+        /* Positioned to sit at the vertical midpoint of the cards group */
+        top: 575px;
+        left: 0;
+        width: 1920px;
+        height: 8px;
+        z-index: 5;
+        pointer-events: none;
+        overflow: visible;
+      }
+      .connector-svg-wrap svg {
+        overflow: visible;
+      }
+
+      /* ─── Cards row ─── */
+      .cards-row {
+        position: absolute;
+        top: 430px;
+        left: 0;
+        width: 1920px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 60px;
+        z-index: 6;
+      }
+
+      .step-card {
+        width: 520px;
+        height: 300px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(13, 59, 102, 0.1);
+        padding: 36px 40px 32px;
+        box-sizing: border-box;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        border: 1.5px solid #eff6ff;
+      }
+
+      /* Number badge — top right of card */
+      .num-badge {
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        width: 36px;
+        height: 36px;
+        background: #eff6ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 800;
+        color: #2563eb;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Icon circle */
+      .icon-circle {
+        width: 60px;
+        height: 60px;
+        background: #2563eb;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        flex-shrink: 0;
+      }
+
+      .card-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #0d3b66;
+        letter-spacing: -0.01em;
+        margin: 0 0 10px;
+        line-height: 1.15;
+      }
+
+      .card-desc {
+        font-size: 22px;
+        font-weight: 400;
+        color: #64748b;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      /* ─── Connector dots ─── */
+      .conn-dot {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: #2563eb;
+        border-radius: 50%;
+        top: 571px;
+        z-index: 7;
+        opacity: 0;
+      }
+      /* Card 1 center X ≈ (1920 - (3*520 + 2*60)) / 2 + 260 = (1920 - 1680)/2 + 260 = 120 + 260 = 380 */
+      .conn-dot-1 { left: 376px; }
+      /* Card 2 center X ≈ 380 + 520 + 60 = 960 */
+      .conn-dot-2 { left: 956px; }
+      /* Card 3 center X ≈ 960 + 520 + 60 = 1540 */
+      .conn-dot-3 { left: 1536px; }
+
+      /* ─── Guarantee badge wrapper (centering) ─── */
+      .guarantee-badge-wrap {
+        position: absolute;
+        bottom: 68px;
+        left: 0;
+        width: 1920px;
+        display: flex;
+        justify-content: center;
+        z-index: 8;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* ─── Guarantee badge ─── */
+      .guarantee-badge {
+        background: #0d3b66;
+        color: #ffffff;
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        border-radius: 40px;
+        padding: 24px 60px;
+        white-space: nowrap;
+        box-shadow: 0 8px 40px rgba(13, 59, 102, 0.25);
+        display: inline-block;
+      }
+
+      /* ─── Horizontal rule above badge ─── */
+      .bottom-rule {
+        position: absolute;
+        bottom: 164px;
+        left: 200px;
+        right: 200px;
+        height: 2px;
+        background: #eff6ff;
+        z-index: 3;
+        transform-origin: left center;
+        opacity: 0;
+      }
+    
+    </style>
+
+    <style>
+      [data-composition-id="beat-5-process"] {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        background: #ffffff;
+        overflow: hidden;
+        font-family: "Geist", "Geist Sans", system-ui, sans-serif;
+      }
+
+      /* ─── Ghost image layer (parent = opacity, child = drift) ─── */
+      .ghost-wrap {
+        position: absolute;
+        top: 40px;
+        right: 80px;
+        width: 400px;
+        border-radius: 16px;
+        overflow: hidden;
+        opacity: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .ghost-img {
+        width: 400px;
+        height: auto;
+        display: block;
+        border-radius: 16px;
+      }
+
+      /* ─── Subtle background texture: light-blue tinted grain panel ─── */
+      .bg-panel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 1080px;
+        background: radial-gradient(
+          ellipse 1400px 700px at 50% 50%,
+          #eff6ff 0%,
+          #ffffff 72%
+        );
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      /* ─── Top-left corner accent mark ─── */
+      .corner-mark {
+        position: absolute;
+        top: 60px;
+        left: 100px;
+        width: 48px;
+        height: 48px;
+        border-top: 3px solid #2563eb;
+        border-left: 3px solid #2563eb;
+        border-radius: 4px 0 0 0;
+        z-index: 3;
+        opacity: 0;
+      }
+      /* Bottom-right mirror */
+      .corner-mark-br {
+        position: absolute;
+        bottom: 60px;
+        right: 100px;
+        width: 48px;
+        height: 48px;
+        border-bottom: 3px solid #2563eb;
+        border-right: 3px solid #2563eb;
+        border-radius: 0 0 4px 0;
+        z-index: 3;
+        opacity: 0;
+      }
+
+      /* ─── Content area ─── */
+      .content-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 1080px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 80px;
+        box-sizing: border-box;
+        z-index: 4;
+      }
+
+      /* Eyebrow */
+      .eyebrow {
+        font-size: 22px;
+        font-weight: 600;
+        color: #2563eb;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        opacity: 0;
+      }
+
+      /* Main heading */
+      .heading {
+        font-size: 80px;
+        font-weight: 800;
+        color: #0d3b66;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+        margin: 0 0 20px;
+        opacity: 0;
+      }
+
+      /* Subtitle */
+      .subtitle {
+        font-size: 34px;
+        font-weight: 400;
+        color: #64748b;
+        letter-spacing: -0.01em;
+        margin: 0 0 0;
+        opacity: 0;
+      }
+
+      /* ─── SVG connector layer ─── */
+      .connector-svg-wrap {
+        position: absolute;
+        /* Positioned to sit at the vertical midpoint of the cards group */
+        top: 575px;
+        left: 0;
+        width: 1920px;
+        height: 8px;
+        z-index: 5;
+        pointer-events: none;
+        overflow: visible;
+      }
+      .connector-svg-wrap svg {
+        overflow: visible;
+      }
+
+      /* ─── Cards row ─── */
+      .cards-row {
+        position: absolute;
+        top: 430px;
+        left: 0;
+        width: 1920px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 60px;
+        z-index: 6;
+      }
+
+      .step-card {
+        width: 520px;
+        height: 300px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(13, 59, 102, 0.1);
+        padding: 36px 40px 32px;
+        box-sizing: border-box;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        border: 1.5px solid #eff6ff;
+      }
+
+      /* Number badge — top right of card */
+      .num-badge {
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        width: 36px;
+        height: 36px;
+        background: #eff6ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 800;
+        color: #2563eb;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Icon circle */
+      .icon-circle {
+        width: 60px;
+        height: 60px;
+        background: #2563eb;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        flex-shrink: 0;
+      }
+
+      .card-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #0d3b66;
+        letter-spacing: -0.01em;
+        margin: 0 0 10px;
+        line-height: 1.15;
+      }
+
+      .card-desc {
+        font-size: 22px;
+        font-weight: 400;
+        color: #64748b;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      /* ─── Connector dots ─── */
+      .conn-dot {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: #2563eb;
+        border-radius: 50%;
+        top: 571px;
+        z-index: 7;
+        opacity: 0;
+      }
+      /* Card 1 center X ≈ (1920 - (3*520 + 2*60)) / 2 + 260 = (1920 - 1680)/2 + 260 = 120 + 260 = 380 */
+      .conn-dot-1 { left: 376px; }
+      /* Card 2 center X ≈ 380 + 520 + 60 = 960 */
+      .conn-dot-2 { left: 956px; }
+      /* Card 3 center X ≈ 960 + 520 + 60 = 1540 */
+      .conn-dot-3 { left: 1536px; }
+
+      /* ─── Guarantee badge wrapper (centering) ─── */
+      .guarantee-badge-wrap {
+        position: absolute;
+        bottom: 68px;
+        left: 0;
+        width: 1920px;
+        display: flex;
+        justify-content: center;
+        z-index: 8;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* ─── Guarantee badge ─── */
+      .guarantee-badge {
+        background: #0d3b66;
+        color: #ffffff;
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        border-radius: 40px;
+        padding: 24px 60px;
+        white-space: nowrap;
+        box-shadow: 0 8px 40px rgba(13, 59, 102, 0.25);
+        display: inline-block;
+      }
+
+      /* ─── Horizontal rule above badge ─── */
+      .bottom-rule {
+        position: absolute;
+        bottom: 164px;
+        left: 200px;
+        right: 200px;
+        height: 2px;
+        background: #eff6ff;
+        z-index: 3;
+        transform-origin: left center;
+        opacity: 0;
+      }
+    </style>
+
+    <!-- Background radial panel -->
+    <div class="bg-panel" data-layout-ignore></div>
+
+    <!-- Corner accent marks (decorative) -->
+    <div class="corner-mark" data-layout-ignore></div>
+    <div class="corner-mark-br" data-layout-ignore></div>
+
+    <!-- Ghost image: parent = opacity, child = Ken Burns x-drift -->
+    <div class="ghost-wrap" data-layout-ignore>
+      <img
+        class="ghost-img"
+        src="../capture/assets/end-20of-20tenancy.png"
+        alt=""
+        crossorigin="anonymous"
+      />
+    </div>
+
+    <!-- Main content column -->
+    <div class="content-area">
+      <div class="eyebrow">OUR PROCESS</div>
+      <h2 class="heading">How Does It Work?</h2>
+      <p class="subtitle">Three simple steps to a spotless home.</p>
+    </div>
+
+    <!-- SVG connector path -->
+    <div class="connector-svg-wrap" data-layout-allow-overflow>
+      <svg
+        id="connector-svg"
+        viewBox="0 0 1920 8"
+        width="1920"
+        height="8"
+        xmlns="http://www.w3.org/2000/svg"
+        style="overflow: visible;"
+      >
+        <!-- Base line: spans card centers. left card center ~380, right card center ~1540 -->
+        <line
+          id="conn-base"
+          x1="380"
+          y1="4"
+          x2="1540"
+          y2="4"
+          stroke="#CBD5E1"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-dasharray="1160"
+          stroke-dashoffset="1160"
+        />
+        <!-- Overlay dot traveller path -->
+        <line
+          id="conn-traveller"
+          x1="380"
+          y1="4"
+          x2="1540"
+          y2="4"
+          stroke="#2563EB"
+          stroke-width="10"
+          stroke-linecap="round"
+          stroke-dasharray="1160"
+          stroke-dashoffset="1160"
+        />
+      </svg>
+    </div>
+
+    <!-- Three step cards -->
+    <div class="cards-row">
+      <!-- Card 1 -->
+      <div class="step-card" id="card1">
+        <div class="num-badge">1</div>
+        <div class="icon-circle" id="icon1">📅</div>
+        <div class="card-title">Book the Cleaning</div>
+        <p class="card-desc">Fast quote form or give us a call — under 2 minutes.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="step-card" id="card2">
+        <div class="num-badge">2</div>
+        <div class="icon-circle" id="icon2">🔧</div>
+        <div class="card-title">We Arrive Equipped</div>
+        <p class="card-desc">Fully trained team, all supplies included.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="step-card" id="card3">
+        <div class="num-badge">3</div>
+        <div class="icon-circle" id="icon3">✓</div>
+        <div class="card-title">Enjoy Spotless Space</div>
+        <p class="card-desc">Guaranteed — or we come back free.</p>
+      </div>
+    </div>
+
+    <!-- Connector dots -->
+    <div class="conn-dot conn-dot-1" id="conn-dot-1" data-layout-ignore></div>
+    <div class="conn-dot conn-dot-2" id="conn-dot-2" data-layout-ignore></div>
+    <div class="conn-dot conn-dot-3" id="conn-dot-3" data-layout-ignore></div>
+
+    <!-- Bottom rule -->
+    <div class="bottom-rule" data-layout-ignore></div>
+
+    <!-- Guarantee badge (wrapper handles centering; GSAP animates wrapper) -->
+    <div class="guarantee-badge-wrap" id="guarantee-badge-wrap">
+      <div class="guarantee-badge">100% Deposit-Back Guarantee ✓</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+
+        var tl = gsap.timeline({ paused: true });
+
+        var BEAT = 6.1;
+
+        // ─── 0. Background radial fade in ───────────────────────────────
+        tl.fromTo(
+          ".bg-panel",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.8, ease: "power1.out" },
+          0
+        );
+
+        // ─── 0. Corner marks ────────────────────────────────────────────
+        tl.fromTo(
+          ".corner-mark",
+          { opacity: 0, scale: 0.5 },
+          { opacity: 1, scale: 1, duration: 0.4, ease: "expo.out" },
+          0.05
+        );
+        tl.fromTo(
+          ".corner-mark-br",
+          { opacity: 0, scale: 0.5 },
+          { opacity: 1, scale: 1, duration: 0.4, ease: "expo.out" },
+          0.15
+        );
+
+        // ─── 1. Ghost image: parent opacity fade-in ─────────────────────
+        //    Child handles the slow x-drift (Ken Burns right)
+        //    Split parent/child to avoid stacking transforms on one element
+        tl.fromTo(
+          ".ghost-wrap",
+          { opacity: 0 },
+          { opacity: 0.08, duration: 1.2, ease: "power1.inOut" },
+          0
+        );
+        // Slow drift right +15px on child over full beat
+        tl.fromTo(
+          ".ghost-img",
+          { x: 0 },
+          { x: 15, duration: BEAT, ease: "none" },
+          0
+        );
+
+        // ─── 2. Eyebrow ─────────────────────────────────────────────────
+        tl.fromTo(
+          ".eyebrow",
+          { opacity: 0, letterSpacing: "0.05em" },
+          { opacity: 1, letterSpacing: "0.2em", duration: 0.55, ease: "power2.out" },
+          0.1
+        );
+
+        // ─── 3. Heading: fades up from y:30 ─────────────────────────────
+        tl.fromTo(
+          ".heading",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.65, ease: "expo.out" },
+          0.2
+        );
+
+        // ─── 4. Subtitle: fades up ───────────────────────────────────────
+        tl.fromTo(
+          ".subtitle",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          0.5
+        );
+
+        // ─── 5. SVG connector base line draws left → right ────────────────
+        // strokeDashoffset 1160 → 0 means the line draws itself
+        tl.fromTo(
+          "#conn-base",
+          { strokeDashoffset: 1160 },
+          { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" },
+          0.8
+        );
+
+        // ─── 5b. Accent dot travels the path ─────────────────────────────
+        // A short "dot" segment rides the line using dasharray trick:
+        // dasharray = [dotLen, rest] and dashoffset sweeps from full to 0
+        // dotLen = 12px (tight), total line = 1160, so offset sweeps 1160 → 0
+        // but we need the dot at the front: use dasharray [12, 1148] and offset sweeps 1160+12=1172 → 12
+        tl.fromTo(
+          "#conn-traveller",
+          { strokeDasharray: "12 1148", strokeDashoffset: 1172 },
+          { strokeDashoffset: 12, duration: 0.8, ease: "power1.inOut" },
+          1.8
+        );
+
+        // ─── 6. Card 1 fades up ──────────────────────────────────────────
+        tl.fromTo(
+          "#card1",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.55, ease: "back.out(1.4)" },
+          1.0
+        );
+
+        // ─── 7. Card 2 fades up ──────────────────────────────────────────
+        tl.fromTo(
+          "#card2",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+          1.6
+        );
+
+        // ─── 8. Card 3 fades up ──────────────────────────────────────────
+        tl.fromTo(
+          "#card3",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" },
+          2.2
+        );
+
+        // ─── 8b. Green glow pulse on icon3 ──────────────────────────────
+        // yoyo pulse: 0→12px glow, repeating
+        // Glow cycle = 0.4s each way × 2 (yoyo) = 0.8s per full cycle
+        // Calculate finite repeat from t=2.8 to beat end (6.1): window = 3.3s → ceil(3.3/0.4)-1 = 7
+        var glowRepeat = Math.ceil(3.3 / 0.4) - 1; // = 7
+        tl.fromTo(
+          "#icon3",
+          { filter: "drop-shadow(0 0 0px #00C951)" },
+          {
+            filter: "drop-shadow(0 0 12px #00C951)",
+            duration: 0.4,
+            yoyo: true,
+            repeat: glowRepeat,
+            ease: "sine.inOut"
+          },
+          2.8
+        );
+
+        // ─── 10. Connector dots appear at card times ────────────────────
+        tl.fromTo(
+          "#conn-dot-1",
+          { opacity: 0, scale: 0 },
+          { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" },
+          1.0
+        );
+        tl.fromTo(
+          "#conn-dot-2",
+          { opacity: 0, scale: 0 },
+          { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" },
+          1.6
+        );
+        tl.fromTo(
+          "#conn-dot-3",
+          { opacity: 0, scale: 0 },
+          { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" },
+          2.2
+        );
+
+        // ─── Bottom rule draws in ────────────────────────────────────────
+        tl.fromTo(
+          ".bottom-rule",
+          { opacity: 0, scaleX: 0 },
+          { opacity: 1, scaleX: 1, duration: 0.6, ease: "power2.out" },
+          3.2
+        );
+
+        // ─── 9. Guarantee badge bounces in ──────────────────────────────
+        // Animate the wrapper (no CSS transform on wrapper, so GSAP won't conflict)
+        tl.fromTo(
+          "#guarantee-badge-wrap",
+          { opacity: 0, scale: 0.8, y: 20 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "elastic.out(1, 0.5)" },
+          3.8
+        );
+
+        window.__timelines["beat-5-process"] = tl;
+      })();
+    </script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+
+    </script>
+  </div>
+</template>

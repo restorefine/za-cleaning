@@ -1,0 +1,316 @@
+[button] Services
+[button] Coverage
+[button] How It Works
+[button] Testimonials
+[a] 07774 845901
+[a] Get a Free Quote
+[span] 100% Satisfaction Guaranteed
+[span] Cleaning
+[h1] Team
+[p] Central Scotland's trusted cleaning specialists: End of Tenancy Cleaning, Deep Cleans, After Builders & more. Fully insured, always professional.
+[a] Get a Free Quote
+[a] WhatsApp Us
+[a] 07774 845901
+[span] What We Offer
+[h2] Our Core Services
+[a] Get a Free Quote
+[span] End of Tenancy Cleaning
+[h3] End of Tenancy Cleaning
+[p] Certified deep cleaning for moving in or out, securing full deposits and meeting agent-approved standards.
+[span] Deep & Spring Cleaning
+[h3] Deep & Spring Cleaning
+[p] A full, detailed property refresh to brighten your home, clear clutter and remove built-up dust from neglected spaces.
+[span] After Builders
+[h3] After Builders
+[p] Removes renovation dust, plaster, paint marks and debris, leaving your home spotless.
+[span] Carpet & Rug Cleaning
+[h3] Carpet & Rug Cleaning
+[p] Hot water extraction for carpets and rugs to revive fibres and remove stains and odours.
+[span] Oven & Appliances
+[h3] Oven & Appliances
+[p] Deep cleaning for ovens, extractors, fridges, freezers, dishwashers and all kitchen appliances.
+[span] Pressure Washing
+[h3] Pressure Washing
+[p] Jet-wash cleaning for patios, driveways, walls, decking and all exterior hard surfaces.
+[span] Comprehensive
+[span] Service
+[span] Checklist
+[p] Everything covered in your selected service, zone by zone.
+[p] End of Tenancy Cleaning
+[p] checklist items ·
+[p] zones
+[a] Book this service
+[p] Bedrooms
+[span] Remove cobwebs from ceilings and corners
+[span] Dust reachable surfaces including wardrobes, shelving and cupboards
+[span] Wipe accumulated dust and dirt from top of doors
+[span] Wipe accumulated dust from top of picture frames
+[span] Wipe and polish mirrors, pictures and other wall hangings
+[span] Wipe dust from skirting boards and decorations
+[span] Dust all light fittings and lampshades
+[span] Clean and polish metal ornaments
+[span] Wipe and polish switches
+[span] Carefully clean power sockets and extension cords
+[span] Mop hard floors and laminate
+[p] Bathrooms
+[span] Clean basins, taps and fittings
+[span] Remove hard water stains
+[span] Remove limescale if present
+[span] Scrub and rinse soap dispensers
+[span] Wipe and polish radiators and towel rails
+[span] Scrub and rinse toilet and bidet
+[span] Clean plumbing behind toilet if reachable
+[span] Wipe marks and stains from shower screens
+[span] Scrub and rinse bath marks and signs of mildew
+[span] Clean drains thoroughly
+[span] Wipe and polish mirrors and glass surfaces
+[span] Descale, rinse and wipe showerheads, taps and metal surfaces
+[span] Scrub and rinse accumulated dirt from the toothbrush area
+[span] Clean extractor fans
+[span] Wipe reachable bathroom tiles
+[p] Kitchen
+[span] Wash and polish all worktops, countertops and the sink area
+[span] Clean inside cupboards, drawers and shelving
+[span] Wash and polish sinks and shine taps
+[span] Remove accumulated limescale
+[span] De-grease and polish wall tiles
+[span] Remove mould growth between grout
+[span] Clean and de-grease ovens internally and externally
+[span] Clean grime from extractors and hobs
+[span] Scrub gas rings and gas control knobs
+[span] Clean microwaves inside and out
+[span] Clean out the fridge and freezer
+[span] Clean the washing machine inside and out
+[span] Clean the dishwasher inside and out
+[span] Clean exterior of all appliances
+[span] Clean outside of cupboards and drawers
+[span] Clean inside of windows and wipe down sills, ledges and frames
+[span] Wipe dirt from woodwork, doors, handles, frames and skirting boards
+[span] Wipe down radiators if applicable and accessible
+[span] Remove dust from plugs and light switches
+[span] Vacuum, mop and polish floors
+[p] Living Room
+[span] Remove cobwebs
+[span] Clean and polish mirrors and picture frames
+[span] Clean and polish windows internally, sills and ledges
+[span] Wipe down doors and clean on top of doors
+[span] Clean skirting boards and woodwork of dust
+[span] Clean light switches, fittings, lamp shades, plugs and sockets
+[span] Clean inside, behind and on top of cupboards
+[span] Clean behind and under furniture
+[span] Dust and polish all surfaces
+[span] Vacuum and mop hard floors
+[p] Furnishings
+[span] Wipe and polish tables, countertops and other worktop surfaces
+[span] Remove fingerprints and marks
+[span] Look out for oil stains
+[span] Move furnishings to vacuum underneath
+[span] Wipe and polish all wooden units
+[p] Carpets
+[span] Thoroughly vacuum all carpet edges
+[span] Move furniture and vacuum underneath
+[span] Steam clean where possible
+[span] Spot-treat stains if machine is unavailable
+[p] Windows
+[span] Remove marks, fingerprints and oily stains
+[span] Wipe down to prevent streaks when drying
+[span] Dust and clean windowsills
+[span] Wipe down frames
+[span] Dust blinds, curtains and shades
+[p] Cupboards & Drawers
+[span] Clear drawers inside and out
+[span] Remove any unnecessary items or leftover goods
+[span] Wipe down the inside and out
+[span] Wipe around handles
+[p] Appliances
+[span] Dishwasher: clean food and soap deposits, remove mildew, inspect and clean filters, wipe rubber seal, clean underneath and behind, wipe dispenser drawer and handles
+[span] Washing Machine: clean drum, inspect rubber seal, move and clean underneath and behind, wipe dispenser drawer and handles
+[span] Tumble Dryer: clean inside and out, inspect rubber seal, clean dispenser drawer, inspect and clean filter
+[span] Oven and Microwave: de-grease oven, extractor, hob and grill, clean microwave inside and out, clean grill pan and racks, wipe rubber seals, wipe buttons and exterior
+[span] Toaster: clean and polish exterior, remove crumbs and deposits, degrease handles
+[p] Smaller Details
+[span] Clean and dry all kitchen tiles
+[span] Remove leftover rubbish
+[span] Rinse out rubbish bins
+[span] De-grease fans and extractors
+[span] Tick every item to secure your full deposit
+[h3] End of Tenancy Cleaning
+[p] Certified deep cleaning for moving in or out, securing full deposits and meeting agent-approved standards.
+[span] Full kitchen & oven clean
+[span] Bathroom limescale removal
+[span] Inside all cupboards
+[span] Carpets & skirting boards
+[h3] Deep & Spring Cleaning
+[p] A full, detailed property refresh to brighten your home, clear clutter and remove built-up dust from neglected spaces.
+[span] Top-to-bottom deep clean
+[span] All surfaces & fixtures
+[span] Windows & blinds
+[span] Floors mopped & vacuumed
+[h3] After Builders
+[p] Removes renovation dust, plaster, paint marks and debris, leaving your home spotless.
+[span] Dust & debris removal
+[span] Paint & plaster marks
+[span] All floors & surfaces
+[span] Windows & frames
+[h3] Carpet & Rug Cleaning
+[p] Hot water extraction for carpets and rugs to revive fibres and remove stains and odours.
+[span] Hot water extraction
+[span] Stain treatment
+[span] Odour removal
+[span] Quick dry results
+[h3] Oven & Appliances
+[p] Deep cleaning for ovens, extractors, fridges, freezers, dishwashers and all kitchen appliances.
+[span] Oven interior degreasing
+[span] Extractor fan clean
+[span] Fridge & freezer
+[span] Dishwasher & microwave
+[h3] Pressure Washing
+[p] Jet-wash cleaning for patios, driveways, walls, decking and all exterior hard surfaces.
+[span] Patios & driveways
+[span] Decking & pathways
+[span] Walls & render
+[span] All exterior surfaces
+[h2] Do We Cover Your Area?
+[p] Enter your UK postcode below to instantly check if we operate in your area.
+[button] Check Availability
+[h3] Glasgow Hub
+[p] Primary Operations Center
+[p] 50mi
+[p] SERVICE RADIUS
+[p] MAIN AREAS
+[span] Airdrie
+[span] Ayr
+[span] Clydebank
+[span] Cumbernauld
+[span] Dunfermline
+[span] East Kilbride
+[span] Falkirk
+[span] Hamilton
+[span] Helensburgh
+[span] Irvine
+[span] Kilmarnock
+[span] Lanark
+[span] Motherwell
+[span] Paisley
+[span] Stirling
+[h3] Edinburgh Hub
+[p] Eastern Region Center
+[p] 50mi
+[p] SERVICE RADIUS
+[p] MAIN AREAS
+[span] Dalkeith
+[span] Dunfermline
+[span] Galashiels
+[span] Kirkcaldy
+[span] Linlithgow
+[span] Livingston
+[span] Musselburgh
+[span] North Berwick
+[a] Leaflet
+[a] OpenStreetMap
+[span] Glasgow Hub · 15 areas
+[span] Edinburgh Hub · 8 areas
+[span] About Cleaning
+[h2] Why
+[span] Choose
+[h2] Our service?
+[p] ZA Cleaning Team has been serving Central Scotland for over a decade, delivering professional, reliable cleaning you can count on. From end-of-tenancy to deep cleans, we handle it all so you don't have to.
+[p] 100% Satisfaction Guaranteed
+[p] Deposit-back guarantee on every job, no exceptions.
+[p] Fully Insured & Vetted
+[p] DBS-checked, trained professionals you can trust.
+[p] Supplies Always Included
+[p] We bring all equipment and cleaning products.
+[p] Available 7 Days
+[p] Last-minute bookings welcome, subject to availability.
+[p] Call Helpline
+[p] +44 7774 845901
+[a] Book Service
+[p] Our Process
+[h2] How Does It Work?
+[p] Three simple steps to a spotless home: guaranteed.
+[h3] Book the Cleaning
+[p] Use our fast quote form or give us a call – booking takes less than 2 minutes.
+[h3] We Arrive Equipped
+[p] Our professional cleaners come fully equipped with powerful tools and cleaning products.
+[h3] Enjoy Spotless Space
+[p] Relax and enjoy a perfectly cleaned home with our satisfaction guarantee.
+[h3] Book the Cleaning
+[p] Use our fast quote form or give us a call – booking takes less than 2 minutes.
+[h3] We Arrive Equipped
+[p] Our professional cleaners come fully equipped with powerful tools and cleaning products.
+[h3] Enjoy Spotless Space
+[p] Relax and enjoy a perfectly cleaned home with our satisfaction guarantee.
+[a] Book Your Service →
+[span] Asked Questions
+[h2] General Frequently
+[span] Asked
+[h2] Questions
+[span] What is included in an End of Tenancy Cleaning?
+[p] Our end of tenancy clean covers every room top to bottom, kitchen appliances, oven, fridge, bathrooms, limescale removal, skirting boards, inside cupboards, carpets, and more. We follow a comprehensive checklist accepted by letting agents and landlords across Central Scotland.
+[span] How long does a deep clean typically take?
+[p] A standard deep clean for a 2-bedroom property usually takes 4–6 hours. Larger properties or those requiring extra attention may take longer. We always stay until every item on the checklist is completed.
+[span] Are your cleaning teams fully insured?
+[p] Yes, all our teams are fully insured and vetted. We carry comprehensive public liability insurance on every job, so you can have complete peace of mind when we're in your home.
+[span] Do you offer last-minute or same-day bookings?
+[p] Absolutely. We understand that sometimes you need a clean at short notice. We accept last-minute bookings subject to availability, contact us directly for urgent requests and we'll do our best to accommodate you.
+[span] Do you supply all cleaning equipment and products?
+[p] Yes, all equipment and professional-grade cleaning supplies are included in our price. You don't need to provide anything, our teams arrive fully equipped and ready to work.
+[span] Our Work
+[h2] Before &
+[span] After
+[h2] Gallery
+[p] Real results from real jobs. Drag the handle to reveal the transformation.
+[span] After
+[span] Before
+[span] ← drag to compare →
+[p] Kitchen Deep Clean
+[p] Deep Clean
+[h3] Absolutely outstanding service. They arrived on time, worked through every detail on the checklist, and left my flat in pristine condition. Got my full deposit back without any dispute — couldn't be happier.
+[p] Sarah Mitchell
+[p] Tenant, Glasgow
+[p] 500+
+[p] Happy Clients
+[p] 12+
+[p] Years Experience
+[p] 100%
+[p] Deposit Success
+[p] 50mi
+[p] Coverage Radius
+[p] Ready to Book?
+[h2] Your Home, Spotless. We Guarantee It.
+[p] Book in under 2 minutes. Satisfaction guaranteed or we come back free. Serving Glasgow, Edinburgh, Stirling & Falkirk.
+[a] Get a Free Quote
+[a] Call 07774 845901
+[p] We work with a passion of taking challenges and delivering spotless results in the cleaning sector.
+[h3] Our Services
+[a] End of Tenancy Cleaning
+[a] Deep & Spring Cleaning
+[a] After Builders
+[a] Carpet & Rug Cleaning
+[a] Oven & Appliances
+[a] Pressure Washing
+[h3] Quick Links
+[button] About Us
+[button] Coverage Areas
+[button] How It Works
+[button] Testimonials
+[a] Contact Us
+[h3] Get in Touch
+[a] 07774 845901
+[a] info@zacleaningteam.com
+[address] 20-23 Woodside Pl,
+[address] Glasgow G3 7QL, UK
+[span] Mon – Fri: 08:00 – 20:00
+[span] Sat: 09:00 – 17:00
+[span] Sun: Closed
+[p] ZA Cleaning
+[p] . All rights reserved.
+[p] Designed by
+[a] Restorefine Studios
+[a] Privacy Policy
+[a] Terms of Service
+[a] Accessibility
+[span] Call Us
+[span] WhatsApp
+[span] Get Quote

@@ -1,0 +1,567 @@
+{
+  "summary": {
+    "webAnimations": 26,
+    "cssDeclarations": 107,
+    "scrollTargets": 20,
+    "cdpAnimations": 66,
+    "canvases": 0
+  },
+  "namedAnimations": [
+    "bubbleRise",
+    "heroFadeUp",
+    "fadeSlideUp"
+  ],
+  "scrollTriggeredElements": 20,
+  "representativeAnimations": [
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "bubbleRise",
+      "targetSelector": "span.bubble-el",
+      "targetRect": {
+        "x": 161.61911010742188,
+        "y": -299.7139892578125,
+        "width": 43.94927978515625,
+        "height": 43.94927978515625,
+        "top": -299.7139892578125,
+        "right": 205.56838989257812,
+        "bottom": -255.76470947265625,
+        "left": 161.61911010742188
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(0px) scale(1)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.18",
+          "computedOffset": 0.1
+        },
+        {
+          "offset": 0.85,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.12",
+          "computedOffset": 0.85
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(-1134px) scale(0.65)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 9000,
+        "delay": 0,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "bubbleRise",
+      "targetSelector": "span.bubble-el",
+      "targetRect": {
+        "x": 329.59295654296875,
+        "y": 314.6904296875,
+        "width": 93.59530639648438,
+        "height": 93.5953369140625,
+        "top": 314.6904296875,
+        "right": 423.1882629394531,
+        "bottom": 408.2857666015625,
+        "left": 329.59295654296875
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(0px) scale(1)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.18",
+          "computedOffset": 0.1
+        },
+        {
+          "offset": 0.85,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.12",
+          "computedOffset": 0.85
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(-1134px) scale(0.65)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 13000,
+        "delay": 1500,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "bubbleRise",
+      "targetSelector": "span.bubble-el",
+      "targetRect": {
+        "x": 506.9432678222656,
+        "y": -535.0760498046875,
+        "width": 29.488433837890625,
+        "height": 29.48846435546875,
+        "top": -535.0760498046875,
+        "right": 536.4317016601562,
+        "bottom": -505.58758544921875,
+        "left": 506.9432678222656
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(0px) scale(1)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.18",
+          "computedOffset": 0.1
+        },
+        {
+          "offset": 0.85,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.12",
+          "computedOffset": 0.85
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(-1134px) scale(0.65)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 8000,
+        "delay": 3000,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "bubbleRise",
+      "targetSelector": "span.bubble-el",
+      "targetRect": {
+        "x": 683.936767578125,
+        "y": -415.94091796875,
+        "width": 56.12646484375,
+        "height": 56.12646484375,
+        "top": -415.94091796875,
+        "right": 740.063232421875,
+        "bottom": -359.814453125,
+        "left": 683.936767578125
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(0px) scale(1)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.18",
+          "computedOffset": 0.1
+        },
+        {
+          "offset": 0.85,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.12",
+          "computedOffset": 0.85
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(-1134px) scale(0.65)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 11000,
+        "delay": 500,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "bubbleRise",
+      "targetSelector": "span.bubble-el",
+      "targetRect": {
+        "x": 861.2965087890625,
+        "y": -316.9439697265625,
+        "width": 97.000732421875,
+        "height": 97.00071716308594,
+        "top": -316.9439697265625,
+        "right": 958.2972412109375,
+        "bottom": -219.94325256347656,
+        "left": 861.2965087890625
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(0px) scale(1)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.18",
+          "computedOffset": 0.1
+        },
+        {
+          "offset": 0.85,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.12",
+          "computedOffset": 0.85
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(-1134px) scale(0.65)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 15000,
+        "delay": 2000,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "bubbleRise",
+      "targetSelector": "span.bubble-el",
+      "targetRect": {
+        "x": 1022.92724609375,
+        "y": -59.0457763671875,
+        "width": 44.3330078125,
+        "height": 44.33306884765625,
+        "top": -59.0457763671875,
+        "right": 1067.26025390625,
+        "bottom": -14.71270751953125,
+        "left": 1022.92724609375
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(0px) scale(1)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.18",
+          "computedOffset": 0.1
+        },
+        {
+          "offset": 0.85,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.12",
+          "computedOffset": 0.85
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(-1134px) scale(0.65)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 7000,
+        "delay": 4000,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "bubbleRise",
+      "targetSelector": "span.bubble-el",
+      "targetRect": {
+        "x": 1198.106689453125,
+        "y": -18.8385009765625,
+        "width": 74.56787109375,
+        "height": 74.56793212890625,
+        "top": -18.8385009765625,
+        "right": 1272.674560546875,
+        "bottom": 55.72943115234375,
+        "left": 1198.106689453125
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(0px) scale(1)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.18",
+          "computedOffset": 0.1
+        },
+        {
+          "offset": 0.85,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.12",
+          "computedOffset": 0.85
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(-1134px) scale(0.65)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 12000,
+        "delay": 1000,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "bubbleRise",
+      "targetSelector": "span.bubble-el",
+      "targetRect": {
+        "x": 1364.6488037109375,
+        "y": 343.72198486328125,
+        "width": 37.0772705078125,
+        "height": 37.0772705078125,
+        "top": 343.72198486328125,
+        "right": 1401.72607421875,
+        "bottom": 380.79925537109375,
+        "left": 1364.6488037109375
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(0px) scale(1)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.18",
+          "computedOffset": 0.1
+        },
+        {
+          "offset": 0.85,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.12",
+          "computedOffset": 0.85
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(-1134px) scale(0.65)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 9000,
+        "delay": 5000,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "bubbleRise",
+      "targetSelector": "span.bubble-el",
+      "targetRect": {
+        "x": 1553.794677734375,
+        "y": -480.89495849609375,
+        "width": 79.4107666015625,
+        "height": 79.41070556640625,
+        "top": -480.89495849609375,
+        "right": 1633.2054443359375,
+        "bottom": -401.4842529296875,
+        "left": 1553.794677734375
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(0px) scale(1)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.18",
+          "computedOffset": 0.1
+        },
+        {
+          "offset": 0.85,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.12",
+          "computedOffset": 0.85
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(-1134px) scale(0.65)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 14000,
+        "delay": 2500,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "bubbleRise",
+      "targetSelector": "span.bubble-el",
+      "targetRect": {
+        "x": 1711.343505859375,
+        "y": 315.8011474609375,
+        "width": 64.90673828125,
+        "height": 64.90673828125,
+        "top": 315.8011474609375,
+        "right": 1776.250244140625,
+        "bottom": 380.7078857421875,
+        "left": 1711.343505859375
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(0px) scale(1)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.18",
+          "computedOffset": 0.1
+        },
+        {
+          "offset": 0.85,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0.12",
+          "computedOffset": 0.85
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "transform": "translateY(-1134px) scale(0.65)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 10000,
+        "delay": 800,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    }
+  ]
+}

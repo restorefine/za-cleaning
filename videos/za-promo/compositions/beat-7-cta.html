@@ -1,0 +1,506 @@
+<template id="beat-7-cta-template">
+  <div data-composition-id="beat-7-cta" data-width="1920" data-height="1080" data-start="0" style="position:relative;width:1920px;height:1080px;overflow:hidden;font-family:'Geist',sans-serif;">
+    <style>
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Composition frame                                                      */
+    /* -------------------------------------------------------------------- */
+    [data-composition-id="beat-7-cta"] {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #0D3B66;
+      font-family: 'Geist', sans-serif;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 1 — BG ghost image (parent = opacity, child = scale)            */
+    /* -------------------------------------------------------------------- */
+    .bg-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.06;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 2 — Bubble particles                                            */
+    /* -------------------------------------------------------------------- */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      background: transparent;
+      will-change: transform;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 3 — Logo                                                        */
+    /* -------------------------------------------------------------------- */
+    .logo-wrap {
+      position: absolute;
+      top: 160px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      will-change: transform, opacity;
+    }
+
+    .logo-wrap img {
+      height: 100px;
+      width: auto;
+      display: block;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 4 + 5 — Headline block                                          */
+    /* -------------------------------------------------------------------- */
+    .headline-block {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      /* center of composition; elements placed by their own margins */
+    }
+
+    /* Offset the visual center slightly upward to leave room for CTA below */
+    .headline-inner {
+      margin-top: -60px;
+    }
+
+    .headline-line-1 {
+      font-size: 88px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.05;
+      text-align: center;
+      will-change: transform, opacity;
+    }
+
+    /* Each word is an inline-block span for stagger */
+    .headline-line-1 .word {
+      display: inline-block;
+      margin: 0 0.06em;
+      opacity: 0; /* hidden until timeline enters */
+      will-change: transform, opacity;
+    }
+
+    .headline-line-2 {
+      font-size: 72px;
+      font-weight: 600;
+      color: #93C5FD;
+      line-height: 1.1;
+      text-align: center;
+      margin-top: 8px;
+      will-change: transform, opacity;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 6 — URL typing area                                             */
+    /* -------------------------------------------------------------------- */
+    .url-wrap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2px;
+      will-change: opacity;
+    }
+
+    .url-text {
+      font-family: 'Geist Mono', 'GeistMono', 'Courier New', monospace;
+      font-size: 32px;
+      color: rgba(255, 255, 255, 0.75);
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .url-char {
+      display: inline-block;
+      opacity: 0; /* hidden until typed by timeline */
+      will-change: opacity;
+    }
+
+    .url-cursor {
+      display: inline-block;
+      font-family: 'Geist Mono', 'GeistMono', 'Courier New', monospace;
+      font-size: 32px;
+      color: rgba(255, 255, 255, 0.75);
+      margin-left: 2px;
+      opacity: 0; /* hidden until revealed by timeline */
+      will-change: opacity;
+    }
+
+    /* Accent underline drawn over the URL */
+    .url-underline-svg {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .url-underline-path {
+      stroke: #2563EB;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-dasharray: 160;
+      stroke-dashoffset: 160;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 7 — CTA button                                                  */
+    /* -------------------------------------------------------------------- */
+    .cta-btn-wrap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      will-change: transform, opacity;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #2563EB;
+      color: #ffffff;
+      font-family: 'Geist', sans-serif;
+      font-size: 52px;
+      font-weight: 700;
+      padding: 28px 80px;
+      border-radius: 50px;
+      white-space: nowrap;
+      will-change: transform;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 8 — Phone number                                                */
+    /* -------------------------------------------------------------------- */
+    .phone-wrap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      will-change: transform, opacity;
+    }
+
+    .phone-text {
+      font-size: 28px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.65);
+      letter-spacing: 0.02em;
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Layer 9 — Trust badges strip                                          */
+    /* -------------------------------------------------------------------- */
+    .badges-strip {
+      position: absolute;
+      bottom: 72px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 9999px;
+      padding: 12px 30px;
+      font-size: 20px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.55);
+      white-space: nowrap;
+      will-change: transform, opacity;
+    }
+  
+    </style>
+
+
+    <!-- Layer 1: BG ghost image — opacity on parent, Ken Burns on child -->
+    <div class="bg-wrap" id="b7-bg-wrap">
+      <img
+        class="bg-image"
+        id="b7-bg-image"
+        src="../capture/assets/og-image.png"
+        alt=""
+        draggable="false"
+      />
+    </div>
+
+    <!-- Layer 2: Bubble particles (6) -->
+    <!-- Fixed x positions: 150, 350, 600, 900, 1300, 1700 -->
+    <!-- Sizes: 50, 80, 45, 100, 60, 70 -->
+    <div class="bubble" id="b7-bubble-0" style="width:50px;height:50px;left:125px;top:0;"></div>
+    <div class="bubble" id="b7-bubble-1" style="width:80px;height:80px;left:310px;top:0;"></div>
+    <div class="bubble" id="b7-bubble-2" style="width:45px;height:45px;left:577px;top:0;"></div>
+    <div class="bubble" id="b7-bubble-3" style="width:100px;height:100px;left:850px;top:0;"></div>
+    <div class="bubble" id="b7-bubble-4" style="width:60px;height:60px;left:1270px;top:0;"></div>
+    <div class="bubble" id="b7-bubble-5" style="width:70px;height:70px;left:1665px;top:0;"></div>
+
+    <!-- Layer 3: Logo -->
+    <div class="logo-wrap" id="b7-logo-wrap">
+      <img src="../capture/assets/logo.svg" alt="ZA Cleaning Team" />
+    </div>
+
+    <!-- Layers 4 + 5: Headline block -->
+    <div class="headline-block" id="b7-headline-block">
+      <div class="headline-inner">
+        <div class="headline-line-1" id="b7-hl1">
+          <span class="word" id="b7-w0">Your</span>
+          <span class="word" id="b7-w1">Home,</span>
+          <span class="word" id="b7-w2">Spotless.</span>
+        </div>
+        <div class="headline-line-2" id="b7-hl2">We Guarantee It.</div>
+      </div>
+    </div>
+
+    <!-- Layer 6: URL typing -->
+    <!--
+      Positioned below headline.
+      Headline center ≈ 540−60=480. Line 1 + line 2 height ≈ (88*1.05)+(72*1.1)+8 ≈ 172px.
+      Bottom of headlines ≈ 480 + 172/2 = 566px. Gap 24px → url top: 590px.
+    -->
+    <div class="url-wrap" id="b7-url-wrap" style="top: 598px;">
+      <div class="url-text" id="b7-url-text">
+        <!-- "www.zacleaningteam.com" — 22 characters, each in a span -->
+        <span class="url-char" id="b7-c0">w</span>
+        <span class="url-char" id="b7-c1">w</span>
+        <span class="url-char" id="b7-c2">w</span>
+        <span class="url-char" id="b7-c3">.</span>
+        <span class="url-char" id="b7-c4">z</span>
+        <span class="url-char" id="b7-c5">a</span>
+        <span class="url-char" id="b7-c6">c</span>
+        <span class="url-char" id="b7-c7">l</span>
+        <span class="url-char" id="b7-c8">e</span>
+        <span class="url-char" id="b7-c9">a</span>
+        <span class="url-char" id="b7-c10">n</span>
+        <span class="url-char" id="b7-c11">i</span>
+        <span class="url-char" id="b7-c12">n</span>
+        <span class="url-char" id="b7-c13">g</span>
+        <span class="url-char" id="b7-c14">t</span>
+        <span class="url-char" id="b7-c15">e</span>
+        <span class="url-char" id="b7-c16">a</span>
+        <span class="url-char" id="b7-c17">m</span>
+        <span class="url-char" id="b7-c18">.</span>
+        <span class="url-char" id="b7-c19">c</span>
+        <span class="url-char" id="b7-c20">o</span>
+        <span class="url-char" id="b7-c21">m</span>
+        <span class="url-cursor" id="b7-cursor">|</span>
+      </div>
+    </div>
+
+    <!-- Accent underline under URL: 160px wide, drawn at t=3.0 -->
+    <!-- Positioned just below url-wrap: 598 + ~40px line height + 8px gap = 646px -->
+    <div style="position:absolute;top:648px;left:0;right:0;display:flex;justify-content:center;pointer-events:none;">
+      <svg class="url-underline-svg" width="160" height="6" viewBox="0 0 160 6" style="position:static;transform:none;">
+        <line
+          class="url-underline-path"
+          id="b7-underline"
+          x1="0" y1="3"
+          x2="160" y2="3"
+          stroke-dasharray="160"
+          stroke-dashoffset="160"
+        />
+      </svg>
+    </div>
+
+    <!-- Layer 7: CTA button — positioned below URL -->
+    <!-- url bottom ≈ 646px, gap 40px → top: 686px (center of button 686+~58=744) -->
+    <div class="cta-btn-wrap" id="b7-cta-wrap" style="top: 696px;">
+      <div class="cta-btn" id="b7-cta-btn">Get a Free Quote →</div>
+    </div>
+
+    <!-- Layer 8: Phone number — below CTA -->
+    <!-- CTA button height ≈ 28+52+28 = ~108px → bottom ≈ 696+108=804, gap 20px → top:824 -->
+    <div class="phone-wrap" id="b7-phone-wrap" style="top: 824px;">
+      <span class="phone-text">☎ (+44) 07774 845901</span>
+    </div>
+
+    <!-- Layer 9: Trust badges strip -->
+    <div class="badges-strip" id="b7-badges-strip">
+      <div class="badge-pill" id="b7-badge-0">Insured</div>
+      <div class="badge-pill" id="b7-badge-1">Vetted</div>
+      <div class="badge-pill" id="b7-badge-2">Guaranteed</div>
+      <div class="badge-pill" id="b7-badge-3">Same-Day</div>
+    </div>
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+window.__timelines = window.__timelines || {};
+
+  const tl = gsap.timeline({ paused: true });
+
+  // ── Layer 1: BG — parent opacity hold + child Ken Burns scale 1.0→1.02 over 3.6s ──
+  tl.fromTo(
+    "#b7-bg-wrap",
+    { opacity: 1 },
+    { opacity: 1, duration: 3.6, ease: "none" },
+    0
+  );
+  tl.fromTo(
+    "#b7-bg-image",
+    { scale: 1.0 },
+    { scale: 1.02, duration: 3.6, ease: "none" },
+    0
+  );
+
+  // ── Layer 2: Bubble particles — rising, finite repeat ──────────────────────
+  // x positions: 150, 350, 600, 900, 1300, 1700
+  // sizes: 50, 80, 45, 100, 60, 70
+  // durations: 4, 5, 3.5, 6, 4.5, 3.8
+  // Beat duration: 3.6s — repeat = Math.ceil(3.6 / duration)
+
+  var bubbleDurations = [4, 5, 3.5, 6, 4.5, 3.8];
+
+  // Bubble 0: dur=4, repeat = Math.ceil(3.6/4) = 1
+  tl.fromTo("#b7-bubble-0", { y: 1200 }, { y: -200, duration: 4, ease: "none", repeat: 1 }, 0);
+  // Bubble 1: dur=5, repeat = Math.ceil(3.6/5) = 1
+  tl.fromTo("#b7-bubble-1", { y: 1200 }, { y: -200, duration: 5, ease: "none", repeat: 1 }, 0);
+  // Bubble 2: dur=3.5, repeat = Math.ceil(3.6/3.5) = 2
+  tl.fromTo("#b7-bubble-2", { y: 1200 }, { y: -200, duration: 3.5, ease: "none", repeat: 2 }, 0);
+  // Bubble 3: dur=6, repeat = Math.ceil(3.6/6) = 1
+  tl.fromTo("#b7-bubble-3", { y: 1200 }, { y: -200, duration: 6, ease: "none", repeat: 1 }, 0);
+  // Bubble 4: dur=4.5, repeat = Math.ceil(3.6/4.5) = 1
+  tl.fromTo("#b7-bubble-4", { y: 1200 }, { y: -200, duration: 4.5, ease: "none", repeat: 1 }, 0);
+  // Bubble 5: dur=3.8, repeat = Math.ceil(3.6/3.8) = 1
+  tl.fromTo("#b7-bubble-5", { y: 1200 }, { y: -200, duration: 3.8, ease: "none", repeat: 1 }, 0);
+
+  // ── Layer 3: Logo — slides in from y:-40, fades in, scale 0.9→1.0 at t=0.3 ─
+  tl.fromTo(
+    "#b7-logo-wrap",
+    { opacity: 0, y: -40, scale: 0.9 },
+    { opacity: 1, y: 0, scale: 1.0, duration: 0.55, ease: "power3.out" },
+    0.3
+  );
+
+  // ── Layer 4: Headline line 1 — word stagger, starting t=0.5 ───────────────
+  tl.fromTo("#b7-w0", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.50);
+  tl.fromTo("#b7-w1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.62);
+  tl.fromTo("#b7-w2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.74);
+
+  // ── Layer 5: Headline line 2 — fades up from y:20 at t=0.9 ───────────────
+  tl.fromTo(
+    "#b7-hl2",
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" },
+    0.9
+  );
+
+  // ── Layer 6a: URL typing — 22 characters, 0.06s per char, start t=1.4 ─────
+  // "www.zacleaningteam.com" = indices 0..21
+  for (var ci = 0; ci < 22; ci++) {
+    tl.fromTo(
+      "#b7-c" + ci,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.05, ease: "none" },
+      1.4 + ci * 0.06
+    );
+  }
+  // Last char finishes at: 1.4 + 21*0.06 + 0.05 = 1.4 + 1.26 + 0.05 = 2.71s
+
+  // ── Layer 6b: Cursor — reveal after last char, then blink ───────────────
+  // Last char finishes at 1.4 + 21*0.06 + 0.05 = 2.71s; reveal cursor then.
+  // CSS sets opacity:0; this reveal makes it appear.
+  tl.fromTo("#b7-cursor", { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none" }, 2.71);
+  // Blink from t=3.0: repeat:3, yoyo (opacity 1→0→1→0→1→0→1)
+  tl.fromTo(
+    "#b7-cursor",
+    { opacity: 1 },
+    { opacity: 0, duration: 0.5, repeat: 3, yoyo: true },
+    3.0
+  );
+
+  // ── Layer 10: Accent SVG line — draw under URL at t=3.0 ──────────────────
+  tl.fromTo(
+    "#b7-underline",
+    { strokeDashoffset: 160 },
+    { strokeDashoffset: 0, duration: 0.35, ease: "power2.inOut" },
+    3.0
+  );
+
+  // ── Layer 7: CTA button — scale elastic in at t=1.8, then pulse at t=2.4 ─
+  tl.fromTo(
+    "#b7-cta-btn",
+    { opacity: 0, scale: 0.85 },
+    { opacity: 1, scale: 1.0, duration: 0.7, ease: "elastic.out(1, 0.5)" },
+    1.8
+  );
+  // Pulse: one cycle yoyo, repeat:1 — starts after elastic entrance completes (1.8+0.7=2.5)
+  tl.fromTo(
+    "#b7-cta-btn",
+    { scale: 1.0 },
+    { scale: 1.03, yoyo: true, repeat: 1, duration: 0.7, ease: "sine.inOut" },
+    2.5
+  );
+
+  // ── Layer 8: Phone number — fades in at t=2.2 ────────────────────────────
+  tl.fromTo(
+    "#b7-phone-wrap",
+    { opacity: 0, y: 16 },
+    { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
+    2.2
+  );
+
+  // ── Layer 9: Trust badges — staggered appearance at t=2.5 ────────────────
+  tl.fromTo("#b7-badge-0", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.4)" }, 2.50);
+  tl.fromTo("#b7-badge-1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.4)" }, 2.62);
+  tl.fromTo("#b7-badge-2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.4)" }, 2.74);
+  tl.fromTo("#b7-badge-3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.4)" }, 2.86);
+
+  // ── Final exit: slow zoom on full composition at t=3.2 ────────────────────
+  tl.fromTo(
+    "[data-composition-id='beat-7-cta']",
+    { scale: 1.0 },
+    { scale: 1.04, duration: 0.4, ease: "none" },
+    3.2
+  );
+
+  window.__timelines["beat-7-cta"] = tl;
+    </script>
+  </div>
+</template>

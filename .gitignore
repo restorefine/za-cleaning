@@ -43,3 +43,6 @@ next-env.d.ts
 # claude agent instructions
 CLAUDE.md
 AGENTS.md
+
+# large media
+/videos

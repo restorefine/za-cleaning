@@ -35,8 +35,8 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 h-20 border-b border-slate-200/60 bg-white/90 backdrop-blur-md">
-      <div className="mx-auto max-w-6xl px-6 h-full flex items-center justify-between">
+    <nav className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/90 backdrop-blur-md">
+      <div className="mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <img src="/logo.svg" alt="ZA Cleaning" className="h-20 w-20" />

@@ -11,9 +11,10 @@ const SECTION_LINKS = [
   { label: "About", id: "about" },
   { label: "How It Works", id: "how-it-works" },
   { label: "FAQ", id: "faq" },
-  { label: "Team", id: "team" },
   { label: "Testimonials", id: "testimonials" },
 ];
+
+const PAGE_LINKS = [{ label: "Blog", href: "/blog" }];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -50,6 +51,13 @@ export default function Navbar() {
               </button>
             </li>
           ))}
+          {PAGE_LINKS.map(({ label, href }) => (
+            <li key={label}>
+              <Link href={href} className="relative text-sm font-medium text-slate-700 transition-colors hover:text-accent after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all hover:after:w-full">
+                {label}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         {/* Desktop: phone + CTA */}
@@ -76,6 +84,11 @@ export default function Navbar() {
             <button key={id} onClick={() => scrollToSection(id)} className="text-left text-slate-700 font-medium hover:text-accent transition-colors">
               {label}
             </button>
+          ))}
+          {PAGE_LINKS.map(({ label, href }) => (
+            <Link key={label} href={href} onClick={() => setOpen(false)} className="text-left text-slate-700 font-medium hover:text-accent transition-colors">
+              {label}
+            </Link>
           ))}
           <div className="flex gap-3">
             <a href="tel:07774845901" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-accent hover:text-accent transition-colors">

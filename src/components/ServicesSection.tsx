@@ -56,12 +56,11 @@ export default function ServicesSection() {
       `}</style>
 
       <div className="mx-auto max-w-6xl px-6">
-
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
+        <div id="core-services" className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
           <div>
             <span className="text-xs font-bold text-accent uppercase tracking-widest">{SERVICES_HEADER.eyebrow}</span>
-            <h2 className="text-4xl font-bold text-primary mt-1">{SERVICES_HEADER.headline}</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-primary mt-1 leading-tight tracking-tight">Our <span className="text-accent">Core</span> Services</h2>
           </div>
           <Link href={SERVICES_HEADER.cta.href} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-white font-semibold text-sm hover:bg-accent-light transition-colors shrink-0">
             {SERVICES_HEADER.cta.label}
@@ -70,11 +69,7 @@ export default function ServicesSection() {
         </div>
 
         {/* ── Desktop: expanding image panels ── */}
-        <div
-          className="hidden lg:flex gap-2 rounded-2xl overflow-hidden shadow-lg"
-          style={{ height: "400px" }}
-          onMouseLeave={() => setHovered(0)}
-        >
+        <div className="hidden lg:flex gap-2 rounded-2xl overflow-hidden shadow-lg" style={{ height: "400px" }} onMouseLeave={() => setHovered(0)}>
           {SERVICES.map((s, i) => {
             const isActive = hovered === i;
             return (
@@ -113,28 +108,24 @@ export default function ServicesSection() {
 
         {/* ── Checklist panel ── */}
         <div className="hidden lg:block mt-10">
-
           {/* Big section title */}
           <div className="mb-5">
             <h3 className="text-3xl font-extrabold tracking-tight leading-tight">
-              <span className="text-primary">Comprehensive</span>{" "}
-              <span className="text-accent">Service</span>{" "}
-              <span className="text-slate-400">Checklist</span>
+              <span className="text-primary">Comprehensive</span> <span className="text-accent">Service</span> <span className="text-slate-400">Checklist</span>
             </h3>
             <p className="text-slate-500 text-sm mt-1.5">Everything covered in your selected service, zone by zone.</p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white shadow-[0_2px_16px_rgba(0,0,0,0.04)] overflow-hidden">
-
             {/* Panel header */}
             <div className="flex items-center justify-between px-6 py-3.5 bg-slate-50/80 border-b border-slate-100">
               <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0">
-                  {SERVICE_ICONS[hovered]}
-                </span>
+                <span className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0">{SERVICE_ICONS[hovered]}</span>
                 <div>
                   <p className="text-primary font-bold text-sm leading-tight">{service.title}</p>
-                  <p className="text-slate-400 text-[11px] mt-0.5">{totalItems} checklist items · {service.checklist.length} zones</p>
+                  <p className="text-slate-400 text-[11px] mt-0.5">
+                    {totalItems} checklist items · {service.checklist.length} zones
+                  </p>
                 </div>
               </div>
               <Link href="/contact" className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-accent hover:underline underline-offset-2 transition-colors">
@@ -145,15 +136,10 @@ export default function ServicesSection() {
             {/* Category cards — no scroll, full height */}
             <div key={hovered} className="p-5 grid grid-cols-3 gap-4">
               {service.checklist.map((section) => (
-                <div
-                  key={section.category}
-                  className="checklist-enter card-stagger rounded-xl border border-slate-200 bg-slate-50/60 overflow-hidden"
-                >
+                <div key={section.category} className="checklist-enter card-stagger rounded-xl border border-slate-200 bg-slate-50/60 overflow-hidden">
                   {/* Card header */}
                   <div className="flex items-center gap-3 px-4 pt-4 pb-3">
-                    <span className="w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
-                      {SERVICE_ICONS[hovered]}
-                    </span>
+                    <span className="w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">{SERVICE_ICONS[hovered]}</span>
                     <p className="font-bold text-sm text-primary leading-tight">{section.category}</p>
                   </div>
 
@@ -173,7 +159,6 @@ export default function ServicesSection() {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
 
@@ -202,7 +187,6 @@ export default function ServicesSection() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

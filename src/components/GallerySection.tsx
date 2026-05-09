@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useCallback } from "react";
+import Image from "next/image";
 import { GALLERY_HEADER, GALLERY_ITEMS } from "@/app/data";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -30,20 +31,24 @@ function ComparisonSlider({ before, after, room }: { before: string; after: stri
       onTouchEnd={() => setDragging(false)}
     >
       {/* Before */}
-      <img
+      <Image
         src={before}
         alt={`${room} — before`}
+        fill
         draggable={false}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="object-cover"
+        sizes="(max-width: 1024px) 100vw, 800px"
       />
 
       {/* After — revealed from left */}
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-        <img
+        <Image
           src={after}
           alt={`${room} — after`}
+          fill
           draggable={false}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 800px"
         />
       </div>
 
@@ -190,10 +195,12 @@ export default function GallerySection() {
                     : "opacity-50 hover:opacity-80"
                 }`}
               >
-                <img
+                <Image
                   src={g.after}
                   alt={g.room}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="80px"
                 />
                 {i === activeIdx && (
                   <div className="absolute inset-0 bg-accent/20" />

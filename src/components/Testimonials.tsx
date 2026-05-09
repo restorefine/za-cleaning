@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { TESTIMONIALS, STATS } from "@/app/data";
 import { Users, Clock, CheckCircle2, MapPin, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -57,13 +58,12 @@ export default function Testimonials() {
             
             {/* ── LEFT: Large Image ── */}
             <div className="relative w-full aspect-square max-w-lg mx-auto lg:mx-0 lg:max-w-none shadow-2xl rounded-[2.5rem] overflow-hidden bg-slate-200">
-              <img 
-                src="/images/hero.png" 
-                alt="Pristine interior showcasing curated living" 
-                className="absolute inset-0 w-full h-full object-cover"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop";
-                }}
+              <Image
+                src="/images/hero.png"
+                alt="Professional cleaning result — spotless interior"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 45vw"
               />
             </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import "leaflet/dist/leaflet.css";
 
 // ── Hub area coordinates ──────────────────────────────────────
 const GLASGOW_PINS: { name: string; lat: number; lng: number }[] = [
@@ -98,11 +99,6 @@ export default function CoverageMap() {
         .addTo(map);
     });
 
-    // Load Leaflet CSS
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
-    document.head.appendChild(link);
   }, []);
 
   return (

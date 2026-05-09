@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { HERO_CONTENT } from "@/app/data";
 
 /* ── Pre-defined bubble positions to avoid SSR/client hydration mismatch ── */
@@ -52,7 +53,7 @@ export default function Hero() {
 
       {/* ── Background image + overlays ── */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <img src="/images/hero.png" alt="" aria-hidden="true" className="w-full h-full object-cover object-center" />
+        <Image src="/images/hero.png" alt="" aria-hidden={true} fill priority sizes="100vw" quality={80} className="object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/92 via-slate-900/70 to-slate-900/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" />
 

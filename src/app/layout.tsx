@@ -153,6 +153,15 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Preload the hero LCP image using the exact URLs next/image will request */}
+        <link
+          rel="preload"
+          as="image"
+          href="/_next/image?url=%2Fimages%2Fhero.png&w=828&q=80"
+          imageSrcSet="/_next/image?url=%2Fimages%2Fhero.png&w=640&q=80 640w,/_next/image?url=%2Fimages%2Fhero.png&w=750&q=80 750w,/_next/image?url=%2Fimages%2Fhero.png&w=828&q=80 828w,/_next/image?url=%2Fimages%2Fhero.png&w=1080&q=80 1080w,/_next/image?url=%2Fimages%2Fhero.png&w=1200&q=80 1200w,/_next/image?url=%2Fimages%2Fhero.png&w=1920&q=80 1920w"
+          imageSizes="100vw"
+          fetchPriority="high"
+        />
       </head>
       <body>
         <Navbar />

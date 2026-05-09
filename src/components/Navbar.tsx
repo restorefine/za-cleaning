@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Phone, Menu, X } from "lucide-react";
 
@@ -39,7 +40,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <img src="/logo.svg" alt="ZA Cleaning" className="h-20 w-20" />
+          <Image src="/logo.svg" alt="ZA Cleaning" width={80} height={80} className="h-20 w-20" unoptimized />
         </Link>
 
         {/* Desktop links */}

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { FOOTER_CONTENT, FOOTER_SERVICES, FOOTER_QUICK_LINKS } from "@/app/data";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
@@ -26,7 +27,7 @@ export default function Footer() {
           {/* Column 1: Brand */}
           <div className="flex flex-col">
             <Link href="/" className="flex items-center gap-3 mb-5">
-              <img src="/logo.svg" alt="ZA Cleaning" className="h-40 w-40" />
+              <Image src="/logo.svg" alt="ZA Cleaning" width={160} height={160} className="h-40 w-40" unoptimized />
             </Link>
             <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-xs">{FOOTER_CONTENT.tagline}</p>
           </div>

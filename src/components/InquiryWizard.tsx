@@ -39,6 +39,8 @@ export interface InquiryAnswers {
   // Other standalone service fields
   carpetItems?: string;
   area?: string;
+  areaSize?: string;
+  additionalInfo?: string;
   premisesType?: string;
   // Date
   preferredDate?: string;
@@ -49,12 +51,13 @@ interface Props {
 }
 
 // ── Step shape ────────────────────────────────────────────────
-type StepKind = "single" | "multi" | "date";
+type StepKind = "single" | "multi" | "date" | "text" | "textarea";
 
 interface Step {
   id: keyof InquiryAnswers;
   question: string;
   subtitle?: string;
+  placeholder?: string;
   kind: StepKind;
   options: readonly string[];
   icon: React.ReactNode;
@@ -249,7 +252,7 @@ const PRESSURE_WASH_SURFACES_STEP: Step = {
   id: "pressureWashSurfaces",
   question: "What do you need pressure washed?",
   kind: "multi",
-  options: ["Balcony", "Decks", "Driveway", "Fences", "Garden", "House Siding", "Pavement", "Patio", "Walls", "Other"],
+  options: ["Patio", "Driveway", "Garden", "Balcony", "Fences", "Decks", "Pavement", "House Siding", "Walls", "Other"],
   icon: Icon.area,
 };
 
@@ -360,6 +363,25 @@ const AREA_STEP: Step = {
   icon: Icon.area,
 };
 
+const AREA_SIZE_STEP: Step = {
+  id: "areaSize",
+  question: "Roughly, what is the area size you need pressure washed?",
+  placeholder: "e.g. 30 square meters",
+  kind: "text",
+  options: [],
+  icon: Icon.area,
+};
+
+const ADDITIONAL_INFO_STEP: Step = {
+  id: "additionalInfo",
+  question: "Any additional information?",
+  subtitle: "Feel free to share any extra details about the job.",
+  placeholder: "e.g. Access notes, specific areas, special requirements…",
+  kind: "textarea",
+  options: [],
+  icon: Icon.addons,
+};
+
 const PREMISES_STEP: Step = {
   id: "premisesType",
   question: "What type of commercial premises?",
@@ -374,7 +396,6 @@ const DOMESTIC_SERVICES = new Set([
   "Deep Cleaning",
   "After Builders",
   "Appliances Cleaning",
-  "Pressure Washing",
   "Other",
 ]);
 
@@ -418,7 +439,7 @@ function getDomesticSteps(answers: Partial<InquiryAnswers>): Step[] {
 const STATIC_SERVICE_FLOW: Record<string, Step[]> = {
   "Carpet & Upholstery": [CARPETED_AREAS_STEP, RUG_COUNT_STEP, UPHOLSTERY_ITEMS_STEP, STAIRS_HALLWAYS_STEP, DATE_STEP],
   "Appliances Cleaning": [APPLIANCES_STEP, DATE_STEP],
-  "Pressure Washing":    [PRESSURE_WASH_SURFACES_STEP, AREA_STEP, DATE_STEP],
+  "Pressure Washing":    [PRESSURE_WASH_SURFACES_STEP, AREA_SIZE_STEP, OTHER_SERVICES_STEP, ADDITIONAL_INFO_STEP, DATE_STEP],
   "Commercial Cleaning": [PREMISES_STEP, DATE_STEP],
   "Other":               [DATE_STEP],
 };
@@ -614,6 +635,52 @@ export default function InquiryWizard({ onComplete }: Props) {
             </>
           );
         })()}
+
+        {/* Free text input */}
+        {step.kind === "text" && (
+          <div className="flex flex-col gap-4">
+            <input
+              type="text"
+              value={customInput}
+              onChange={(e) => setCustomInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && customInput.trim() && choose(customInput.trim())}
+              placeholder={step.placeholder ?? "Type your answer…"}
+              className="w-full bg-[#F3F4F6] rounded-2xl px-5 py-4 text-base text-slate-800 placeholder-slate-400 outline-none border-2 border-transparent focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all"
+            />
+            <button
+              onClick={() => customInput.trim() && choose(customInput.trim())}
+              disabled={!customInput.trim()}
+              className="w-full bg-accent text-white font-bold text-sm py-4 rounded-xl hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20 transition-all active:scale-[0.98] disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              Continue →
+            </button>
+            <button
+              onClick={() => choose("Not sure")}
+              className="text-sm text-slate-400 hover:text-accent transition-colors text-center"
+            >
+              Not sure — skip this
+            </button>
+          </div>
+        )}
+
+        {/* Textarea input */}
+        {step.kind === "textarea" && (
+          <div className="flex flex-col gap-4">
+            <textarea
+              value={customInput}
+              onChange={(e) => setCustomInput(e.target.value)}
+              placeholder={step.placeholder ?? "Add any extra details…"}
+              rows={5}
+              className="w-full bg-[#F3F4F6] rounded-2xl px-5 py-4 text-base text-slate-800 placeholder-slate-400 outline-none border-2 border-transparent focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all resize-none"
+            />
+            <button
+              onClick={() => advance({ ...answers, [step.id]: customInput.trim() || "None" })}
+              className="w-full bg-accent text-white font-bold text-sm py-4 rounded-xl hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20 transition-all active:scale-[0.98]"
+            >
+              {customInput.trim() ? "Continue →" : "Skip →"}
+            </button>
+          </div>
+        )}
 
         {/* Date picker */}
         {step.kind === "date" && (

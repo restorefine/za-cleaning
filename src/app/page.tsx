@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import ServicesSection from "@/components/ServicesSection";
@@ -8,9 +7,8 @@ import AboutSection from "@/components/AboutSection";
 import FAQSection from "@/components/FAQSection";
 import Testimonials from "@/components/Testimonials";
 import HowItWorks from "@/components/HowItWorks";
-
-const GallerySection = dynamic(() => import("@/components/GallerySection"), { ssr: false });
-const CoverageSection = dynamic(() => import("@/components/CoverageSection"), { ssr: false });
+import GallerySection from "@/components/GallerySectionDynamic";
+import CoverageSection from "@/components/CoverageSectionDynamic";
 
 export default function Home() {
   return (

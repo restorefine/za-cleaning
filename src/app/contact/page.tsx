@@ -28,6 +28,8 @@ const INQUIRY_LABELS: Partial<Record<keyof InquiryAnswers, string>> = {
   stairsHallways: "Stairs / Hallways",
   carpetItems: "Items",
   area: "Area Size",
+  areaSize: "Area Size",
+  additionalInfo: "Additional Info",
   premisesType: "Premises",
   preferredDate: "When",
 };

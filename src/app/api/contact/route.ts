@@ -30,6 +30,8 @@ const INQUIRY_LABELS: Record<string, string> = {
   stairsHallways:        "Stairs / Hallways",
   carpetItems:           "Items",
   area:                  "Area Size",
+  areaSize:              "Area Size",
+  additionalInfo:        "Additional Info",
   premisesType:          "Premises",
   preferredDate:         "Preferred Date",
 };

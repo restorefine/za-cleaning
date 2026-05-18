@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { SERVICES, SERVICES_HEADER } from "@/app/data";
-import { Home, Sparkles, Wrench, UtensilsCrossed, LayoutGrid, Smile, ArrowRight, Check } from "lucide-react";
+import { Home, Sparkles, Wrench, UtensilsCrossed, LayoutGrid, Smile, ArrowRight, Check, ShieldCheck } from "lucide-react";
 
 const SERVICE_ICONS = [
   <Wrench key="builders" className="w-5 h-5" />,
@@ -100,6 +100,23 @@ export default function ServicesSection() {
                     <h3 className="font-bold text-lg text-white leading-tight">{s.title}</h3>
                   </div>
                   <p className="text-white/65 text-xs leading-relaxed line-clamp-2">{s.desc}</p>
+
+                  {/* Money Back badge — End of Tenancy only */}
+                  {i === 0 && (
+                    <div className="mt-3 flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-3.5 py-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
+                        <ShieldCheck className="w-4 h-4 text-white" strokeWidth={2.2} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-white text-xs font-extrabold leading-tight">100% Money Back Guaranteed</p>
+                        <p className="text-white/60 text-[0.65rem] mt-0.5">Full refund, no questions asked.</p>
+                      </div>
+                      <div className="text-center shrink-0">
+                        <span className="text-white font-black text-base leading-none block">100%</span>
+                        <span className="text-white/50 text-[0.55rem] font-bold uppercase tracking-widest -mt-0.5 block">Refund</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -118,6 +135,7 @@ export default function ServicesSection() {
 
           <div className="rounded-2xl border border-slate-200 bg-white shadow-[0_2px_16px_rgba(0,0,0,0.04)] overflow-hidden">
             {/* Panel header */}
+            {/* Panel header */}
             <div className="flex items-center justify-between px-6 py-3.5 bg-slate-50/80 border-b border-slate-100">
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0">{SERVICE_ICONS[hovered]}</span>
@@ -128,10 +146,29 @@ export default function ServicesSection() {
                   </p>
                 </div>
               </div>
-              <Link href="/contact" className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-accent hover:underline underline-offset-2 transition-colors">
-                Book this service <ArrowRight className="w-3 h-3" />
+              <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-white shadow-md shadow-accent/30 transition-all hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-lg">
+                Book this service <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
+
+            {/* Money Back banner — End of Tenancy only */}
+            {hovered === 0 && (
+              <div className="relative flex items-center gap-5 px-6 py-4 bg-accent overflow-hidden border-b border-accent">
+                <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/10 to-white/0 pointer-events-none" />
+                <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/25 flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-5 h-5 text-white" strokeWidth={2.2} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-white/75 text-[0.6rem] font-bold uppercase tracking-widest">Our Promise</p>
+                  <p className="text-white text-base font-extrabold leading-tight tracking-tight">100% Money Back Guaranteed</p>
+                  <p className="text-white/70 text-xs mt-0.5">Not happy? We refund every penny, no questions asked.</p>
+                </div>
+                <div className="border-l border-white/20 pl-5 text-center shrink-0">
+                  <span className="text-3xl font-black text-white leading-none">100%</span>
+                  <p className="text-white/55 text-[0.6rem] font-bold uppercase tracking-widest mt-0.5">Refund</p>
+                </div>
+              </div>
+            )}
 
             {/* Category cards — no scroll, full height */}
             <div key={hovered} className="p-5 grid grid-cols-3 gap-4">

@@ -2,6 +2,7 @@
 
 import React, { useRef, useCallback } from 'react';
 import Link from 'next/link';
+import { ShieldCheck } from 'lucide-react';
 
 const SERVICES = [
   {
@@ -104,6 +105,23 @@ function SvcCard({
           {service.desc}
         </p>
 
+        {/* Money Back badge — featured card only */}
+        {service.featured && (
+          <div className="mt-5 inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 self-start">
+            <div className="w-7 h-7 rounded-lg bg-accent/20 border border-accent/30 flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-4 h-4 text-white" strokeWidth={2.2} />
+            </div>
+            <div className="text-left">
+              <p className="text-white text-xs font-extrabold leading-tight">100% Money Back Guaranteed</p>
+              <p className="text-white/45 text-[0.65rem] mt-0.5">Full refund, no questions asked.</p>
+            </div>
+            <div className="border-l border-white/10 pl-3 ml-1 text-center shrink-0">
+              <span className="text-lg font-black text-white leading-none">100%</span>
+              <p className="text-white/40 text-[0.55rem] font-bold uppercase tracking-widest">Refund</p>
+            </div>
+          </div>
+        )}
+
         {/* CTA for featured or wide */}
         {(service.featured || service.wide) && (
           <div className="mt-auto pt-6">
@@ -174,7 +192,7 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
           {/* Row 1 */}
-          <SvcCard service={SERVICES[0]} className="md:col-span-2 min-h-[280px]" delay={0} />
+          <SvcCard service={SERVICES[0]} className="md:col-span-2 min-h-[340px]" delay={0} />
           <SvcCard service={SERVICES[1]} className="min-h-[280px]"               delay={80} />
 
           {/* Row 2 */}

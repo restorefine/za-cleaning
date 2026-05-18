@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { ShieldCheck } from "lucide-react";
 import { HERO_CONTENT } from "@/app/data";
 
 /* ── Pre-defined bubble positions to avoid SSR/client hydration mismatch ── */
@@ -77,16 +78,19 @@ export default function Hero() {
       {/* ── Main content ── */}
       <div className="relative z-10 flex-1 flex items-center">
         <div className="mx-auto max-w-4xl w-full px-6 py-16 lg:py-20 text-center flex flex-col items-center">
-          {/* Eyebrow badge */}
-          <div className="h-badge inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 backdrop-blur-sm px-4 py-1.5 mb-7">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-accent-light shrink-0">
-              <path
-                fillRule="evenodd"
-                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-blue-100">{HERO_CONTENT.badge}</span>
+          {/* Money Back guarantee strip */}
+          <div className="h-badge inline-flex items-center gap-4 rounded-2xl border border-white/15 bg-white/8 backdrop-blur-sm px-5 py-3.5 mb-7">
+            <div className="w-10 h-10 rounded-xl bg-accent/30 border border-accent/40 flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-5 h-5 text-white" strokeWidth={2.2} />
+            </div>
+            <div className="text-left">
+              <p className="text-white text-sm font-extrabold leading-tight tracking-tight">100% Money Back Guaranteed</p>
+              <p className="text-white/55 text-xs mt-0.5">Full refund on every job, no questions asked.</p>
+            </div>
+            <div className="border-l border-white/15 pl-4 ml-1 text-center shrink-0">
+              <span className="text-2xl font-black text-white leading-none">100%</span>
+              <p className="text-white/50 text-[0.6rem] font-bold uppercase tracking-widest">Refund</p>
+            </div>
           </div>
 
           {/* Headline */}
@@ -100,7 +104,7 @@ export default function Hero() {
           <p className="h-sub text-white/70 text-base md:text-[1.05rem] leading-relaxed mb-8 max-w-md">{HERO_CONTENT.subtitle}</p>
 
           {/* CTA row */}
-          <div className="h-ctas flex flex-wrap items-center justify-center gap-3 mb-6">
+          <div className="h-ctas flex flex-wrap items-center justify-center gap-3">
             <Link href={HERO_CONTENT.ctaPrimary.href} className="inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent/35 transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-xl hover:shadow-accent/45">
               {HERO_CONTENT.ctaPrimary.label}
               <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
@@ -129,8 +133,6 @@ export default function Hero() {
               {HERO_CONTENT.ctaPhone.label}
             </a>
           </div>
-
-          {/* Trust strip */}
         </div>
       </div>
     </section>

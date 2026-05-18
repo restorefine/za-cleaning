@@ -57,23 +57,53 @@ export default function AboutSection() {
             <p className="text-slate-500 text-base leading-relaxed mb-7 max-w-md">{ABOUT_CONTENT.description}</p>
 
             {/* Why Choose Us */}
-            <div className="grid grid-cols-2 gap-3 mb-8">
-              {[
-                { icon: ShieldCheck, title: "100% Satisfaction Guaranteed", desc: "Deposit-back guarantee on every job, no exceptions." },
-                { icon: CheckCircle2, title: "Fully Insured & Vetted", desc: "DBS-checked, trained professionals you can trust." },
-                { icon: Users, title: "Supplies Always Included", desc: "We bring all equipment and cleaning products." },
-                { icon: Clock, title: "Available 7 Days", desc: "Last-minute bookings welcome, subject to availability." },
-              ].map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/60 p-4 hover:border-accent/20 hover:bg-accent/[0.03] transition-colors">
-                  <div className="w-10 h-10 rounded-xl bg-accent/8 flex items-center justify-center text-accent shrink-0">
-                    <Icon className="w-5 h-5" />
+            <div className="flex flex-col gap-3 mb-8">
+              {/* Money Back — full-width hero card */}
+              <div className="relative rounded-2xl bg-accent overflow-hidden shadow-xl shadow-accent/30">
+                {/* top stripe */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-white/0 via-white/40 to-white/0" />
+                {/* faint radial glow behind the 100% number */}
+                <div className="absolute -right-6 -top-6 w-44 h-44 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+
+                <div className="relative flex items-center gap-0 px-6 py-5">
+                  {/* left: icon + text */}
+                  <div className="flex items-center gap-4 flex-1 min-w-0">
+                    <div className="w-14 h-14 rounded-2xl bg-white/20 border border-white/25 flex items-center justify-center shrink-0">
+                      <ShieldCheck className="w-7 h-7 text-white" strokeWidth={2.2} />
+                    </div>
+                    <div>
+                      <p className="text-white/70 text-[0.65rem] font-bold uppercase tracking-[0.18em] mb-0.5">Our Promise</p>
+                      <p className="text-white text-lg sm:text-xl font-extrabold leading-tight tracking-tight">Money Back Guaranteed</p>
+                      <p className="text-white/70 text-xs sm:text-sm leading-relaxed mt-1 max-w-xs">Not happy? We refund every penny, no questions asked.</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-slate-900 text-sm font-bold leading-tight mb-1">{title}</p>
-                    <p className="text-slate-500 text-xs leading-relaxed">{desc}</p>
+
+                  {/* right: big 100% stamp */}
+                  <div className="shrink-0 flex flex-col items-center justify-center w-24 border-l border-white/20 pl-5 pr-5 ml-4">
+                    <span className="text-4xl font-black text-white leading-none tracking-tighter">100%</span>
+                    <span className="text-white/60 text-[0.6rem] font-bold uppercase tracking-widest mt-0.5 text-center">refund</span>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Remaining three cards */}
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { icon: CheckCircle2, title: "Fully Insured & Vetted", desc: "DBS-checked, trained professionals you can trust." },
+                  { icon: Users, title: "Supplies Always Included", desc: "We bring all equipment and cleaning products." },
+                  { icon: Clock, title: "Available 7 Days", desc: "Last-minute bookings welcome, subject to availability." },
+                ].map(({ icon: Icon, title, desc }) => (
+                  <div key={title} className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/60 p-4 hover:border-accent/20 hover:bg-accent/3 transition-colors">
+                    <div className="w-9 h-9 rounded-xl bg-accent/8 flex items-center justify-center text-accent shrink-0">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-slate-900 text-xs font-bold leading-tight mb-1">{title}</p>
+                      <p className="text-slate-500 text-xs leading-relaxed">{desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Helpline + CTA row */}

@@ -84,12 +84,12 @@ export default function Hero() {
               <ShieldCheck className="w-5 h-5 text-white" strokeWidth={2.2} />
             </div>
             <div className="text-left">
-              <p className="text-white text-sm font-extrabold leading-tight tracking-tight">100% Money Back Guaranteed</p>
-              <p className="text-white/55 text-xs mt-0.5">Full refund on every job, no questions asked.</p>
+              <p className="text-white text-sm font-extrabold leading-tight tracking-tight">100% Deposit Back Guaranteed</p>
+              <p className="text-white/55 text-xs mt-0.5">We help secure your full deposit back from your landlord.</p>
             </div>
             <div className="border-l border-white/15 pl-4 ml-1 text-center shrink-0">
               <span className="text-2xl font-black text-white leading-none">100%</span>
-              <p className="text-white/50 text-[0.6rem] font-bold uppercase tracking-widest">Refund</p>
+              <p className="text-white/50 text-[0.6rem] font-bold uppercase tracking-widest">Deposit</p>
             </div>
           </div>
 

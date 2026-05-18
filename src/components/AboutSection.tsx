@@ -73,8 +73,8 @@ export default function AboutSection() {
                     </div>
                     <div>
                       <p className="text-white/70 text-[0.65rem] font-bold uppercase tracking-[0.18em] mb-0.5">Our Promise</p>
-                      <p className="text-white text-lg sm:text-xl font-extrabold leading-tight tracking-tight">Money Back Guaranteed</p>
-                      <p className="text-white/70 text-xs sm:text-sm leading-relaxed mt-1 max-w-xs">Not happy? We refund every penny, no questions asked.</p>
+                      <p className="text-white text-lg sm:text-xl font-extrabold leading-tight tracking-tight">Deposit Back Guaranteed</p>
+                      <p className="text-white/70 text-xs sm:text-sm leading-relaxed mt-1 max-w-xs">We help secure your full deposit back from your landlord, guaranteed.</p>
                     </div>
                   </div>
 

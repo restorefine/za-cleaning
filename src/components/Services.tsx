@@ -112,12 +112,12 @@ function SvcCard({
               <ShieldCheck className="w-4 h-4 text-white" strokeWidth={2.2} />
             </div>
             <div className="text-left">
-              <p className="text-white text-xs font-extrabold leading-tight">100% Money Back Guaranteed</p>
-              <p className="text-white/45 text-[0.65rem] mt-0.5">Full refund, no questions asked.</p>
+              <p className="text-white text-xs font-extrabold leading-tight">100% Deposit Back Guaranteed</p>
+              <p className="text-white/45 text-[0.65rem] mt-0.5">We help secure your full deposit back from your landlord.</p>
             </div>
             <div className="border-l border-white/10 pl-3 ml-1 text-center shrink-0">
               <span className="text-lg font-black text-white leading-none">100%</span>
-              <p className="text-white/40 text-[0.55rem] font-bold uppercase tracking-widest">Refund</p>
+              <p className="text-white/40 text-[0.55rem] font-bold uppercase tracking-widest">Deposit</p>
             </div>
           </div>
         )}

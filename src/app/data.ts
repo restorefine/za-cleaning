@@ -6,7 +6,7 @@
 
 // ── Hero ──────────────────────────────────────────────────────
 export const HERO_CONTENT = {
-  badge: "100% Satisfaction Guaranteed",
+  badge: "100% Deposit Back Guaranteed",
   location: "Glasgow • Edinburgh • Stirling • Falkirk",
   headlineLine1: "ZA",
   headlineAccent: "Cleaning",

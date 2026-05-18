@@ -108,12 +108,12 @@ export default function ServicesSection() {
                         <ShieldCheck className="w-4 h-4 text-white" strokeWidth={2.2} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-white text-xs font-extrabold leading-tight">100% Money Back Guaranteed</p>
-                        <p className="text-white/60 text-[0.65rem] mt-0.5">Full refund, no questions asked.</p>
+                        <p className="text-white text-xs font-extrabold leading-tight">100% Deposit Back Guaranteed</p>
+                        <p className="text-white/60 text-[0.65rem] mt-0.5">We help secure your full deposit back from your landlord.</p>
                       </div>
                       <div className="text-center shrink-0">
                         <span className="text-white font-black text-base leading-none block">100%</span>
-                        <span className="text-white/50 text-[0.55rem] font-bold uppercase tracking-widest -mt-0.5 block">Refund</span>
+                        <span className="text-white/50 text-[0.55rem] font-bold uppercase tracking-widest -mt-0.5 block">Deposit</span>
                       </div>
                     </div>
                   )}
@@ -160,12 +160,12 @@ export default function ServicesSection() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-white/75 text-[0.6rem] font-bold uppercase tracking-widest">Our Promise</p>
-                  <p className="text-white text-base font-extrabold leading-tight tracking-tight">100% Money Back Guaranteed</p>
-                  <p className="text-white/70 text-xs mt-0.5">Not happy? We refund every penny, no questions asked.</p>
+                  <p className="text-white text-base font-extrabold leading-tight tracking-tight">100% Deposit Back Guaranteed</p>
+                  <p className="text-white/70 text-xs mt-0.5">We help secure your full deposit back from your landlord.</p>
                 </div>
                 <div className="border-l border-white/20 pl-5 text-center shrink-0">
                   <span className="text-3xl font-black text-white leading-none">100%</span>
-                  <p className="text-white/55 text-[0.6rem] font-bold uppercase tracking-widest mt-0.5">Refund</p>
+                  <p className="text-white/55 text-[0.6rem] font-bold uppercase tracking-widest mt-0.5">Deposit</p>
                 </div>
               </div>
             )}
@@ -227,12 +227,12 @@ export default function ServicesSection() {
                       <ShieldCheck className="w-4 h-4 text-white" strokeWidth={2.2} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-white text-xs font-extrabold leading-tight">100% Money Back Guaranteed</p>
-                      <p className="text-white/70 text-[0.65rem] mt-0.5">Full refund, no questions asked.</p>
+                      <p className="text-white text-xs font-extrabold leading-tight">100% Deposit Back Guaranteed</p>
+                      <p className="text-white/70 text-[0.65rem] mt-0.5">We help secure your full deposit back from your landlord.</p>
                     </div>
                     <div className="text-center shrink-0 border-l border-white/20 pl-3">
                       <span className="text-white font-black text-sm leading-none block">100%</span>
-                      <span className="text-white/55 text-[0.5rem] font-bold uppercase tracking-widest -mt-0.5 block">Refund</span>
+                      <span className="text-white/55 text-[0.5rem] font-bold uppercase tracking-widest -mt-0.5 block">Deposit</span>
                     </div>
                   </div>
                 )}

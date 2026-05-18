@@ -201,7 +201,7 @@ export default function ServicesSection() {
 
         {/* ── Mobile cards ── */}
         <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-5 mt-6">
-          {SERVICES.map((s) => (
+          {SERVICES.map((s, i) => (
             <div key={s.title} className="rounded-2xl overflow-hidden shadow-md border border-slate-100 bg-white">
               <div className="relative h-44">
                 <Image src={s.image} alt={s.title} fill className="object-cover" />
@@ -220,6 +220,22 @@ export default function ServicesSection() {
                     </li>
                   ))}
                 </ul>
+                {i === 0 && (
+                  <div className="mt-3 relative flex items-center gap-3 rounded-xl bg-accent px-4 py-3 overflow-hidden">
+                    <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/10 to-white/0 pointer-events-none" />
+                    <div className="w-8 h-8 rounded-lg bg-white/20 border border-white/25 flex items-center justify-center shrink-0">
+                      <ShieldCheck className="w-4 h-4 text-white" strokeWidth={2.2} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white text-xs font-extrabold leading-tight">100% Money Back Guaranteed</p>
+                      <p className="text-white/70 text-[0.65rem] mt-0.5">Full refund, no questions asked.</p>
+                    </div>
+                    <div className="text-center shrink-0 border-l border-white/20 pl-3">
+                      <span className="text-white font-black text-sm leading-none block">100%</span>
+                      <span className="text-white/55 text-[0.5rem] font-bold uppercase tracking-widest -mt-0.5 block">Refund</span>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}

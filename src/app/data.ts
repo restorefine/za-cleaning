@@ -559,6 +559,7 @@ export const FOOTER_QUICK_LINKS: { label: string; href?: string; section?: strin
   { label: "FAQ", section: "faq" },
   { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
+  { label: "Terms & Conditions", href: "/terms-and-condition" },
 ];
 
 export const FOOTER_NAV: { label: string; href: string }[] = [

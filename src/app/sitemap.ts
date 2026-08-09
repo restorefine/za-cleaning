@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/terms-and-condition`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "yearly" as const,
+      priority: 0.4,
+    },
+    {
       url: `${BASE_URL}/blog`,
       lastModified: LAST_UPDATED,
       changeFrequency: "weekly" as const,

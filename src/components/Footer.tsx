@@ -132,8 +132,8 @@ export default function Footer() {
             <Link href="/privacy" className="hover:text-accent transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-accent transition-colors">
-              Terms of Service
+            <Link href="/terms-and-condition" className="hover:text-accent transition-colors">
+              Terms &amp; Conditions
             </Link>
             <Link href="/accessibility" className="hover:text-accent transition-colors">
               Accessibility

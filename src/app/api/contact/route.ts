@@ -49,7 +49,7 @@ function adminHtml(body: Record<string, unknown>): string {
 
   return `<!DOCTYPE html><html><body style="font-family:sans-serif;color:#1e293b;max-width:600px;margin:0 auto;padding:24px">
   <h2 style="color:#2563eb;margin-bottom:4px">New Cleaning Enquiry</h2>
-  <p style="color:#64748b;margin-top:0">Submitted via zacleaning.co.uk</p>
+  <p style="color:#64748b;margin-top:0">Submitted via zacleaningteam.com</p>
 
   <h3 style="border-bottom:2px solid #e2e8f0;padding-bottom:8px">Contact Details</h3>
   <table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%">

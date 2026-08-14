@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Phone, Menu, X } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const SECTION_LINKS = [
   { label: "Services", id: "services" },
@@ -63,11 +64,19 @@ export default function Navbar() {
 
         {/* Desktop: phone + CTA */}
         <div className="hidden lg:flex items-center gap-4">
-          <a href="tel:07774845901" className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-accent transition-colors">
+          <a
+            href="tel:07774845901"
+            className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-accent transition-colors"
+            onClick={() => trackEvent("phone_click", { link_location: "navbar_desktop" })}
+          >
             <Phone className="w-4 h-4 text-accent shrink-0" />
             07774 845901
           </a>
-          <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-md">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-md"
+            onClick={() => trackEvent("quote_click", { link_location: "navbar_desktop", label: "Get a Free Quote" })}
+          >
             Get a Free Quote
           </Link>
         </div>
@@ -92,11 +101,19 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="flex gap-3">
-            <a href="tel:07774845901" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-accent hover:text-accent transition-colors">
+            <a
+              href="tel:07774845901"
+              className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-accent hover:text-accent transition-colors"
+              onClick={() => trackEvent("phone_click", { link_location: "navbar_mobile" })}
+            >
               <Phone className="w-4 h-4 text-accent" />
               Call Us
             </a>
-            <Link href="/contact" onClick={() => setOpen(false)} className="flex-1 inline-flex items-center justify-center rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-light transition-colors">
+            <Link
+              href="/contact"
+              onClick={() => { setOpen(false); trackEvent("quote_click", { link_location: "navbar_mobile", label: "Get Quote" }); }}
+              className="flex-1 inline-flex items-center justify-center rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-light transition-colors"
+            >
               Get Quote
             </Link>
           </div>

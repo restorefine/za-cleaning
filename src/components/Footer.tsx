@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { FOOTER_CONTENT, FOOTER_SERVICES, FOOTER_QUICK_LINKS } from "@/app/data";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Footer() {
   const router = useRouter();
@@ -74,7 +75,11 @@ export default function Footer() {
                 <div className="w-8 h-8 rounded-full bg-accent/8 flex items-center justify-center shrink-0 mt-0.5">
                   <Phone className="w-3.5 h-3.5 text-accent" />
                 </div>
-                <a href={`tel:${FOOTER_CONTENT.phone}`} className="text-sm text-slate-600 hover:text-accent transition-colors leading-snug font-medium">
+                <a
+                  href={`tel:${FOOTER_CONTENT.phone}`}
+                  className="text-sm text-slate-600 hover:text-accent transition-colors leading-snug font-medium"
+                  onClick={() => trackEvent("phone_click", { link_location: "footer" })}
+                >
                   {FOOTER_CONTENT.phone}
                 </a>
               </li>

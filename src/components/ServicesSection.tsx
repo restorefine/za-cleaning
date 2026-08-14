@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { SERVICES, SERVICES_HEADER } from "@/app/data";
 import { Home, Sparkles, Wrench, UtensilsCrossed, LayoutGrid, Smile, ArrowRight, Check, ShieldCheck } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const SERVICE_ICONS = [
   <Wrench key="builders" className="w-5 h-5" />,
@@ -62,7 +63,11 @@ export default function ServicesSection() {
             <span className="text-xs font-bold text-accent uppercase tracking-widest">{SERVICES_HEADER.eyebrow}</span>
             <h2 className="text-4xl sm:text-5xl font-extrabold text-primary mt-1 leading-tight tracking-tight">Our <span className="text-accent">Core</span> Services</h2>
           </div>
-          <Link href={SERVICES_HEADER.cta.href} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-white font-semibold text-sm hover:bg-accent-light transition-colors shrink-0">
+          <Link
+            href={SERVICES_HEADER.cta.href}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-white font-semibold text-sm hover:bg-accent-light transition-colors shrink-0"
+            onClick={() => trackEvent("quote_click", { link_location: "services_section_header", label: SERVICES_HEADER.cta.label })}
+          >
             {SERVICES_HEADER.cta.label}
             <ArrowRight className="w-4 h-4" />
           </Link>
@@ -146,7 +151,11 @@ export default function ServicesSection() {
                   </p>
                 </div>
               </div>
-              <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-white shadow-md shadow-accent/30 transition-all hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-lg">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-white shadow-md shadow-accent/30 transition-all hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-lg"
+                onClick={() => trackEvent("quote_click", { link_location: "services_checklist_panel", label: "Book this service" })}
+              >
                 Book this service <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

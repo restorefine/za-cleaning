@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ABOUT_CONTENT } from "@/app/data";
 import { Sparkles, Phone, ArrowRight, ShieldCheck, CheckCircle2, Clock, Users } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export default function AboutSection() {
   return (
@@ -118,7 +121,11 @@ export default function AboutSection() {
                 </div>
               </div>
 
-              <Link href={ABOUT_CONTENT.cta.href} className="inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent/30 transition-all hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-xl">
+              <Link
+                href={ABOUT_CONTENT.cta.href}
+                className="inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent/30 transition-all hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-xl"
+                onClick={() => trackEvent("quote_click", { link_location: "about_section", label: ABOUT_CONTENT.cta.label })}
+              >
                 {ABOUT_CONTENT.cta.label}
                 <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
                   <ArrowRight className="w-3 h-3" />

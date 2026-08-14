@@ -4,6 +4,7 @@ import { useEffect, useRef, useCallback, useState } from "react";
 import Link from "next/link";
 import { HOW_IT_WORKS_HEADER, STEPS } from "@/app/data";
 import { CalendarDays, Wrench, CheckCircle2 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 /* ── Step icons — indexed to match STEPS in data.ts ── */
 const STEP_ICONS = [
@@ -129,6 +130,7 @@ export default function HowItWorks() {
                 ? "border-accent bg-accent text-white shadow-lg shadow-accent/35"
                 : "border-accent text-accent hover:bg-accent hover:text-white"
             }`}
+            onClick={() => trackEvent("quote_click", { link_location: "how_it_works", label: HOW_IT_WORKS_HEADER.cta.label })}
           >
             {HOW_IT_WORKS_HEADER.cta.label}
           </Link>

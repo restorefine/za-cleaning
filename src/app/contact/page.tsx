@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { CheckCircle2, Phone, MapPin, Clock } from "lucide-react";
 import InquiryWizard, { InquiryAnswers } from "@/components/InquiryWizard";
+import { trackEvent } from "@/lib/analytics";
 
 const INQUIRY_LABELS: Partial<Record<keyof InquiryAnswers, string>> = {
   serviceType: "Service",
@@ -75,6 +76,7 @@ export default function Contact() {
     }
 
     setLoading(false);
+    trackEvent("form_submit", { form_name: "quote_request" });
     setSubmitted(true);
   }
 

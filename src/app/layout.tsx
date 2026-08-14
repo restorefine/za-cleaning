@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StickyContactBar from "@/components/StickyContactBar";
@@ -17,6 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 const BASE_URL = "https://www.zacleaningteam.com";
+const GOOGLE_ANALYTICS_ID = "G-L6N8HQ3Q9C";
+const GOOGLE_ADS_ID = "AW-11530941943";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -171,7 +173,23 @@ export default function RootLayout({
         <Footer />
         <StickyContactBar />
       </body>
-      <GoogleAnalytics gaId="G-L6N8HQ3Q9C" />
+      <Script
+        id="google-tag-manager"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+      />
+      <Script
+        id="google-tag-init"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${GOOGLE_ANALYTICS_ID}');
+            gtag('config', '${GOOGLE_ADS_ID}');
+          `,
+        }}
+      />
     </html>
   );
 }

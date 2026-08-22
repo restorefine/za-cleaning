@@ -18,7 +18,7 @@ const INQUIRY_LABELS: Record<string, string> = {
   applianceCleaning:     "Appliances",
   appliances:            "Appliance List",
   additionalAreas:       "Extra Areas",
-  softFurnishings:       "Steam Furnishings",
+  softFurnishings:       "Steam Cleaning",
   furnished:             "Furnished",
   pressureWashingNeeded: "Pressure Washing",
   pressureWashSurfaces:  "Surfaces",

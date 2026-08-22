@@ -210,7 +210,7 @@ const ADDITIONAL_AREAS_STEP: Step = {
 // Q9a
 const SOFT_FURNISHINGS_STEP: Step = {
   id: "softFurnishings",
-  question: "Do you need any of the following cleaned?",
+  question: "Do you need any of the following steam cleaned?",
   subtitle: "Select all that apply or skip if none.",
   kind: "multi",
   options: [
@@ -395,7 +395,6 @@ const DOMESTIC_SERVICES = new Set([
   "End of Tenancy Cleaning",
   "Deep Cleaning",
   "After Builders",
-  "Appliances Cleaning",
   "Other",
 ]);
 
